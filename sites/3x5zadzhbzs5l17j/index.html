@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TNT Chat</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;height:100dvh}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:#0b0e17;color:#e8eaed;display:flex;flex-direction:column;overflow:hidden}
+#login{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:24px;background:#0b0e17}
+#login .logo{width:70px;height:70px;border-radius:18px;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;color:#fff}
+#login h1{font-size:24px;color:#fff}
+#login input{width:100%;max-width:300px;padding:14px;border:1px solid #1e293b;border-radius:12px;background:#111827;color:#fff;font-size:16px;outline:none}
+#login button{width:100%;max-width:300px;padding:14px;border:none;border-radius:12px;background:#4f46e5;color:#fff;font-weight:600;font-size:16px;cursor:pointer}
+#app{display:none;flex-direction:column;height:100%}
+.topbar{background:#111827;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b}
+.topbar .title{font-weight:700;color:#fff}
+.topbar .user{font-size:12px;color:#94a3b8}
+.bottom-nav{display:flex;background:#111827;border-top:1px solid #1e293b;padding-bottom:env(safe-area-inset-bottom)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;color:#64748b;font-size:11px;cursor:pointer;gap:2px}
+.nav-item.active{color:#818cf8}
+.nav-item .icon{font-size:20px}
+#content{flex:1;overflow:hidden;position:relative;background:#0b0e17}
+.page{position:absolute;inset:0;display:none;flex-direction:column}
+.page.active{display:flex}
+.messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:78%;padding:10px 14px;border-radius:16px;font-size:15px;line-height:1.4;word-break:break-word}
+.msg.me{align-self:flex-start;background:#4f46e5;border-bottom-right-radius:4px}
+.msg.other{align-self:flex-end;background:#1e293b;border-bottom-left-radius:4px}
+.msg .meta{font-size:10px;opacity:.7;margin-bottom:3px}
+.msg img{max-width:100%;border-radius:10px;margin-top:6px;display:block}
+.msg audio{width:100%;margin-top:6px;height:34px}
+.input-bar{background:#111827;padding:8px 10px;border-top:1px solid #1e293b}
+.input-row{display:flex;gap:6px;align-items:center}
+.input-row input{flex:1;padding:11px 14px;border:1px solid #1e293b;border-radius:22px;background:#0b0e17;color:#fff;font-size:15px;outline:none;min-width:0}
+.icon-btn{width:40px;height:40px;border:none;border-radius:50%;background:#1e293b;color:#cbd5e1;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.send-btn{width:44px;height:44px;border:none;border-radius:50%;background:#4f46e5;color:#fff;font-size:18px;font-weight:bold;cursor:pointer}
+.emoji-panel{display:none;flex-wrap:wrap;gap:4px;padding:8px;background:#1e293b;border-radius:12px;max-height:90px;overflow-y:auto;margin-bottom:6px}
+.emoji-panel.show{display:flex}
+.emoji-panel span{font-size:22px;cursor:pointer}
+#preview{display:none;margin-bottom:6px}#preview img{max-height:60px;border-radius:8px}
+.chat-list{flex:1;overflow-y:auto}
+.chat-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid #1e293b;cursor:pointer}
+.chat-item .avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;flex-shrink:0}
+.chat-item .body{flex:1;min-width:0}
+.chat-item .name{font-weight:600;font-size:15px}
+.chat-item .last{font-size:13px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-screen{position:absolute;inset:0;display:none;flex-direction:column;background:#0b0e17;z-index:30}
+.chat-screen.open{display:flex}
+.chat-header{background:#111827;padding:10px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #1e293b}
+.chat-header .back{background:none;border:none;color:#818cf8;font-size:22px;cursor:pointer}
+.chat-header .name{font-weight:600;font-size:16px}
+.chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:6px}
+.bubble{max-width:75%;padding:9px 13px;border-radius:16px;font-size:15px}
+.bubble.me{align-self:flex-start;background:#4f46e5;border-bottom-right-radius:4px}
+.bubble.other{align-self:flex-end;background:#1e293b;border-bottom-left-radius:4px}
+.bubble .time{font-size:10px;color:rgba(255,255,255,.45);margin-top:3px}
+.chat-input{background:#111827;padding:8px 10px;display:flex;gap:8px;align-items:center;border-top:1px solid #1e293b;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+.chat-input input{flex:1;padding:11px 16px;border:1px solid #1e293b;border-radius:22px;background:#0b0e17;color:#fff;font-size:15px;outline:none}
+.chat-input .send{width:44px;height:44px;border:none;border-radius:50%;background:#4f46e5;color:#fff;font-size:18px;font-weight:bold;cursor:pointer}
+.post{background:#111827;border:1px solid #1e293b;border-radius:14px;overflow:hidden;margin-bottom:8px}
+.post img{width:100%;max-height:240px;object-fit:cover;display:block}
+.post .body{padding:12px}
+.list-item{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #1e293b;cursor:pointer}
+.list-item .av{width:48px;height:48px;border-radius:50%;background:#1e293b;display:flex;align-items:center;justify-content:center;color:#818cf8;font-weight:700}
+.empty{text-align:center;padding:50px 20px;color:#64748b;font-size:14px}
+.status-bar{text-align:center;padding:5px;font-size:11px;color:#64748b;background:#111827}
+#banOverlay{display:none;position:fixed;inset:0;background:#0b0e17;z-index:999;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#banOverlay h2{color:#ef4444;font-size:22px}
+.profile-page{padding:28px 20px;text-align:center}
+.profile-page input,.profile-page textarea{width:100%;max-width:320px;padding:13px;margin:8px 0;border:1px solid #1e293b;border-radius:12px;background:#111827;color:#fff;font-size:15px;outline:none}
+.profile-page button{margin-top:14px;padding:13px 32px;border:none;border-radius:12px;background:#4f46e5;color:#fff;font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="banOverlay"><h2>مسدود شده‌اید</h2><p style="color:#94a3b8;margin-top:10px">دسترسی شما توسط مدیر قطع شده</p></div>
+<div id="login">
+  <div class="logo">T</div>
+  <h1>TNT Chat</h1>
+  <input type="text" id="username" placeholder="نام کاربری" maxlength="18">
+  <button onclick="doLogin()">ورود</button>
+</div>
+<div id="app">
+  <div class="topbar"><div class="title">TNT Chat</div><div class="user" id="userLabel"></div></div>
+  <div id="content">
+    <div class="page active" id="page-group">
+      <div class="status-bar" id="gStatus">گروه</div>
+      <div class="messages" id="gMsgs"></div>
+      <div class="input-bar">
+        <div id="preview"></div>
+        <div class="emoji-panel" id="emojiBar"></div>
+        <div class="input-row">
+          <button class="icon-btn" onclick="toggleEmoji()">😀</button>
+          <button class="icon-btn" onclick="document.getElementById('fileIn').click()">📷</button>
+          <button class="icon-btn" id="vBtn" onclick="toggleVoice()">🎤</button>
+          <input type="text" id="gText" placeholder="پیام..." onkeydown="if(event.key==='Enter')sendGroup()">
+          <button class="send-btn" onclick="sendGroup()">➤</button>
+        </div>
+        <input type="file" id="fileIn" accept="image/*" style="display:none" onchange="pickFile(this)">
+      </div>
+    </div>
+    <div class="page" id="page-channel">
+      <div id="chList" class="chat-list"></div>
+      <div class="chat-screen" id="chScreen">
+        <div class="chat-header"><button class="back" onclick="closeCh()">→</button><div><div class="name" id="chName">کانال</div></div></div>
+        <div class="chat-messages" id="chMsgs"></div>
+      </div>
+    </div>
+    <div class="page" id="page-chats">
+      <div class="chat-list" id="chatList"><div class="empty">گفتگویی نیست</div></div>
+      <div class="chat-screen" id="pvScreen">
+        <div class="chat-header"><button class="back" onclick="closePv()">→</button><div><div class="name" id="pvName">کاربر</div></div></div>
+        <div class="chat-messages" id="pvMsgs"></div>
+        <div class="chat-input"><input type="text" id="pvText" placeholder="پیام..." onkeydown="if(event.key==='Enter')sendPv()"><button class="send" onclick="sendPv()">➤</button></div>
+      </div>
+    </div>
+    <div class="page" id="page-profile">
+      <div class="profile-page">
+        <h3 style="color:#818cf8;margin-bottom:16px">پروفایل من</h3>
+        <input type="text" id="myName" placeholder="نام نمایشی">
+        <textarea id="myBio" placeholder="بیو..." rows="3"></textarea>
+        <button onclick="saveProf()">ذخیره</button>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active" data-page="group" onclick="go('group')"><span class="icon">💬</span>گروه</div>
+    <div class="nav-item" data-page="channel" onclick="go('channel')"><span class="icon">📢</span>کانال</div>
+    <div class="nav-item" data-page="chats" onclick="go('chats')"><span class="icon">✉️</span>پیام‌ها</div>
+    <div class="nav-item" data-page="profile" onclick="go('profile')"><span class="icon">👤</span>پروفایل</div>
+  </div>
+</div>
+<script>
+const SUPA_URL = 'https://sirrimwcpoangwquqwsi.supabase.co';
+const SUPA_KEY = 'sb_publishable_7gvBQimkJ2fiApCAoxmpyw_xkz7rc85';
+const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+const EMO = ['😀','😂','😍','🥰','😎','😭','😡','👍','❤️','🔥','✨','🎉','🙏','👏','💪','🤔','😴','🥳','💯','⚡'];
+
+let user = '', banned = false, curPv = null;
+let gHist = [], chPosts = [], profiles = {}, pvHist = {};
+let rec, chunks = [], recing = false;
+
+function san(n){return String(n||'').replace(/[\u200B-\u200D\uFEFF]/g,'').trim().slice(0,18)}
+function time(ts){return new Date(ts).toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'})}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+async function doLogin(){
+  const u = san(document.getElementById('username').value);
+  if(u.length < 2) return alert('نام کاربری حداقل ۲ حرف');
+  user = u;
+  localStorage.setItem('tnt_user', u);
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  document.getElementById('userLabel').textContent = u;
+  document.getElementById('emojiBar').innerHTML = EMO.map(e=>`<span onclick="insEmo('${e}')">${e}</span>`).join('');
+
+  // چک بن
+  const { data: ban } = await sb.from('bans').select('username').eq('username', user).maybeSingle();
+  if(ban){ banned = true; document.getElementById('banOverlay').style.display='flex'; document.getElementById('app').style.display='none'; return; }
+
+  // ذخیره/آپدیت پروفایل
+  await sb.from('profiles').upsert({ username: user, display_name: user }, { onConflict: 'username' });
+
+  await loadAll();
+  subscribe();
+}
+
+async function loadAll(){
+  // گروه
+  const { data: msgs } = await sb.from('group_messages').select('*').order('created_at',{ascending:true}).limit(100);
+  gHist = msgs || [];
+  renderGroup();
+
+  // کانال
+  const { data: posts } = await sb.from('channel_posts').select('*').order('created_at',{ascending:true}).limit(50);
+  chPosts = posts || [];
+  const { data: ch } = await sb.from('channel_info').select('*').eq('id','main').maybeSingle();
+  renderChans(ch);
+
+  // پروفایل‌ها
+  const { data: profs } = await sb.from('profiles').select('*').limit(100);
+  (profs||[]).forEach(p => { if(p.username !== user) profiles[p.username] = p; });
+  renderChatList();
+
+  // پروفایل خودم
+  const me = (profs||[]).find(p => p.username === user);
+  if(me){
+    document.getElementById('myName').value = me.display_name || user;
+    document.getElementById('myBio').value = me.bio || '';
+  }
+}
+
+function subscribe(){
+  sb.channel('realtime-all')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'group_messages' }, payload => {
+      const m = payload.new;
+      if(gHist.some(x => x.id === m.id)) return;
+      gHist.push(m);
+      addG(m);
+    })
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'channel_posts' }, payload => {
+      const p = payload.new;
+      if(chPosts.some(x => x.id === p.id)) return;
+      chPosts.push(p);
+      if(document.getElementById('chScreen').classList.contains('open')) renderPosts();
+    })
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'private_messages' }, payload => {
+      const m = payload.new;
+      if(m.from_user !== user && m.to_user !== user) return;
+      const other = m.from_user === user ? m.to_user : m.from_user;
+      if(!pvHist[other]) pvHist[other] = [];
+      if(pvHist[other].some(x => x.id === m.id)) return;
+      pvHist[other].push(m);
+      if(curPv === other) renderPvMsgs(other);
+      if(document.getElementById('page-chats').classList.contains('active') && !curPv) renderChatList();
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'bans' }, async () => {
+      const { data: ban } = await sb.from('bans').select('username').eq('username', user).maybeSingle();
+      if(ban){ banned = true; document.getElementById('banOverlay').style.display='flex'; document.getElementById('app').style.display='none'; }
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'profiles' }, payload => {
+      const p = payload.new;
+      if(p && p.username && p.username !== user){ profiles[p.username] = p; if(document.getElementById('page-chats').classList.contains('active')) renderChatList(); }
+    })
+    .subscribe();
+}
+
+function renderGroup(){
+  const b = document.getElementById('gMsgs');
+  b.innerHTML = '';
+  if(!gHist.length){ b.innerHTML = '<div class="empty">هنوز پیامی نیست</div>'; return; }
+  gHist.forEach(m => addG(m, true));
+  b.scrollTop = b.scrollHeight;
+}
+function addG(d, silent){
+  const b = document.getElementById('gMsgs');
+  if(document.getElementById('g'+d.id)) return;
+  const empty = b.querySelector('.empty'); if(empty) empty.remove();
+  const div = document.createElement('div');
+  div.className = 'msg ' + (d.username === user ? 'me' : 'other');
+  div.id = 'g'+d.id;
+  let h = `<div class="meta">${esc(d.username)} · ${time(d.created_at)}</div>`;
+  if(d.type === 'image' && d.data) h += `<div>${esc(d.text||'')}</div><img src="${d.data}">`;
+  else if(d.type === 'voice' && d.data) h += `<div>🎤 صوتی</div><audio controls src="${d.data}">`;
+  else h += `<div>${esc(d.text||'')}</div>`;
+  div.innerHTML = h;
+  b.appendChild(div);
+  if(!silent) b.scrollTop = b.scrollHeight;
+}
+
+function renderChans(ch){
+  const l = document.getElementById('chList');
+  const name = (ch && ch.name) || 'کانال اصلی';
+  const desc = (ch && ch.description) || '';
+  l.innerHTML = `<div class="list-item" onclick="openCh()"><div class="av">✓</div><div><div style="font-weight:600">${esc(name)} ✓</div><div style="font-size:12px;color:#64748b">${esc(desc)}</div></div></div>`;
+}
+function openCh(){
+  document.getElementById('chList').style.display = 'none';
+  document.getElementById('chScreen').classList.add('open');
+  document.getElementById('chName').textContent = 'کانال اصلی ✓';
+  renderPosts();
+}
+function closeCh(){
+  document.getElementById('chScreen').classList.remove('open');
+  document.getElementById('chList').style.display = 'block';
+}
+function renderPosts(){
+  const b = document.getElementById('chMsgs');
+  b.innerHTML = '';
+  if(!chPosts.length){ b.innerHTML = '<div class="empty">پستی نیست</div>'; return; }
+  chPosts.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'post';
+    let h = p.img ? `<img src="${p.img}">` : '';
+    h += `<div class="body">${p.text ? `<div style="margin-bottom:6px">${esc(p.text)}</div>` : ''}<div style="font-size:11px;color:#64748b">${new Date(p.created_at).toLocaleString('fa-IR')}</div></div>`;
+    d.innerHTML = h;
+    b.appendChild(d);
+  });
+  b.scrollTop = b.scrollHeight;
+}
+
+function renderChatList(){
+  const box = document.getElementById('chatList');
+  const convos = Object.keys(pvHist);
+  const online = Object.values(profiles);
+  let html = '';
+  convos.forEach(o => {
+    const last = pvHist[o][pvHist[o].length-1];
+    const name = (profiles[o] && profiles[o].display_name) || o;
+    html += `<div class="chat-item" onclick="openPv('${o}')"><div class="avatar">${(name[0]||'?').toUpperCase()}</div><div class="body"><div class="name">${esc(name)}</div><div class="last">${esc((last&&last.text)||'...')}</div></div></div>`;
+  });
+  if(online.length){
+    html += `<div style="padding:10px 16px;font-size:12px;color:#818cf8;font-weight:600">کاربران</div>`;
+    online.forEach(p => {
+      if(convos.includes(p.username)) return;
+      html += `<div class="chat-item" onclick="openPv('${p.username}')"><div class="avatar">${(p.display_name||p.username)[0].toUpperCase()}</div><div class="body"><div class="name">${esc(p.display_name||p.username)}</div><div class="last">${esc(p.bio||'شروع گفتگو')}</div></div></div>`;
+    });
+  }
+  if(!html) html = '<div class="empty">گفتگویی نیست</div>';
+  box.innerHTML = html;
+}
+async function openPv(other){
+  curPv = other;
+  document.getElementById('chatList').style.display = 'none';
+  document.getElementById('pvScreen').classList.add('open');
+  document.getElementById('pvName').textContent = (profiles[other] && profiles[other].display_name) || other;
+  // بارگذاری تاریخچه پیوی
+  const { data } = await sb.from('private_messages').select('*')
+    .or(`and(from_user.eq.${user},to_user.eq.${other}),and(from_user.eq.${other},to_user.eq.${user})`)
+    .order('created_at',{ascending:true}).limit(100);
+  pvHist[other] = data || [];
+  renderPvMsgs(other);
+  document.getElementById('pvText').focus();
+}
+function closePv(){
+  curPv = null;
+  document.getElementById('pvScreen').classList.remove('open');
+  document.getElementById('chatList').style.display = 'block';
+  renderChatList();
+}
+function renderPvMsgs(o){
+  const b = document.getElementById('pvMsgs');
+  b.innerHTML = '';
+  const list = pvHist[o] || [];
+  if(!list.length){ b.innerHTML = '<div class="empty">هنوز پیامی نیست</div>'; return; }
+  list.forEach(m => {
+    const d = document.createElement('div');
+    d.className = 'bubble ' + (m.from_user === user ? 'me' : 'other');
+    d.innerHTML = `<div>${esc(m.text)}</div><div class="time">${time(m.created_at)}</div>`;
+    b.appendChild(d);
+  });
+  b.scrollTop = b.scrollHeight;
+}
+async function sendPv(){
+  if(!curPv || banned) return;
+  const text = document.getElementById('pvText').value.trim();
+  if(!text) return;
+  const { data, error } = await sb.from('private_messages').insert({ from_user: user, to_user: curPv, text }).select().single();
+  if(error) return alert('خطا در ارسال');
+  if(!pvHist[curPv]) pvHist[curPv] = [];
+  pvHist[curPv].push(data);
+  renderPvMsgs(curPv);
+  document.getElementById('pvText').value = '';
+}
+
+async function sendGroup(){
+  if(banned) return;
+  const text = document.getElementById('gText').value.trim();
+  const prev = document.getElementById('preview');
+  const img = prev.querySelector('img');
+  let row = { username: user, type: 'text', text: text || null, data: null };
+  if(img){ row.type = 'image'; row.data = img.src; prev.innerHTML = ''; prev.style.display = 'none'; }
+  else if(!text) return;
+  const { error } = await sb.from('group_messages').insert(row);
+  if(error) alert('خطا: ' + error.message);
+  document.getElementById('gText').value = '';
+  document.getElementById('emojiBar').classList.remove('show');
+}
+function pickFile(inp){
+  const f = inp.files[0]; if(!f || !f.type.startsWith('image/')) return;
+  if(f.size > 400000) return alert('عکس حداکثر ۴۰۰KB');
+  const r = new FileReader();
+  r.onload = e => { const p = document.getElementById('preview'); p.innerHTML = `<img src="${e.target.result}">`; p.style.display = 'block'; };
+  r.readAsDataURL(f); inp.value = '';
+}
+function toggleEmoji(){ document.getElementById('emojiBar').classList.toggle('show'); }
+function insEmo(e){ document.getElementById('gText').value += e; }
+function toggleVoice(){
+  if(recing){ rec.stop(); recing = false; document.getElementById('vBtn').textContent = '🎤'; return; }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(s => {
+    rec = new MediaRecorder(s); chunks = [];
+    rec.ondataavailable = e => chunks.push(e.data);
+    rec.onstop = () => {
+      const bl = new Blob(chunks, {type:'audio/webm'});
+      if(bl.size > 350000) return alert('ویس طولانی');
+      const r = new FileReader();
+      r.onload = async () => { await sb.from('group_messages').insert({ username: user, type: 'voice', data: r.result }); };
+      r.readAsDataURL(bl); s.getTracks().forEach(t => t.stop());
+    };
+    rec.start(); recing = true; document.getElementById('vBtn').textContent = '⏹';
+  }).catch(() => alert('میکروفون لازم است'));
+}
+async function saveProf(){
+  const name = document.getElementById('myName').value.trim() || user;
+  const bio = document.getElementById('myBio').value.trim();
+  await sb.from('profiles').upsert({ username: user, display_name: name, bio }, { onConflict: 'username' });
+  alert('ذخیره شد');
+}
+function go(page){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === page));
+  document.getElementById('page-'+page).classList.add('active');
+  if(page === 'chats'){ closePv(); renderChatList(); }
+  if(page === 'channel') closeCh();
+}
+window.onload = () => {
+  const s = localStorage.getItem('tnt_user');
+  if(s && s.length >= 2){ document.getElementById('username').value = s; setTimeout(doLogin, 300); }
+};
+</script>
+</body>
+</html>
