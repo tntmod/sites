@@ -35,7 +35,6 @@
 <meta name="twitter:image" content="https://uploadkon.ir/uploads/165612_26Screenshot-2026-10-12-19-33-04-649-ir-mservices-market-edit.jpg">
 
 <!-- ========================= Canonical ========================= -->
-<!-- ⚠️ کاربر عزیز: اگر آدرس اصلی سایت روی GitHub Pages چیز دیگری است، این خط را با آدرس واقعی سایت خود جایگزین کنید -->
 <link rel="canonical" href="https://tntmod.github.io/">
 
 <!-- ========================= Favicon ========================= -->
@@ -152,7 +151,7 @@ a{text-decoration:none;color:inherit}
 .offline-desc{font-size:.78rem;color:#94a3b8;max-width:270px;line-height:1.75}
 .offline-btn{margin-top:6px;padding:12px 28px;border-radius:12px;font-size:.8rem;font-weight:800;color:#fff;background:#8b5cf6}
 .offline-btn:active{transform:scale(.96)}
-body.is-offline .bg,body.is-offline .header,body.is-offline .chat-banner,body.is-offline .minigame-banner,body.is-offline .promo-list,body.is-offline .section,body.is-offline .videos-section,body.is-offline .footer,body.is-offline .modal-bg,body.is-offline .dl-bg,body.is-offline .vid-bg,body.is-offline .player-bg,body.is-offline .notice-bg,body.is-offline .menu-bg{display:none!important}
+body.is-offline .bg,body.is-offline .header,body.is-offline .minigame-banner,body.is-offline .promo-list,body.is-offline .section,body.is-offline .videos-section,body.is-offline .footer,body.is-offline .modal-bg,body.is-offline .dl-bg,body.is-offline .vid-bg,body.is-offline .player-bg,body.is-offline .notice-bg,body.is-offline .menu-bg{display:none!important}
 
 .header{position:relative;z-index:2;padding:30px 18px 8px;max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
@@ -164,7 +163,7 @@ body.is-offline .bg,body.is-offline .header,body.is-offline .chat-banner,body.is
 @keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
 
 /* ============================================================
-   دکمه همبرگری — سه خط (اصلاح شده)
+   دکمه همبرگری — سه خط
    ============================================================ */
 .menu-btn{width:46px;height:46px;border-radius:14px;
   background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(236,72,153,.18));
@@ -181,39 +180,9 @@ body.is-offline .bg,body.is-offline .header,body.is-offline .chat-banner,body.is
 .hb-line{transition:transform .25s,opacity .2s}
 
 /* ============================================================
-   چت ناشناس
+   بنر مینی گیم — نارنجی/طلایی
    ============================================================ */
-.chat-banner{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:18px 18px 4px}
-.chat-card{position:relative;display:flex;align-items:center;gap:14px;padding:18px 18px 18px 15px;border-radius:22px;
-  background:radial-gradient(circle 260px at 8% 20%,rgba(236,72,153,.45),transparent 65%),radial-gradient(circle 260px at 92% 80%,rgba(34,211,238,.32),transparent 65%),linear-gradient(135deg,#1a0f3a 0%,#241547 45%,#1a1240 100%);
-  border:1.5px solid transparent;background-clip:padding-box;overflow:hidden;text-decoration:none;color:inherit;
-  transition:transform .2s;-webkit-tap-highlight-color:transparent;
-  box-shadow:0 20px 50px -18px rgba(139,92,246,.85),0 0 0 1px rgba(196,181,253,.35) inset,0 0 0 1.5px rgba(236,72,153,.25);
-  isolation:isolate;contain:layout paint style}
-.chat-card::before{content:'';position:absolute;inset:-2px;border-radius:22px;padding:1.5px;z-index:-1;
-  background:conic-gradient(from 0deg,#a78bfa,#ec4899,#22d3ee,#a78bfa);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
-  animation:spinBorder 6s linear infinite;will-change:transform;backface-visibility:hidden}
-@keyframes spinBorder{to{transform:rotate(360deg)}}
-.chat-card::after{content:'';position:absolute;top:-50%;right:-40%;width:200px;height:220%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:rotate(20deg);animation:chatShine 4.5s ease-in-out infinite;pointer-events:none;z-index:1;will-change:transform}
-@keyframes chatShine{0%{transform:translateX(-100px) rotate(20deg)}55%,100%{transform:translateX(460px) rotate(20deg)}}
-.chat-card:active{transform:scale(.98)}
-.chat-card__icon{position:relative;width:56px;height:56px;flex-shrink:0;border-radius:18px;background:linear-gradient(135deg,#8b5cf6 0%,#ec4899 100%);display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 12px 28px -8px rgba(236,72,153,1),0 0 0 1px rgba(255,255,255,.15) inset,0 0 22px rgba(236,72,153,.55);z-index:2}
-.chat-card__body{flex:1;min-width:0;position:relative;z-index:2}
-.chat-card__title{font-size:.92rem;font-weight:900;color:#fff;letter-spacing:-.2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;text-shadow:0 2px 12px rgba(139,92,246,.5)}
-.chat-card__title .live{display:inline-flex;align-items:center;gap:4px;font-size:.52rem;font-weight:900;background:linear-gradient(135deg,#f43f5e,#be123c);color:#fff;padding:3px 9px;border-radius:6px;letter-spacing:.4px;box-shadow:0 4px 12px -3px rgba(244,63,94,.9)}
-.chat-card__title .live::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:blink 1.2s ease-in-out infinite}
-.chat-card__sub{font-size:.72rem;color:#d8d0f5;margin-top:5px;font-weight:700;opacity:.95;display:flex;align-items:center;gap:5px}
-.chat-card__sub::before{content:'💌';font-size:.75rem}
-.chat-card__btn{position:relative;z-index:2;flex-shrink:0;padding:12px 18px;border-radius:14px;font-size:.72rem;font-weight:900;color:#fff;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 10px 26px -8px rgba(236,72,153,.95),0 0 0 1px rgba(255,255,255,.15) inset;display:flex;align-items:center;gap:6px;white-space:nowrap;letter-spacing:.2px}
-.chat-card__btn svg{width:13px;height:13px;fill:#fff;transform:rotate(180deg)}
-@media(max-width:420px){.chat-card{padding:14px;gap:11px}.chat-card__icon{width:48px;height:48px;font-size:1.35rem;border-radius:15px}.chat-card__title{font-size:.82rem}.chat-card__sub{font-size:.66rem}.chat-card__btn{padding:10px 13px;font-size:.64rem}}
-
-/* ============================================================
-   بنر مینی گیم — رنگ جدید (نارنجی/طلایی)
-   ============================================================ */
-.minigame-banner{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:12px 18px 4px}
+.minigame-banner{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:18px 18px 4px}
 .minigame-card{position:relative;display:flex;align-items:center;gap:14px;padding:18px 18px 18px 15px;border-radius:22px;
   background:radial-gradient(circle 260px at 8% 20%,rgba(251,191,36,.55),transparent 65%),radial-gradient(circle 260px at 92% 80%,rgba(249,115,22,.42),transparent 65%),linear-gradient(135deg,#3a1e0a 0%,#4a2508 45%,#2a1508 100%);
   border:1.5px solid transparent;background-clip:padding-box;overflow:hidden;text-decoration:none;color:inherit;
@@ -224,8 +193,10 @@ body.is-offline .bg,body.is-offline .header,body.is-offline .chat-banner,body.is
   background:conic-gradient(from 0deg,#fbbf24,#f97316,#f43f5e,#fbbf24);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
   animation:spinBorder 6s linear infinite;will-change:transform;backface-visibility:hidden}
+@keyframes spinBorder{to{transform:rotate(360deg)}}
 .minigame-card::after{content:'';position:absolute;top:-50%;right:-40%;width:200px;height:220%;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:rotate(20deg);animation:chatShine 4.5s ease-in-out infinite;pointer-events:none;z-index:1;will-change:transform}
+@keyframes chatShine{0%{transform:translateX(-100px) rotate(20deg)}55%,100%{transform:translateX(460px) rotate(20deg)}}
 .minigame-card:active{transform:scale(.98)}
 .minigame-card__icon{position:relative;width:56px;height:56px;flex-shrink:0;border-radius:18px;background:linear-gradient(135deg,#fbbf24 0%,#f97316 100%);display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 12px 28px -8px rgba(251,146,60,1),0 0 0 1px rgba(255,255,255,.15) inset,0 0 22px rgba(251,146,60,.55);z-index:2}
 .minigame-card__body{flex:1;min-width:0;position:relative;z-index:2}
@@ -275,7 +246,6 @@ body.is-offline .bg,body.is-offline .header,body.is-offline .chat-banner,body.is
 .menu-item:active{transform:scale(.985);background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.35)}
 .menu-item__icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
 .menu-item--minigame .menu-item__icon{background:linear-gradient(135deg,#fbbf24,#f97316);box-shadow:0 8px 18px -8px rgba(251,146,60,.9),0 0 0 1px rgba(255,255,255,.15) inset}
-.menu-item--chat .menu-item__icon{background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 8px 18px -8px rgba(236,72,153,.9),0 0 0 1px rgba(255,255,255,.15) inset}
 .menu-item--rubika .menu-item__icon{background:linear-gradient(135deg,#fbbf24,#f43f5e);box-shadow:0 8px 18px -8px rgba(244,63,94,.9),0 0 0 1px rgba(255,255,255,.15) inset}
 .menu-item__body{flex:1;min-width:0}
 .menu-item__title{font-size:.82rem;font-weight:800;color:#fff;line-height:1.3}
@@ -604,22 +574,7 @@ body.lock{overflow:hidden}
   </button>
 </header>
 
-<!-- چت ناشناس — لینک در همان تب (برگشت به صفحه اصلی) -->
-<div class="chat-banner">
-  <a class="chat-card" href="https://tntmod.github.io/sites/sites/3x5zadzhbzs5l17j/">
-    <div class="chat-card__icon">💬</div>
-    <div class="chat-card__body">
-      <div class="chat-card__title">آنلاین چت ناشناس TNT <span class="live">آنلاین</span></div>
-      <div class="chat-card__sub">بیاین آنلاین چت کنیم !</div>
-    </div>
-    <div class="chat-card__btn">
-      <span>ورود</span>
-      <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    </div>
-  </a>
-</div>
-
-<!-- مینی گیم — لینک در همان تب (برگشت به صفحه اصلی) -->
+<!-- مینی گیم — در همان تب (دکمه برگشت به صفحه اصلی) -->
 <div class="minigame-banner">
   <a class="minigame-card" href="https://tntmod.github.io/sites/sites/nhd955n2bmy9e0pf/index.html">
     <div class="minigame-card__icon">🎯</div>
@@ -782,14 +737,6 @@ body.lock{overflow:hidden}
         <div class="menu-item__body">
           <div class="menu-item__title">مینی گیم</div>
           <div class="menu-item__sub">بازی‌های جذاب و سرگرم‌کننده</div>
-        </div>
-        <div class="menu-item__arrow"><svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></div>
-      </a>
-      <a class="menu-item menu-item--chat" href="https://tntmod.github.io/sites/sites/3x5zadzhbzs5l17j/" data-close-menu>
-        <div class="menu-item__icon">💬</div>
-        <div class="menu-item__body">
-          <div class="menu-item__title">چت آنلاین ناشناس</div>
-          <div class="menu-item__sub">با کاربران دیگر گپ بزن</div>
         </div>
         <div class="menu-item__arrow"><svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></div>
       </a>
