@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a14">
+<title>جهان سه پادشاه — جلد اول، دوم و سوم</title>
+<style>
+@font-face{font-family:'Shabnam';src:url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/Shabnam-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Shabnam';src:url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/Shabnam.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Shabnam';src:url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/Shabnam-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0a0a14;--bg-2:#0f0f1c;--surface:#14142a;--gold:#c9a961;--gold-bright:#e8cc8a;--gold-soft:rgba(201,169,97,0.15);--red-bright:#d94444;--red-soft:rgba(180,40,40,0.15);--purple-bright:#9d7dd9;--purple-soft:rgba(140,100,200,0.15);--text:#ece4d3;--text-2:#9b9179;--text-3:#5c5648;--border:rgba(201,169,97,0.15);--border-soft:rgba(255,255,255,0.06);--font-scale:1;--line-height:2;--nav-h:92px}
+html,body{background:var(--bg);color:var(--text);font-family:'Shabnam',Tahoma,sans-serif;font-size:calc(16px*var(--font-scale));line-height:var(--line-height);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+body{background:radial-gradient(ellipse 900px 700px at 50% -10%,rgba(60,45,120,0.35) 0%,transparent 70%),radial-gradient(ellipse 700px 500px at 100% 60%,rgba(80,50,100,0.25) 0%,transparent 70%),radial-gradient(ellipse 700px 500px at 0% 30%,rgba(40,50,100,0.25) 0%,transparent 70%),linear-gradient(180deg,#0a0a14 0%,#0f0f1c 50%,#0a0a14 100%);background-attachment:fixed}
+#progress{position:fixed;top:0;right:0;height:3px;width:0%;background:linear-gradient(90deg,#c9a961,#e8cc8a);box-shadow:0 0 12px rgba(201,169,97,0.6);z-index:100;transition:width 0.4s cubic-bezier(0.4,0,0.2,1)}
+body.vol2 #progress{background:linear-gradient(90deg,#6b4a9e,#9d7dd9);box-shadow:0 0 12px rgba(157,125,217,0.6)}
+body.vol3 #progress{background:linear-gradient(90deg,#d94444,#6ba8d9);box-shadow:0 0 12px rgba(217,68,68,0.6)}
+.top-btn{position:fixed;top:14px;z-index:50;width:44px;height:44px;border-radius:12px;background:rgba(20,20,42,0.8);border:1px solid var(--border);color:var(--gold);font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;backdrop-filter:blur(14px);box-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.top-btn:active{background:rgba(28,28,56,0.95);transform:scale(0.94)}
+#tocBtn{left:14px}#settingsBtn{right:14px;font-size:18px}
+#audioBtn{right:66px;font-size:20px}
+#audioBtn.playing{background:var(--gold-soft);border-color:var(--gold);color:var(--gold-bright);animation:audioPulse 2s infinite}
+body.vol2 #audioBtn.playing{background:rgba(157,125,217,0.15);border-color:#9d7dd9;color:#d8c8ff}
+body.vol3 #audioBtn.playing{background:rgba(217,68,68,0.15);border-color:#d94444;color:#ffb8a8}
+@keyframes audioPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,97,0.5)}50%{box-shadow:0 0 0 8px rgba(201,169,97,0)}}
+p.tts-active{background:linear-gradient(90deg,transparent,rgba(201,169,97,0.14),transparent);border-right:3px solid var(--gold);padding-right:18px;margin-right:-18px;border-radius:0 8px 8px 0;transition:background 0.3s,border 0.3s}
+body.vol2 p.tts-active{background:linear-gradient(90deg,transparent,rgba(157,125,217,0.14),transparent);border-right-color:#9d7dd9}
+body.vol3 p.tts-active{background:linear-gradient(90deg,transparent,rgba(217,68,68,0.12),transparent);border-right-color:#d94444}
+#settingsPanel{position:fixed;top:68px;right:14px;width:310px;max-width:calc(100vw - 28px);background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px 20px;box-shadow:0 24px 60px rgba(0,0,0,0.8);backdrop-filter:blur(20px);display:none;z-index:60}
+#settingsPanel.open{display:block;animation:fadeIn 0.22s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+#settingsPanel h4{color:var(--gold-bright);font-size:15px;font-weight:700;text-align:center;margin-bottom:20px}
+.setting-row{margin-bottom:20px}
+.setting-row label{display:block;font-size:12px;color:var(--text-2);margin-bottom:10px;font-weight:700}
+.setting-row input[type=range]{width:100%;height:6px;accent-color:var(--gold);cursor:pointer}
+.setting-row .val{color:var(--gold-bright);font-weight:700;font-size:12px;float:left;background:var(--gold-soft);padding:2px 10px;border-radius:6px;margin-top:-3px}
+.color-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.color-swatch{width:34px;height:34px;border-radius:10px;border:2px solid transparent;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.color-swatch.active{border-color:var(--gold-bright);transform:scale(1.12);box-shadow:0 0 16px rgba(201,169,97,0.5)}
+.theme-row{display:flex;gap:8px}
+.theme-btn{flex:1;padding:11px 8px;border-radius:10px;background:var(--bg-2);border:1px solid var(--border-soft);color:var(--text-2);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.theme-btn.active{background:var(--gold-soft);border-color:var(--gold);color:var(--gold-bright)}
+.reset-btn{width:100%;padding:12px;border-radius:10px;background:var(--bg-2);border:1px solid var(--border-soft);color:var(--text-3);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer}
+#toc{position:fixed;inset:0;z-index:200;background:rgba(6,6,14,0.95);backdrop-filter:blur(20px);display:none;padding:24px 16px;overflow-y:auto}
+#toc.open{display:block;animation:fadeIn 0.25s ease}
+.toc-inner{max-width:620px;margin:30px auto;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:26px 22px;box-shadow:0 24px 60px rgba(0,0,0,0.7)}
+.toc-inner h3{text-align:center;color:var(--gold-bright);font-size:20px;font-weight:700;margin-bottom:22px}
+.toc-volume-title{text-align:center;color:var(--text-2);font-size:12px;font-weight:700;letter-spacing:4px;margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border-soft)}
+.toc-volume-title:first-child{margin-top:0}
+.toc-item{display:block;width:100%;text-align:right;background:var(--bg-2);border:1px solid var(--border-soft);color:var(--text-2);padding:14px 18px;margin-bottom:9px;border-radius:12px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:500;line-height:1.65}
+.toc-item.active{background:var(--gold-soft);border-color:var(--gold);color:var(--gold-bright);font-weight:700}
+.toc-item.vol2.active{background:var(--purple-soft);border-color:var(--purple-bright);color:#d8c8ff}
+.toc-item.vol3.active{background:rgba(217,68,68,0.15);border-color:#d94444;color:#ffd8c0}
+#tocClose{display:block;margin:18px auto 0;background:transparent;border:1px solid var(--border);color:var(--text-3);padding:11px 34px;border-radius:10px;font-family:inherit;font-size:13px;cursor:pointer}
+#book{max-width:720px;margin:0 auto;padding:76px 22px calc(var(--nav-h) + 46px);position:relative;z-index:1}
+.page{display:none}.page.active{display:block;animation:pageIn 0.55s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.cover{min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 0}
+.cover .crown{font-size:68px;margin-bottom:28px;filter:drop-shadow(0 0 30px rgba(201,169,97,0.6));animation:float 5s ease-in-out infinite}
+.cover.vol2 .crown{filter:drop-shadow(0 0 30px rgba(157,125,217,0.7))}
+.cover.vol3 .crown{filter:drop-shadow(0 0 30px rgba(217,68,68,0.7)) drop-shadow(0 0 45px rgba(107,168,217,0.5))}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.cover .label{color:var(--gold);font-size:12px;letter-spacing:6px;margin-bottom:18px;font-weight:700;opacity:0.85}
+.cover.vol2 .label{color:var(--purple-bright);opacity:0.95}
+.cover.vol3 .label{color:#ff9a8a;opacity:0.95}
+.cover h1{color:var(--gold-bright);font-size:42px;line-height:1.35;font-weight:700;margin-bottom:16px;text-shadow:0 0 40px rgba(201,169,97,0.4)}
+.cover.vol2 h1{color:#d8c8ff;text-shadow:0 0 40px rgba(157,125,217,0.5)}
+.cover.vol3 h1{color:#ffd8c0;text-shadow:0 0 40px rgba(217,68,68,0.5),0 0 60px rgba(107,168,217,0.3)}
+.cover .subtitle{color:var(--text-2);font-size:18px;margin-bottom:34px;font-weight:500}
+.cover .sep{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 34px;position:relative}
+.cover.vol2 .sep{background:linear-gradient(90deg,transparent,var(--purple-bright),transparent)}
+.cover.vol3 .sep{background:linear-gradient(90deg,transparent,#d94444,transparent)}
+.cover .sep::after{content:"✦";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:12px;background:var(--bg);padding:0 12px}
+.cover.vol2 .sep::after{content:"❖";color:var(--purple-bright);font-size:14px}
+.cover.vol3 .sep::after{content:"✹";color:#ff8a6a;font-size:15px}
+.cover .quote{color:var(--text-2);font-size:16px;line-height:2.2;max-width:460px;font-weight:400;font-style:italic}
+.cover .quote b{color:var(--gold-bright);font-weight:700;font-style:normal}
+.cover.vol2 .quote b{color:#d8c8ff}
+.cover.vol3 .quote b{color:#ffb8a8}
+.start-btn{margin-top:44px;padding:17px 52px;background:linear-gradient(135deg,#e8cc8a,#c9a961);color:#1a1408;border:none;border-radius:16px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(201,169,97,0.35)}
+.cover.vol2 .start-btn{background:linear-gradient(135deg,#9d7dd9,#5d3a8e);color:#f5eeff;box-shadow:0 10px 30px rgba(157,125,217,0.4)}
+.cover.vol3 .start-btn{background:linear-gradient(135deg,#d94444,#6ba8d9);color:#fff;box-shadow:0 10px 30px rgba(217,68,68,0.4)}
+.chapter-head{text-align:center;margin-bottom:42px;padding-bottom:30px;position:relative}
+.chapter-head::after{content:"";position:absolute;bottom:0;right:50%;transform:translateX(50%);width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.page.vol2 .chapter-head::after{background:linear-gradient(90deg,transparent,var(--purple-bright),transparent)}
+.page.vol3 .chapter-head::after{background:linear-gradient(90deg,transparent,#d94444,#6ba8d9,transparent)}
+.chapter-head .num{display:inline-block;color:var(--gold);font-size:11px;background:var(--gold-soft);border:1px solid rgba(201,169,97,0.3);padding:7px 24px;border-radius:24px;margin-bottom:20px;font-weight:700;letter-spacing:3px}
+.page.vol2 .chapter-head .num{color:var(--purple-bright);background:var(--purple-soft);border-color:rgba(157,125,217,0.35)}
+.page.vol3 .chapter-head .num{color:#ff9a8a;background:rgba(217,68,68,0.15);border-color:rgba(217,68,68,0.35)}
+.chapter-head h2{color:var(--gold-bright);font-size:28px;line-height:1.5;font-weight:700;text-shadow:0 0 28px rgba(201,169,97,0.3)}
+.page.vol2 .chapter-head h2{color:#d8c8ff;text-shadow:0 0 28px rgba(157,125,217,0.35)}
+.page.vol3 .chapter-head h2{color:#ffd8c0;text-shadow:0 0 28px rgba(217,68,68,0.4)}
+.page p{color:var(--text);font-size:calc(16px*var(--font-scale));font-weight:400;line-height:var(--line-height);margin-bottom:22px;text-align:right}
+.page p.dialog{color:#f5eedb;font-weight:500;padding-right:18px;border-right:2px solid var(--gold);background:linear-gradient(90deg,transparent,rgba(201,169,97,0.04));padding-top:6px;padding-bottom:6px;border-radius:0 8px 8px 0}
+.page.vol2 p.dialog{border-right-color:var(--purple-bright);background:linear-gradient(90deg,transparent,rgba(140,100,200,0.06))}
+.page.vol3 p.dialog{border-right-color:#d94444;background:linear-gradient(90deg,transparent,rgba(217,68,68,0.06))}
+.page p.whisper{color:var(--gold-bright);text-align:center;font-size:calc(17px*var(--font-scale));font-weight:500;line-height:2.1;margin:32px 0;padding:16px 24px;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);border-radius:16px;font-style:italic}
+.page.vol2 p.whisper{color:#d8c8ff;background:linear-gradient(90deg,transparent,var(--purple-soft),transparent)}
+.page.vol3 p.whisper{color:#ffb8a8;background:linear-gradient(90deg,transparent,rgba(217,68,68,0.1),rgba(107,168,217,0.1),transparent)}
+.page p.battle{color:#ffd8c8;font-weight:500;background:linear-gradient(90deg,transparent,rgba(180,80,180,0.08),transparent);padding:14px 20px;border-right:2px solid var(--purple-bright);border-left:2px solid var(--purple-bright);border-radius:10px;margin:26px 0;font-size:calc(16px*var(--font-scale))}
+.page.vol3 p.battle{color:#ffe0d0;background:linear-gradient(90deg,transparent,rgba(217,68,68,0.08),rgba(107,168,217,0.08),transparent);border-right-color:#d94444;border-left-color:#6ba8d9}
+.scene-break{text-align:center;color:var(--gold);letter-spacing:14px;margin:44px 0;font-size:12px;opacity:0.6}
+.page.vol2 .scene-break{color:var(--purple-bright);opacity:0.7}
+.page.vol3 .scene-break{color:#ff9a8a;opacity:0.7}
+.the-end{text-align:center;margin-top:64px;padding-top:44px;position:relative}
+.the-end::before{content:"";position:absolute;top:0;right:50%;transform:translateX(50%);width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.page.vol2 .the-end::before{background:linear-gradient(90deg,transparent,var(--purple-bright),transparent)}
+.page.vol3 .the-end::before{background:linear-gradient(90deg,transparent,#d94444,#6ba8d9,transparent)}
+.the-end .big{color:var(--gold-bright);font-size:26px;font-weight:700;margin-bottom:16px;text-shadow:0 0 30px rgba(201,169,97,0.35)}
+.page.vol2 .the-end .big{color:#d8c8ff;text-shadow:0 0 30px rgba(157,125,217,0.35)}
+.page.vol3 .the-end .big{color:#ffd8c0;text-shadow:0 0 30px rgba(217,68,68,0.4)}
+.the-end .small{color:var(--text-2);font-size:15px;font-weight:500;line-height:2.1}
+.the-end .small b{color:var(--gold-bright);font-weight:700}
+.page.vol2 .the-end .small b{color:#d8c8ff}
+.page.vol3 .the-end .small b{color:#ffb8a8}
+#nav{position:fixed;bottom:0;right:0;left:0;padding:12px 16px calc(env(safe-area-inset-bottom,0) + 12px);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(180deg,rgba(10,10,20,0) 0%,rgba(10,10,20,0.94) 45%,#0a0a14 100%);backdrop-filter:blur(18px);border-top:1px solid var(--border-soft);z-index:50;min-height:var(--nav-h)}
+#nextBtn{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:13px 22px;background:linear-gradient(135deg,#e8cc8a,#c9a961);color:#1a1408;border:none;border-radius:14px;font-family:'Shabnam',sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 6px 20px rgba(201,169,97,0.3)}
+body.vol2 #nextBtn{background:linear-gradient(135deg,#9d7dd9,#5d3a8e);color:#f5eeff;box-shadow:0 6px 20px rgba(157,125,217,0.4)}
+body.vol3 #nextBtn{background:linear-gradient(135deg,#d94444,#6ba8d9);color:#fff;box-shadow:0 6px 20px rgba(217,68,68,0.4)}
+#nextBtn:disabled{opacity:0.25;cursor:not-allowed;box-shadow:none}
+#prevBtn{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:13px 20px;background:rgba(201,169,97,0.08);color:var(--gold-bright);border:1.5px solid var(--border);border-radius:14px;font-family:'Shabnam',sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+body.vol2 #prevBtn{background:rgba(157,125,217,0.1);color:#d8c8ff;border-color:rgba(157,125,217,0.3)}
+body.vol3 #prevBtn{background:rgba(217,68,68,0.1);color:#ffd8c0;border-color:rgba(217,68,68,0.3)}
+#prevBtn:disabled{opacity:0.25;cursor:not-allowed}
+#counter{flex:1;min-width:0;text-align:center;font-size:11px;color:var(--text-3);font-weight:500;line-height:1.4;padding:6px 10px;background:rgba(20,20,42,0.6);border:1px solid var(--border-soft);border-radius:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#counter b{color:var(--gold-bright);font-weight:700}
+body.vol2 #counter b{color:#d8c8ff}
+body.vol3 #counter b{color:#ffb8a8}
+@media (min-width:640px){.page p{font-size:calc(17px*var(--font-scale))}.cover h1{font-size:52px}.chapter-head h2{font-size:32px}#book{padding:88px 32px calc(var(--nav-h) + 50px)}#nextBtn,#prevBtn{padding:15px 28px;font-size:15px;gap:8px}#counter{font-size:12px;padding:8px 16px}#counter b{font-size:14px}}
+@media (max-width:380px){:root{--nav-h:80px}.page p{font-size:calc(15px*var(--font-scale))}.cover h1{font-size:34px}.chapter-head h2{font-size:23px}#nav{padding:10px 10px calc(env(safe-area-inset-bottom,0) + 10px);gap:6px}#nextBtn,#prevBtn{padding:11px 14px;font-size:12px;gap:4px;border-radius:12px}#counter{font-size:10px;padding:5px 8px}#audioBtn{right:62px}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button class="top-btn" id="tocBtn">☰</button>
+<button class="top-btn" id="audioBtn" title="خواندن صوتی (Space)">🎧</button>
+<button class="top-btn" id="settingsBtn">⚙</button>
+<div id="settingsPanel">
+  <h4>تنظیمات نمایش</h4>
+  <div class="setting-row"><label>اندازهٔ متن <span class="val" id="fontSizeVal">100%</span></label><input type="range" id="fontSizeRange" min="80" max="150" step="5" value="100"></div>
+  <div class="setting-row"><label>فاصلهٔ خطوط <span class="val" id="lineHeightVal">2.00</span></label><input type="range" id="lineHeightRange" min="1.6" max="2.6" step="0.05" value="2"></div>
+  <div class="setting-row"><label>رنگ متن</label>
+    <div class="color-row">
+      <div class="color-swatch active" data-color="#ece4d3" style="background:#ece4d3"></div>
+      <div class="color-swatch" data-color="#ffffff" style="background:#ffffff"></div>
+      <div class="color-swatch" data-color="#c9a961" style="background:#c9a961"></div>
+      <div class="color-swatch" data-color="#a8d4b8" style="background:#a8d4b8"></div>
+      <div class="color-swatch" data-color="#b8a8d4" style="background:#b8a8d4"></div>
+      <div class="color-swatch" data-color="#d4a8a8" style="background:#d4a8a8"></div>
+    </div>
+  </div>
+  <div class="setting-row"><label>پس‌زمینه</label>
+    <div class="theme-row">
+      <button class="theme-btn active" data-theme="night">شب</button>
+      <button class="theme-btn" data-theme="black">سیاه</button>
+      <button class="theme-btn" data-theme="sepia">کرم</button>
+    </div>
+  </div>
+  <button class="reset-btn" id="resetBtn">بازگشت به پیش‌فرض</button>
+</div>
+<div id="toc"><div class="toc-inner"><h3>فهرست فصل‌ها</h3><div id="tocList"></div><button id="tocClose">بستن</button></div></div>
+<div id="book">
+
+<!-- ==================== جلد اول ==================== -->
+<section class="page active" data-title="جلد اول — دروازهٔ چهارم" data-volume="1">
+  <div class="cover">
+    <div class="crown">👑</div>
+    <div class="label">رمان حماسی</div>
+    <h1>جهان سه پادشاه</h1>
+    <div class="subtitle">جلد اول — دروازهٔ چهارم</div>
+    <div class="sep"></div>
+    <p class="quote">«اگر روزی سه تاج در یک آسمان دیدی،<br>از آسمان فرار نکن.<br><b>به زیر زمین برو.</b>»</p>
+    <button class="start-btn" onclick="goTo(1)">شروع خواندن</button>
+  </div>
+</section>
+
+<section class="page" data-title="فصل یکم — پسری که سنگ می‌تراشید" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل یکم</div><h2>پسری که سنگ می‌تراشید</h2></div>
+  <div class="speakable">
+    <p>در جنوب شرقی سرزمینی که مردمش آن را «خاکِ سوخته» می‌نامیدند، شهری کوچک بود به نام ماهان. شهری که در حاشیهٔ کویر نشسته بود، جایی که باد هر روز صبح از سمت شرق می‌آمد و خاک زرد را روی پنجره‌های چوبی می‌پاشید. مردمانش کشاورز بودند و سنگ‌تراش و بافنده. زندگی سخت بود اما ساده. هیچ اتفاق بزرگی در ماهان نمی‌افتاد و هیچ‌کس آرزوی اتفاق بزرگ نداشت.</p>
+    <p>آریا در همین شهر به دنیا آمده بود. بیست و سه سال داشت. پدرش را هرگز به یاد نمی‌آورد و مادرش زنی بود به نام «سودابه» که از پانزده‌سالگی روی دار قالی نشسته بود و دست‌هایش از بافتن نقش‌های پیچیده، ترک خورده و زخم‌دار بود.</p>
+    <p>آریا در کارگاه سنگ‌تراشی «استاد کاوه» کار می‌کرد. کارش این بود که سنگ‌های بزرگ را می‌برید، صیقل می‌داد و برای سفارش‌های مردم آماده می‌کرد. از این سنگ‌ها برای سنگ قبر استفاده می‌شد، برای آستانهٔ خانه، و گاهی برای ساختن تندیس‌های کوچک که در بازار روز فروخته می‌شدند.</p>
+    <p>آریا در کارش استاد بود. دست‌هایش مثل دست‌های پدرش - آن‌طور که مادرش می‌گفت - ورزیده و آرام بود. سنگ‌تراشان دیگر می‌گفتند که او در نگاه کردن به سنگ، چیزی می‌بیند که دیگران نمی‌بینند. می‌تواند رگه‌های پنهان سنگ را حس کند، بفهمد از کجا باید ضربه بزند، از کجا باید دست نگه دارد.</p>
+    <p>اما آریا در کارش خوشحال نبود. دِلَش جای دیگری بود. او شب‌ها کتاب می‌خواند. کتاب‌های قدیمی که از مسافران می‌خرید یا در گوشهٔ بازار پیدا می‌کرد. کتاب‌هایی دربارهٔ سرزمین‌های دور، دربارهٔ ستاره‌ها، دربارهٔ مردمانی که در گذشته‌های دور زندگی می‌کردند و حالا فقط نامشان در افسانه‌ها مانده بود.</p>
+    <p>و در میان همهٔ این کتاب‌ها، یک داستان بود که آریا را دیوانه کرده بود. داستان پدرش.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>هفده سال پیش، وقتی آریا شش ساله بود، پدرش «کاووس» با گروهی از باستان‌شناسان به خرابه‌های باستانی نزدیک ماهان رفته بود. آنجا ویرانه‌های شهری بود که مردم می‌گفتند در زمان‌های بسیار قدیم، پر از زندگی بوده. شهری که حالا فقط ستون‌های شکسته و سنگ‌های نیمه‌کاره‌اش مانده بود.</p>
+    <p>کاووس سنگ‌تراش نبود. او معلم بود. معلمی که تمام عمرش را صرف خواندن کتیبه‌های باستانی کرده بود و به زبان‌هایی که دیگر هیچ‌کس حرف نمی‌زد، مسلط بود. او می‌توانست خطوطی را بخواند که صدها سال بود کسی نتوانسته بود رمزگشایی کند.</p>
+    <p>آن روز صبح، کاووس مثل همیشه پسرش را بوسید و گفت: «آریا جان، امروز روز بزرگی است. امروز می‌خواهیم راز بزرگ‌ترین کتیبهٔ تاریخ را کشف کنیم.» و رفت.</p>
+    <p>دیگر برنگشت.</p>
+    <p>گروه باستان‌شناسی برگشتند. با دست‌های خالی و با شرمندگی. گفتند که کاووس در حین کار، درون یکی از معبدها گیر افتاده و دیوار رویش ریخته. گفتند جسدش را پیدا نکردند. گفتند شاید شن‌ها او را برده باشند. گفتند هیچ‌کس مقصر نیست. گفتند.</p>
+    <p>اما سودابه باور نکرد. ماه‌ها گریه کرد و ماه‌ها دعا. یک سال بعد، سرش را بالا آورد و به پسرش گفت: «آریا، پدرت نمرده. من این را می‌دانم. زنی می‌داند.»</p>
+    <p>آریا آن روز فقط شش سال داشت و چیزی از حرف‌های مادرش نمی‌فهمید. اما از آن روز به بعد، هر شب قبل از خواب، برای پدرش دعا می‌کرد. نه برای آرامش روحش، بلکه برای برگشتنش.</p>
+    <p>سال‌ها گذشت. سودابه پیر شد و آریا بزرگ. وقتی آریا هجده ساله شد، سودابه جعبه‌ای چوبی از زیر تختش بیرون آورد و گفت: «این را پدرت برای تو گذاشت. گفت وقتی هجده ساله شدی، بهت بدم.»</p>
+    <p>درون جعبه، یک دفترچهٔ چرمی بود. دفترچه‌ای که بوی کهنگی و خاک می‌داد و صفحه‌هایش زرد شده بود. آریا آن را باز کرد و شب‌ها، پشت چراغ، آن را خواند. پدرش در آن دفترچه دربارهٔ کتیبه‌های باستانی نوشته بود، دربارهٔ سفرهایش، دربارهٔ چیزهایی که در معبدهای زیرزمینی دیده بود و دربارهٔ یک جمله که در آخرین صفحه، سه بار تکرارش کرده بود:</p>
+    <p class="whisper">«اگر روزی سه تاج در یک آسمان دیدی، از آسمان فرار نکن. به زیر زمین برو.»</p>
+    <p>آریا سال‌ها این جمله را در ذهنش تکرار کرد. نه چون می‌فهمید، بلکه چون نمی‌فهمید. جمله‌ای بود که چیزی در درونش را بیدار می‌کرد. مثل سنگی که در آب می‌افتد و حلقه‌هایش تا کناره‌ها می‌رسد.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>امشب شب بیست و سومین بهارِ زندگی آریا بود. و او در خرابه‌های ماهان ایستاده بود.</p>
+    <p>ماه کامل بود. آسمان صاف. باد سردی از سمت کویر می‌وزید و شن‌ها را روی سنگ‌های فرسوده می‌پاشید. آریا چراغ نفتی کوچکی در دست داشت و به سنگی نگاه می‌کرد که سه تصویر رویش حک شده بود. تصویری که پدرش در دفترچه‌اش وصفش را نوشته بود. تصویری که آریا هفده سال دنبالش بود.</p>
+    <p>سه پادشاه. سه قلمرو. یک دروازه.</p>
+    <p>آریا نمی‌دانست که امشب، شب آخر زندگی عادی‌اش است. نمی‌دانست که ساعتی دیگر، جهان زیر پایش فرو می‌ریزد و او را به جایی می‌برد که هزاران سال است هیچ انسانی پایش را نگذاشته.</p>
+    <p>او فقط یک پسر سنگ‌تراش بود که دنبال پدرش می‌گشت.</p>
+    <p>اما جهان به پسران سنگ‌تراش هم نیاز دارد. حتی وقتی خودشان نمی‌دانند.</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل دوم — شبی که آسمان شکافت" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل دوم</div><h2>شبی که آسمان شکافت</h2></div>
+  <div class="speakable">
+    <p>آریا چراغ را نزدیک سنگ برد. نورش لرزان بود و تصویرها را زنده می‌کرد. سه پادشاه، سه قلمرو. زیرشان حروفی حک شده بود که خطشان آن‌قدر قدیمی بود که باید قرن‌ها کسی نمی‌فهمیدشان. اما آریا می‌فهمید. نه به‌خاطر اینکه زبان‌شناس بود، بلکه به‌خاطر اینکه نُه سال، هر شب با خط‌های پدرش زندگی کرده بود.</p>
+    <p>آریا انگشتش را روی حروف کشید و با صدای آهسته خواند:</p>
+    <p class="whisper">«سه پادشاه... سه قلمرو... یک دروازه.»</p>
+    <p>و آنگاه، چیزی در جهان تغییر کرد.</p>
+    <p>زمین لرزید. آن‌قدر شدید که آریا تعادلش را از دست داد و روی شن‌ها افتاد. چراغش کنارش افتاد و خاموش شد. سنگ زیر دستش شکاف برداشت و صدایی از عمق زمین بالا آمد. صدایی نه از یک نفر، بلکه از هزاران نفر. مثل غرش لشکری که در زیر زمین دفن شده و حالا از خواب بیدار می‌شود.</p>
+    <p>آریا وحشت‌زده عقب خزید. خطوط نورانی روی شن‌ها ظاهر شدند. یک دایره، دایرهٔ دوم، و در مرکزشان علامتی عجیب: سه تاج که به هم تنیده بودند. آریا به آسمان نگاه کرد و دید که ستاره‌ای در آسمان حرکت می‌کند. اما ستاره نبود. نوری بود سفید و آبی که با سرعتی غیرقابل تصور، سینهٔ آسمان را می‌شکافت.</p>
+    <p>آریا دفترچه را از جیبش بیرون کشید. آخرین صفحه‌ای که سال‌ها هر شب می‌خواند حالا فرق می‌کرد. جمله‌ای رویش ظاهر شده بود که پیش‌تر نبود:</p>
+    <p class="whisper">«دروازهٔ نخست باز شد.»</p>
+    <p class="dialog">صدایی از پشت سرش آمد: «بله.»</p>
+    <p>آریا وحشت‌زده برگشت. هیچ‌کس نبود. اما صدا دوباره آمد. این بار از زیر زمین:</p>
+    <p class="whisper">«و اگر می‌خواهی پدرت را پیدا کنی، باید پیش از باز شدن دروازهٔ سوم آنجا باشی. تو تنها انسانی هستی که می‌توانی این کار را بکنی.»</p>
+    <p>آریا فریاد زد: «تو کی هستی؟! پدرم کجاست؟!»</p>
+    <p>اما زمین جواب داد. زیر پای آریا فرو ریخت و او در تاریکی سقوط کرد.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>سقوط چندان طول نکشید. آریا با شدت روی زمینی سنگی کوبیده شد و چند لحظه نفسش بالا نیامد. بوی نم و سنگ و چیزهای کهنه به مشامش خورد. چراغش را پیدا کرد، هنوز سالم بود و روشن شد.</p>
+    <p>او در یک شهر بود. نه یک اتاق. یک شهر کامل.</p>
+    <p>دیوارهایی عظیم اطرافش قد کشیده بودند، آن‌قدر بلند که نورش به بالایشان نمی‌رسید. خیابان‌هایی سنگی زیر پایش بودند، مستقیم و بی‌انتها. و در مرکز شهر، یک معبد بود. معبدی عظیم با ستون‌هایی به بلندی درخت‌های کهن و نقشی بر پیشانی‌اش که آریا خوب می‌شناخت: سه تاج در هم تنیده.</p>
+    <p>صدایی از پشت سرش پاسخ داد: «این شهر، شهر نخستین است. شهری که پیش از تاریخ ساخته شده.»</p>
+    <p>آریا برگشت. موجودی کوچک پشت سرش ایستاده بود. قدش به شانه‌های آریا می‌رسید. پوستش خاکستری بود. چشمانش آبی می‌درخشیدند و مردمک نداشتند.</p>
+    <p>آریا پرسید: «تو کی هستی؟»</p>
+    <p>موجود گفت: «نام من نیرا است. من آخرین نگهبان این شهر هستم.»</p>
+    <p>«تو انسانی؟»</p>
+    <p>نیرا خندید. خنده‌ای کوتاه و تلخ: «نه. من چیزی بین انسان و سنگ هستم.»</p>
+    <p>آریا سرش گیج می‌رفت. «سه پادشاه؟ قلمروها؟»</p>
+    <p>نیرا به معبد اشاره کرد: «بیا با من. اگر وارد معبد شوی، همه چیز را خواهی فهمید.»</p>
+    <p>اما در همان لحظه، صدای عمیقی از داخل معبد آمد. نیرا رنگش پرید و گفت: «خیلی دیر شده. او بیدار شده.»</p>
+    <p>دروازه‌های معبد به‌آرامی باز شدند. از داخل، شن سیاهی مثل خون بیرون ریخت. یک جنگجوی عظیم از دل تاریکی سر بلند کرد. زره‌اش شکسته بود. صورتش استخوان بود. نیرا زمزمه کرد: «سپاه مردگان.»</p>
+    <p>جنگجو به آریا حمله کرد. ناگهان شن‌های اطراف جنگجو بالا رفتند و او را به زمین فرو بردند. صدایی در معبد پیچید:</p>
+    <p class="whisper">«چه کسی جرئت کرده وارد قلمرو من شود؟»</p>
+    <p>مردی از تاریکی بیرون آمد. با ردایی سیاه و تاجی طلایی بر سر. چشمانش مثل دو کورهٔ آتش می‌سوختند.</p>
+    <p>نیرا روی زمین افتاد و گفت: «فرعون.»</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل سوم — فرعون، پادشاه شن‌ها" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل سوم</div><h2>فرعون، پادشاه شن‌ها</h2></div>
+  <div class="speakable">
+    <p>فرعون در برابرش ایستاده بود و آریا نمی‌توانست نفس بکشد. حضورش مثل فشاری بود روی سینه. اما آنچه آریا را بیش از همه می‌ترساند، سکوتش بود. فرعون فقط نگاه می‌کرد. و در آن نگاه چیزی بود که آریا در هیچ انسانی ندیده بود: خستگی. خستگی یک پادشاه که هزاران سال است سلطنت کرده و هنوز به پایان راه نرسیده.</p>
+    <p>فرعون بالاخره گفت: «تو انسان هستی. اما چرا بوی دنیای من را می‌دهی؟»</p>
+    <p>آریا با ترس پرسید: «من فقط دنبال پدرم می‌گشتم.»</p>
+    <p>«پدرت؟ کیست پدر تو؟»</p>
+    <p>«نامش کاووس است. معلمی که هفده سال پیش ناپدید شد.»</p>
+    <p>چشمان فرعون برای لحظه‌ای تغییر کرد. «کاووس؟ کاووس زنده است.»</p>
+    <p>آریا جلو آمد. «شما او را می‌شناسید؟!»</p>
+    <p>فرعون جواب نداد. برگشت و به سمت معبد راه افتاد: «بیا. جواب‌هایت را در راه خواهی گرفت.»</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>شهر نخستین زیر پای فرعون بیدار می‌شد. مردگانی که در خیابان‌ها بودند به دیوارها می‌چسبیدند و زانو می‌زدند. آریا از کنارشان می‌گذشت و نمی‌دانست که بترسد یا نگاه کند. آریا پرسید: «این‌ها کی هستند؟»</p>
+    <p>فرعون جواب داد: «این‌ها مردگانی هستند که در دنیای خودت زندگی کرده‌اند. حالا در قلمرو من زندگی می‌کنند. مرگ برای آن‌ها پایان نبود، فقط تغییر مکان بود.»</p>
+    <p>«مثل بهشت؟»</p>
+    <p>فرعون توقف کرد: «نه. بهشت جایی است که انسان‌ها برای دلخوشی خودشان ساخته‌اند. دنیای من جای دیگری است. جایی که روح‌ها زندگی می‌کنند تا زمانی که نوبتشان شود. و نوبتشان هیچ‌وقت نمی‌شود.»</p>
+    <p>آریا پرسید: «چرا؟»</p>
+    <p>فرعون گفت: «چون دروازه‌های میان قلمروها بسته شده. برای هزاران سال، این‌جا زندانی بوده. و من زندانبان.»</p>
+    <p>آریا ساکت شد. حالا فهمید که فرعون چه چیزی در چشمانش بود. خستگی.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>آن‌ها وارد تالار بزرگی شدند. فرعون گفت: «این‌ها وزیران من هستند.»</p>
+    <p>یکی از وزیران که زنی بلندقد با موهای سفید بود، بلند شد و گفت: «سرورم، کویر زنده لرزیده. سیل در آن منطقه راه افتاده.»</p>
+    <p>فرعون ابرو در هم کشید: «سیل؟ در کویر؟»</p>
+    <p>زن گفت: «بله. سیل از اعماق زمین آمده.»</p>
+    <p>فرعون به آریا نگاه کرد: «تو دفترچهٔ پدرت را داری؟»</p>
+    <p>آریا دفترچه را بیرون آورد. فرعون آن را گرفت و ورق زد. ورق‌هایی که در دستان آریا فقط یادداشت بودند، در دستان فرعون تبدیل به نقشهٔ چیزی شدند که هزاران سال پیش اتفاق افتاده بود.</p>
+    <p>فرعون آهسته گفت: «پدرت یکی از نگهبانان سه دروازه بود. چون اگر با هم باز شوند، دروازهٔ چهارم هم باز می‌شود.»</p>
+    <p>آریا پرسید: «دروازهٔ چهارم چیست؟»</p>
+    <p>فرعون گفت: «دروازه‌ای است که پشتش چیزی زندگی می‌کند که هیچ‌کدام از ما نمی‌شناسیم. چیزی که هزاران سال پیش به این جهان آمد. و سه پادشاه موفق شدند آن را زندانی کنند. اما نه برای همیشه.»</p>
+    <p>آریا پرسید: «آن موجود چیست؟»</p>
+    <p>فرعون گفت: «ما نمی‌دانیم. از جایی آمده که ما اسمش را «میان‌جهان» می‌گذاریم. جایی بین ستاره‌ها، بین زمان‌ها، بین زندگی و مرگ.»</p>
+    <p>آریا گفت: «آن موجود... چطور به این جهان آمده؟»</p>
+    <p>فرعون گفت: «از دروازهٔ چهارم. اما نه به‌طور کامل. فقط قسمتی از آن توانست عبور کند. و آن بخش، در این هزاران سال، در خواب انسان‌ها و مردگان و موجودات دریایی رفته. در خواب، دیده شده. چشم. یک چشم عظیم که در آسمان باز می‌شود.»</p>
+    <p>آریا لرزید.</p>
+    <p>فرعون گفت: «حالا آن بخش که عبور کرده، در حال بیدار کردن دروازه‌ها است. اول دروازهٔ اول، که همان شب باز شد. سپس دروازهٔ دوم. سپس سوم. و وقتی هر سه باز شوند، دروازهٔ چهارم باز می‌شود.»</p>
+    <p>آریا پرسید: «چقدر وقت داریم؟»</p>
+    <p>فرعون گفت: «دروازهٔ دوم تا سه شب دیگر باز می‌شود. دروازهٔ سوم تا یک ماه دیگر. و اگر تا آن موقع کاری نکنیم، این جهان برای همیشه تاریک می‌شود.»</p>
+    <p>«پس باید تا قبل از دروازهٔ سوم آنجا باشیم. آنجا کجاست؟»</p>
+    <p>فرعون پاسخ داد: «آرکانا. سیاره‌ای که تنها مکانِ میان‌جهان در این جهان است. و پدرت، به‌خاطر همین، زنده است.»</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل چهارم — ارباب دریا و شهر گمشده" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل چهارم</div><h2>ارباب دریا و شهر گمشده</h2></div>
+  <div class="speakable">
+    <p>و در همان شب، هزاران کیلومتر دورتر، زیر امواج سرد اقیانوسی، شهر عظیمی بیدار بود. نامش آتلانور بود. شهری که از سنگ‌های آبی و فلزاتی ساخته شده بود که انسان نامشان را نمی‌دانست. شهری که برج‌هایش مثل نیزه‌هایی از کف دریا به سمت بالا قد کشیده بودند.</p>
+    <p>مردم آتلانور، موجوداتی بودند که انسان‌ها آن‌ها را «دریایی» می‌نامیدند. بخشی از بدنشان شبیه انسان بود، بخشی شبیه ماهی. اما آن‌ها هیچ‌وقت به خشکی نمی‌رفتند. چون می‌دانستند که انسان‌ها از آن‌ها می‌ترسند. و ترس، همیشه به جنگ می‌انجامد.</p>
+    <p>در مرکز شهر، قصری بود به بلندیِ کوه. و درون قصر، ارباب دریا روی تخت خودش نشسته بود.</p>
+    <p>نامش «نیپتون» بود و چهره‌ای جدی و سلطنتی داشت. موهایش سبز تیره بود و در آب مثل جلبک حرکت می‌کرد. زره‌ای از فلز آبی تیره بر بدنش بود و تاجی از استخوان و مرجان روی سرش. در دستش نیزه‌ای سه‌شاخه داشت که رگه‌هایی از نور در آن جریان داشتند.</p>
+    <p>نیپتون بر سرزمینی حکومت می‌کرد که هزاران سال است هیچ انسانی پایش را به آن نگذاشته. اما در بیرون از آن، فقط یک زندانی بود.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>در آن شب، فرمانده اعماق، موجودی به نام «کورال» که نیم‌تنه‌اش هشت‌پا و نیم‌تنه‌اش انسان بود، وارد تالار شد و گفت: «ارباب. هفده شهر ساحلی ارتباط خود را با ما از دست داده‌اند.»</p>
+    <p>نیپتون سرش را بلند کرد: «چرا؟»</p>
+    <p>«موجوداتشان فرار کرده‌اند. همه به سمت خشکی رفته‌اند.»</p>
+    <p>نیپتون از تخت بلند شد. آب تالار لرزید.</p>
+    <p class="dialog">«موجودات اعماق از هیچ‌چیز فرار نمی‌کنند. ما از تاریکی نمی‌ترسیم، ما خودمان از تاریکی ساخته شده‌ایم.»</p>
+    <p>کورال سرش را پایین انداخت: «این یکی فرق دارد، ارباب. موجودات از خواب می‌ترسند.»</p>
+    <p>«خواب؟»</p>
+    <p>«بله. چند شب است که همه موجودات اعماق، در خواب یک چشم عظیم می‌بینند.»</p>
+    <p>نیپتون ساکت شد. سپس آهسته گفت: «من هم دیده‌ام.»</p>
+    <p>«ارباب؟»</p>
+    <p>«دیشب. در خواب. یک چشم عظیم. و صدایی که می‌گفت: سه دروازه، سه کلید، یک پایان.»</p>
+    <p>کورال رنگش پرید: «این یعنی...؟»</p>
+    <p>نیپتون به سمت پنجره رفت: «یعنی چیزی که هزاران سال پیش زندانی کردیم، دارد بیدار می‌شود.»</p>
+    <p>ناگهان آب داخل تالار شروع به چرخیدن کرد. تصویری ظاهر شد. تصویر یک سیاره. سپس صدها. سپس هزاران.</p>
+    <p>دانشمند پیرِ آتلانور که نامش «تالس» بود گفت: «این‌ها در حال نزدیک شدن هستند.»</p>
+    <p>«سیاره‌ها حرکت نمی‌کنند.»</p>
+    <p>«این‌ها سیاره نیستند، ارباب. از میان‌جهان به سمت ما می‌آیند.»</p>
+    <p>تصویر بزرگ شد. چیزی عظیم که اندازه‌اش از یک سیاره بزرگ‌تر بود. نیپتون گفت:</p>
+    <p class="whisper">«تمام شهرها را تخلیه کنید. و به فرعون پیام بفرستید.»</p>
+    <p>کورال متعجب شد: «ارباب؟ شما و فرعون... هزاران سال است که با هم حرف نزده‌اید.»</p>
+    <p>نیپتون گفت: «می‌دانم. اما این بار، چاره‌ای نیست.»</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل پنجم — مردی که زمان برایش نمی‌گذرد" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل پنجم</div><h2>مردی که زمان برایش نمی‌گذرد</h2></div>
+  <div class="speakable">
+    <p>در آن شب، در جایی که هیچ انسانی نمی‌تواند تصورش را بکند، در بیرون از جهان، در بیرون از زمان، در تالاری که سقفش ستاره بود و کفش آبی، مردی ایستاده بود و به تختی نگاه می‌کرد.</p>
+    <p>نامش کوروش بود.</p>
+    <p>تالار پادشاهان، جای مقدسی بود که سه پادشاه - فرعون، نیپتون و کوروش - هزاران سال پیش آن را ساخته بودند. اما از زمانی که دروازه‌ها بسته شده بود، هیچ‌کدام از آن‌ها به این تالار نیامده بود. تنها کوروش بود که هرگز از آن خارج نشد.</p>
+    <p>کوروش پادشاه انسان‌ها بود. در زمانی که دروازه‌ها باز بودند، کوروش بر سرزمین انسان‌ها حکومت می‌کرد. اما آن سرزمین، سال‌ها پیش نابود شده بود. کوروش، پادشاهی بود که سرزمینش را از دست داده بود. و از آن روز، در تالار پادشاهان زندانی شده بود. نمی‌مرد، چون پادشاه بود و پادشاه نمی‌میرد. زندگی نمی‌کرد، چون چیزی نداشت که برایش زندگی کند.</p>
+    <p>کوروش شمشیرش را در دست گرفته بود و به تیغه‌اش نگاه می‌کرد. صدای موجودی نورانی که کنارش ایستاده بود، در تالار پیچید:</p>
+    <p class="dialog">«زمانش رسیده، کوروش.»</p>
+    <p>کوروش سرش را بلند کرد. موجود نورانی، نامش «ویستا» بود. یکی از نگهبانان اولیه.</p>
+    <p>کوروش پرسید: «چند سال گذشته؟»</p>
+    <p>ویستا گفت: «برای تو؟ سه هزار و دویست و هشتاد سال.»</p>
+    <p>کوروش لبخند تلخی زد: «برای من فقط یک شب بود. یک شب در تالار، یک شب در سکوت. شب بی‌پایان.»</p>
+    <p>ویستا گفت: «جهان تغییر کرده. انسان‌ها تو را فراموش کرده‌اند. حتی نامت را.»</p>
+    <p>کوروش به شمشیرش نگاه کرد: «پس میراثم را امتحان می‌کنیم.»</p>
+    <p>ویستا گفت: «تو می‌توانی برگردی. اما باید بدانی که این بار، تنها نخواهی جنگید.»</p>
+    <p>کوروش پرسید: «فرعون؟»</p>
+    <p>«بیدار شده. و منتظر.»</p>
+    <p>«ارباب دریا؟»</p>
+    <p>«او نیز آماده است.»</p>
+    <p>کوروش پرسید: «و دشمن؟»</p>
+    <p>ویستا برای نخستین بار سکوت کرد.</p>
+    <p>کوروش برگشت: «چه چیزی را از من پنهان می‌کنی؟»</p>
+    <p>ویستا گفت: «دشمن هنوز وارد جهان نشده. اما کسی که دشمن را می‌شناسد، از پیش وارد جهان شده است.»</p>
+    <p>کوروش اخم کرد: «یعنی چه؟»</p>
+    <p>ویستا گفت: «یعنی یکی از ما. یکی از سه پادشاه. یکی از نگهبانان. کسی که می‌داند دشمن چیست و چگونه باید متوقفش کرد. اما آن کس، خودش نمی‌داند که این را می‌داند.»</p>
+    <p>کوروش چند لحظه سکوت کرد. سپس گفت: «پس باید پیدایش کنیم.»</p>
+    <p>ویستا گفت: «نه. او خودش پیدایت می‌کند. او همین حالا، در راه است.»</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>کوروش به سمت دروازه رفت. دروازه‌ای که هزاران سال بود باز نشده بود. با هر قدم، تالار پادشاهان لرزید. تخت‌های خالی، تاج‌های شکسته، ستون‌های نورانی، همه به احترام پادشاهان بلند شدند.</p>
+    <p>کوروش دستش را روی دروازه گذاشت. دروازه با نوری طلایی باز شد و بوی هوای تازه به تالار آمد. بوی خاک، بوی آب، بوی زندگی.</p>
+    <p>کوروش چشم‌هایش را بست و نفس عمیقی کشید. هزاران سال بود که این بو را نشنیده بود.</p>
+    <p>ویستا آهسته گفت: «کوروش، یادت باشد. این بار، جنگیدن با دشمن، مهم نیست. مهم این است که با چه کسی می‌جنگی.»</p>
+    <p>کوروش سرش را برگرداند: «من با کسی متحد نمی‌شوم. من پادشاهم. من تنها می‌جنگم.»</p>
+    <p>ویستا گفت: «آن‌وقت مثل سه هزار و دویست و هشتاد سال پیش، شکست می‌خوری.»</p>
+    <p>کوروش چیزی نگفت. از دروازه گذشت و تالار را ترک کرد.</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل ششم — هرالد، فرزند میان‌جهان" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل ششم</div><h2>هرالد، فرزند میان‌جهان</h2></div>
+  <div class="speakable">
+    <p>و در همان شب، در آسمان زمین، شکافی باز شد. شکافی بود که خودِ آسمان را پاره می‌کرد. ابرها کنار رفتند، ستاره‌ها محو شدند، ماه مثل چراغی که خاموشش کنند بی‌رنگ شد.</p>
+    <p>چیزی از میان شکاف پایین آمد. موجودی بود که نامش «هرالد» بود. اولین فرستادهٔ آن چیزی که پشت دروازهٔ چهارم زندانی شده بود.</p>
+    <p>هرالد بدنی عظیم داشت. چهار دست، آن‌قدر بلند که وقتی راه می‌رفت، دست‌هایش به زمین می‌رسیدند. زره‌ای سیاه بر تنش بود که نور را می‌بلعید. و پشت سرش ده‌ها موجود پرنده با بال‌هایی از دود حرکت می‌کردند.</p>
+    <p>هرالد روی شهر ساحلی «بندر نیلی» فرود آمد. مردم فریاد می‌زدند و فرار می‌کردند. هرالد ایستاده بود و نگاه می‌کرد. هیچ عجله‌ای نداشت.</p>
+    <p>سپس دستش را بالا برد. اما پیش از آن‌که شلیک کند، آب از زمین فوران کرد.</p>
+    <p>موجی عظیم تمام موجودات پرنده را به هوا پرتاب کرد. نیپتون از میان آب بیرون آمد:</p>
+    <p class="dialog">«هیچ‌کس بدون اجازهٔ من در آن نابودی به وجود نمی‌آورد.»</p>
+    <p>هرالد سرش را چرخاند. برای اولین بار، چیزی شبیه به تعجب در صورتش ظاهر شد: «تو ارباب دریایی. چرا از اقیانوس بیرون آمده‌ای؟»</p>
+    <p>نیپتون نیزه‌اش را به زمین کوبید: «خانه‌ام، هر جا باشد که آب هست. و آب در همه‌جا هست.»</p>
+    <p>هرالد خندید: «تو نمی‌دانی با چه چیزی روبه‌رو شده‌ای. من فقط یک فرستاده‌ام. اگر مرا بکشی، فرستادهٔ دیگری می‌آید.»</p>
+    <p>نیپتون گفت: «پس به من نشان بده.»</p>
+    <p>نبرد آغاز شد. نبردی که سه روز و سه شب طول کشید. نبردی که در آن، نیپتون فهمید هرالد چیزی فراتر از یک جنگجو است. هرالد بخشی از یک وجود بزرگ‌تر بود.</p>
+    <p>و در پایان روز سوم، هرالد زخمی شد. برای اولین بار، خون سیاه از بدنش جاری شد. و او لبخند زد: «جالب. تو اولین کسی هستی که توانسته مرا زخمی کنی.»</p>
+    <p>دستش را روی زمین گذاشت. موجودات بیشتری از آسمان پایین آمدند. ده. صد. هزار.</p>
+    <p>نیپتون فهمید که تنها نمی‌تواند بجنگد. اما پیش از آن‌که عقب‌نشینی کند، شن سیاه از زمین بیرون زد. فرعون در میان شن‌ها ظاهر شد.</p>
+    <p>فرعون گفت:</p>
+    <p class="dialog">«به نظر می‌رسد دشمن مشترکی پیدا کرده‌ایم.»</p>
+    <p>نیپتون گفت: «من به تو نیاز ندارم.»</p>
+    <p>فرعون لبخند زد: «من هم به تو. اما هر دویمان به هم نیاز داریم.»</p>
+    <p>و برای نخستین بار در تاریخ جهان، سپاه مردگان و سپاه اعماق در یک میدان جنگ کنار هم ایستادند.</p>
+    <p>نبرد به اوج رسید. اما هرالد نمی‌مرد. و در میان نبرد، فریاد زد: «شما نمی‌فهمید! من فقط یک دست هستم! یک انگشت از وجودی که منتظر شماست!»</p>
+    <p>و در آن لحظه، مردی از میان دود و گردوغبار به سمتشان آمد. مردی با تاجی ساده بر سر و شمشیری از نور در دست.</p>
+    <p>کوروش.</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل هفتم — سه پادشاه، سه دشمن قدیمی" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل هفتم</div><h2>سه پادشاه، سه دشمن قدیمی</h2></div>
+  <div class="speakable">
+    <p>کوروش در میان میدان جنگ ایستاد و هر سه متوقف شدند. سه پادشاه. سه دشمن قدیمی. سه‌تایی که هزاران سال با هم حرف نزده بودند.</p>
+    <p>هرالد به کوروش نگاه کرد: «کوروش. پادشاه انسان‌ها. پادشاهی که سرزمینش را از دست داد. چه چیزی عوض شده؟»</p>
+    <p>کوروش جواب نداد. به فرعون و نیپتون نگاه کرد:</p>
+    <p class="dialog">«هنوز هم با هم مشکل دارید؟»</p>
+    <p>فرعون گفت: «این جنگ به تو مربوط نیست.»</p>
+    <p>کوروش گفت: «از لحظه‌ای که شما دو نفر مجبور شدید کنار هم بایستید، مربوط به هر سه‌یمان است.»</p>
+    <p>نیپتون گفت: «تو کی هستی که برای ما تصمیم می‌گیری؟»</p>
+    <p>کوروش گفت:</p>
+    <p class="dialog">«کسی که قرار نیست برای شما تصمیم بگیرد. قرار است به شما یادآوری کنم که دشمن واقعی کجاست.»</p>
+    <p>شمشیرش را از غلاف کشید. یکی از موجودات عظیم به سمت کوروش حمله کرد. کوروش حتی حرکت نکرد:</p>
+    <p class="dialog">«ایست.»</p>
+    <p>موجود در هوا متوقف شد. کوروش جلو رفت و شمشیرش را روی زره موجود گذاشت. زره مثل شیشه شکافت و موجود روی زمین افتاد:</p>
+    <p class="dialog">«اگر هنوز می‌خواهید با یکدیگر بجنگید، بعداً وقت دارید. فعلاً باید زنده بمانیم.»</p>
+    <p>فرعون و نیپتون به هم نگاه کردند. برای نخستین بار، در چشمان همدیگر، چیزی جز کینه دیدند. ترس.</p>
+    <p>فرعون گفت: «چه پیشنهادی داری؟»</p>
+    <p>کوروش گفت: «با من متحد شوید. فقط برای این نبرد.»</p>
+    <p>نیپتون گفت: «من با فرعون متحد نمی‌شوم.»</p>
+    <p>فرعون گفت: «من هم با نیپتون.»</p>
+    <p>کوروش لبخند زد: «خوب است. پس هیچ‌کس با هیچ‌کس متحد نمی‌شود. اما هر سه‌مان با یک دشمن مشترک می‌جنگیم. این هم یک نوع اتحاد است.»</p>
+    <p>فرعون و نیپتون به هم نگاه کردند. سپس فرعون گفت: «قبول.»</p>
+    <p>نیپتون گفت: «قبول.»</p>
+    <p>و سه پادشاه برای نخستین بار در هزاران سال، شانه به شانه ایستادند.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>فرعون فریاد زد: «سپاه مرگ!» و صدها جنگجوی مرده از زیر زمین بیرون آمدند.</p>
+    <p>نیپتون نیزه‌اش را به آسمان گرفت: «تاج طوفان!» و رعدی عظیم به زمین کوبید.</p>
+    <p>کوروش شمشیرش را در زمین فرو کرد:</p>
+    <p class="whisper">«فرمان پادشاهی!»</p>
+    <p>و ناگهان، تمام انسان‌های اطراف میدان، توانستند ترس خود را کنترل کنند. به جای فرار، به سمت ساختمان‌ها دویدند.</p>
+    <p>سه قدرت برای نخستین بار هم‌زمان فعال شدند. مرگ. دریا. پادشاهی.</p>
+    <p>و هرالد برای نخستین بار عقب نشست.</p>
+    <p>اما ناگهان تمام موجودات مهاجم متوقف شدند. کوروش آرام گفت: «چون چیزی بزرگ‌تر از آن‌ها رسیده.»</p>
+    <p>آسمان تاریک شد. سپس یک چشم عظیم در آسمان باز شد. چیزی به اندازهٔ یک قاره.</p>
+    <p>صدایی از آن سوی آسمان آمد:</p>
+    <p class="whisper">«سه پادشاه... سه کلید... یک دروازه. هزاران سال پیش مرا زندانی کردید. اما من در خواب شما بودم. و حالا، بیدار شده‌ام.»</p>
+    <p>چشم بسته شد. و همه‌چیز دوباره عادی شد.</p>
+    <p>هرالد، در میان غبار، به سختی بلند شد. اما لبخند می‌زد: «حالا فهمیدید؟ حالا فهمیدید که او چه چیزی است؟»</p>
+    <p>و سپس در تاریکی گم شد.</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل هشتم — پیمانی که جهان را نجات داد" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل هشتم</div><h2>پیمانی که جهان را نجات داد</h2></div>
+  <div class="speakable">
+    <p>سه پادشاه در خرابه‌های بندر نیلی ایستاده بودند. فرعون گفت: «آن موجود ما را می‌شناسد.»</p>
+    <p>نیپتون گفت: «و ما را کلید نامید.»</p>
+    <p>کوروش گفت: «پس باید بفهمیم کلید چه چیزی هستیم.»</p>
+    <p>آریا که تا آن لحظه در سایه ایستاده بود جلو آمد: «من می‌دانم.»</p>
+    <p>آریا دفترچهٔ پدرش را باز کرد: «پدرم در دفترچه نوشته که سه پادشاه، سه نگهبانِ دروازه‌های اول، دوم و سوم بودند. اما دروازهٔ چهارم، نگهبان نداشت. و آن کسی که باید دروازه را ببندد، نه یک پادشاه است، نه یک نگهبان. کسی است که فقط انسان است.»</p>
+    <p>فرعون آهسته گفت: «تو.»</p>
+    <p>آریا سرش را تکان داد: «من. باید به آرکانا بروم. باید پدرم را پیدا کنم.»</p>
+    <p>نیرا جلو آمد: «آرکانا سیاره‌ای است که در میان ستاره‌ها گم شده. اما مسیرش را می‌دانم. چون من آخرین نگهبانِ تبارِ نگهبانان اولیه هستم.»</p>
+    <p>کوروش گفت: «پس باید به آرکانا برویم. و این بار، با هم.»</p>
+    <p>فرعون گفت: «من با انسان‌ها سفر نمی‌کنم.»</p>
+    <p>نیپتون گفت: «و من از فرمان یک انسان پیروی نمی‌کنم.»</p>
+    <p>کوروش لبخند زد: «خوب است. پس هیچ‌کس فرمان نمی‌دهد. فقط یک پیمان.»</p>
+    <p>سه قدرت به هم متصل شدند. نشان سه تاج روی زمین ظاهر شد و دروازه‌ای در آسمان باز شد.</p>
+    <p class="whisper">سفری که هیچ انسانی تا آن روز انجام نداده بود، آغاز شد.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>نیپتون از اعماق اقیانوس کشتی عظیمی را بیرون کشید. کوروش وارد آن شد. آریا و نیرا نیز سوار شدند. فرعون در آخرین لحظه وارد شد. کشتی از سطح اقیانوس جدا شد و به آسمان شلیک شد.</p>
+    <p>آریا از پنجره به زمین نگاه کرد. برای نخستین بار خانه‌اش را از فضا دید. یک گوی آبی تنها در میان سیاهی.</p>
+    <p>کوروش کنارش ایستاده بود:</p>
+    <p class="dialog">«تو قبلاً اینجا بودی؟»</p>
+    <p>«نه.»</p>
+    <p>«پس نمی‌ترسی؟»</p>
+    <p>کوروش لبخند زد: «من از چیزی که نمی‌شناسم می‌ترسم.»</p>
+    <p>«پس چرا این‌قدر آرامی؟»</p>
+    <p>«چون ترسیدن با فرار کردن فرق دارد.»</p>
+    <p>نیرا از پشت سر گفت: «رسیدیم.»</p>
+    <p>و در فاصله‌ای دور، سیاره‌ای دیده می‌شد که از دِلِ تاریکی می‌درخشید. آرکانا. خانهٔ گمشدهٔ کاووس.</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل نهم — آرکانا، سیارهٔ گمشده" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل نهم</div><h2>آرکانا، سیارهٔ گمشده</h2></div>
+  <div class="speakable">
+    <p>کشتی روی سطح آرکانا نشست. سطح سیاره سنگی بود و سرد، و در دوردست شهری دیده می‌شد که از دل تاریکی می‌درخشید.</p>
+    <p>آریا از کشتی پیاده شد. نیرا گفت: «پدرت در قلب شهر است. در معبد بزرگ.»</p>
+    <p>آریا شروع به راه رفتن کرد. سه پادشاه پشت سرش، و نیرا کنارش. شهر خالی بود. روی دیوارها همان سه تاج، در هم تنیده، حک شده بود.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>آن‌ها وارد معبد شدند. در مرکز معبد، سنگی سفید قرار داشت. و کنار سنگ، مردی زانو زده بود.</p>
+    <p>آریا با صدای لرزان گفت: «پدر...»</p>
+    <p>مرد برگشت. چشمانش پر از اشک شد. «آریا. پسری من. تو آمدی.»</p>
+    <p>آریا دوید و پدرش را در آغوش گرفت. هفده سال، در یک لحظه جمع شد.</p>
+    <p>کاووس سرش را بلند کرد: «شما سه پادشاه هستید.»</p>
+    <p>کوروش گفت: «بله.»</p>
+    <p>کاووس گفت: «نه. من شما را صدا نزدم. دروازه صدا زد. چون فقط با سه پادشاه می‌توان دروازهٔ چهارم را بست. و فقط با یک انسان می‌توان آن را باز کرد.»</p>
+    <p>آریا پرسید: «پدر، دروازهٔ چهارم چطور بسته می‌شود؟»</p>
+    <p>کاووس به سنگ سفید اشاره کرد: «این سنگ، خودِ دروازه است. باید سه پادشاه قدرتشان را در این سنگ جمع کنند، و تو باید همان لحظه، پشت سنگ بایستی. تو باید بگویی «من انسانم و مالک این جهانم» و آن‌وقت، دروازه بسته می‌شود.»</p>
+    <p>نیپتون گفت: «پس چرا ما خودمان نمی‌توانیم ببندیم؟»</p>
+    <p>کاووس گفت: «چون شما پادشاهید. و پادشاه، مالک این جهان نیست. پادشاه، فقط نگهبان آن است. مالک واقعی این جهان، انسان است.»</p>
+    <p>آریا نفس عمیقی کشید: «پس بیایید شروع کنیم.»</p>
+    <p>سه پادشاه اطراف سنگ سفید ایستادند. کوروش شمشیرش را در زمین فرو کرد. فرعون دستش را روی سنگ گذاشت. نیپتون نیزه‌اش را بالا برد. سه قدرت به سنگ رسید و سنگ شروع به درخشیدن کرد. نوری سفید از سنگ بیرون زد.</p>
+    <p>آریا پشت سنگ ایستاد. دستش را روی سنگ گذاشت و با صدای بلند گفت:</p>
+    <p class="whisper">«من انسانم. و مالک این جهانم.»</p>
+    <p>سنگ سفید، برای یک لحظه، به شکل یک دروازه درآمد. و در تاریکی، چشم عظیم باز شد:</p>
+    <p class="whisper">«تو... انسان هستی. اما من هم در این جهان بوده‌ام. چطور می‌توانی مرا از خانه‌ام بیرون کنی؟»</p>
+    <p>آریا گفت:</p>
+    <p class="whisper">«چون خانه تو اینجا نیست. تو دروغ می‌گویی. تو از ابتدا دروغ گفتی. و من، این جهان را نمی‌خواهم. من فقط می‌خواهم در آن زندگی کنم. و تو، حق نداری مانع زندگی من شوی.»</p>
+    <p>دروازه لرزید. صدا فریاد زد: «نه!» اما صدایش کامل نشد. دروازه بسته شد.</p>
+  </div>
+</section>
+
+<section class="page" data-title="فصل دهم — پایان و آغاز" data-volume="1">
+  <div class="chapter-head"><div class="num">فصل دهم</div><h2>پایان و آغاز</h2></div>
+  <div class="speakable">
+    <p>سه پادشاه در خرابه‌های معبد ایستاده بودند. کاووس گفت: «دروازه بسته شد. برای همیشه.»</p>
+    <p>آریا پرسید: «برای همیشه؟»</p>
+    <p>کاووس گفت: «تا وقتی که سه پادشاه با هم باشند و یک انسان، مالکیتش را اعلام کند. اگر روزی سه پادشاه از هم جدا شوند، دروازه دوباره باز می‌شود.»</p>
+    <p>فرعون به نیپتون نگاه کرد. نیپتون به کوروش. کوروش به هر دو.</p>
+    <p>فرعون گفت: «پس باید با هم بمانیم.»</p>
+    <p>نیپتون گفت: «اما ما هزاران سال با هم دشمن بودیم.»</p>
+    <p>کوروش گفت: «و حالا، هزاران سال با هم دوست خواهیم بود.»</p>
+    <p>سه پادشاه به هم نگاه کردند. نه با کینه. نه با ترس. با چیزی شبیه به احترام.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>کشتی از آرکانا بلند شد. آریا از پنجره به سیارهٔ گمشده نگاه کرد. سیاره‌ای که دیگر گمشده نبود.</p>
+    <p>کوروش کنار او آمد: «آریا. تو جواب آن موجود را دادی. جواب درست.»</p>
+    <p>«چون من فقط یک انسانم. و انسان، برای زندگی می‌جنگد، نه برای قدرت.»</p>
+    <p>کوروش لبخند زد: «و این، بزرگ‌ترین قدرت است.»</p>
+    <p>کشتی به زمین رسید. سه پادشاه از هم جدا شدند. فرعون به دنیای مردگان برگشت. نیپتون به اقیانوس. کوروش به تالار پادشاهان. اما این بار، هیچ‌کدام تنها نبودند.</p>
+    <p>آریا و پدرش به ماهان برگشتند. سودابه وقتی شوهرش را دید، از پشت دار قالی بلند شد و لرزید. سه نفر، در آستانهٔ خانه، برای یک ساعت گریه کردند.</p>
+    <p>و در شب، وقتی آریا به آسمان نگاه کرد، ستاره‌ای دید که در آسمان می‌درخشید. ستاره‌ای از آرکانا.</p>
+    <p>و در همان شب، در خواب، آریا صدایی شنید:</p>
+    <p class="whisper">«پسری که سنگ می‌تراشید. تو جهان را نجات دادی.»</p>
+    <p>آریا لبخند زد و گفت: «نه. ما جهان را نجات دادیم.»</p>
+    <div class="the-end">
+      <div class="big">پایان جلد نخست</div>
+      <div class="small">جلد دوم: <b>نفرینِ کهن</b><br>چهار ماه بعد، در دورترین نقطهٔ شمال، همه‌چیز می‌میرد. نه از سرما. از نفرینی که خودِ جهان نوشته است...</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== جلد دوم ==================== -->
+
+<section class="page vol2" data-title="جلد دوم — نفرینِ کهن" data-volume="2">
+  <div class="cover vol2">
+    <div class="crown">❖</div>
+    <div class="label">رمان حماسی — کتاب دوم</div>
+    <h1>نفرینِ کهن</h1>
+    <div class="subtitle">جهان سه پادشاه — جلد دوم</div>
+    <div class="sep"></div>
+    <p class="quote">«جهان، سه هزار سال پیش،<br>مردی را نفرین کرد.<br><b>و حالا، آن مرد برگشته. تا بمیرد.</b>»</p>
+    <button class="start-btn" onclick="goTo(12)">شروع خواندن</button>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل یکم — چهار ماه بعد" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل یکم — جلد دوم</div><h2>چهار ماه بعد</h2></div>
+  <div class="speakable">
+    <p>چهار ماه گذشته بود. چهار ماه از آن شب که آریا دروازهٔ چهارم را بست.</p>
+    <p>ماهان، دوباره همان ماهان قدیمی شده بود. شهری کوچک در لبهٔ کویر، با خانه‌های گِلی، با کوچه‌های باریک، با بوی نان تازه که هر صبح از تنور خانه‌ها بلند می‌شد. بازار هنوز پر بود از صدای چکش سنگ‌تراشان. بچه‌ها هنوز در کوچه‌ها می‌دویدند.</p>
+    <p>آریا هر روز صبح به کارگاه می‌رفت. سنگ می‌برید، صیقل می‌داد. اما دست‌هایش دیگر مثل قبل نبودند. گاهی وسط کار می‌ایستاد. به سنگ نگاه می‌کرد. و انگار چیزی در سنگ، به او نگاه می‌کرد.</p>
+    <p>پدرش کاووس، برگشته بود. بعد از هفده سال. سودابه، روزی که کاووس را دید، از پشت دار قالی بلند شد و لرزید. بعد سه نفر در آستانهٔ خانه، برای یک ساعت گریه کردند. حالا چهار ماه گذشته بود. کاووس کم‌کم به زندگی عادی برمی‌گشت. اما هنوز شب‌ها از خواب می‌پرید.</p>
+    <p>و آریا، در آن روزها، چیزهایی می‌شنید که هیچ‌کس نمی‌شنید. صداهایی که از سنگ‌ها می‌آمد. و آن صداها، یک کلمه را زمزمه می‌کردند. یک کلمه که آریا معنایش را نمی‌دانست:</p>
+    <p class="whisper">«اهریمن... اهریمن... اهریمن...»</p>
+
+    <div class="scene-break">✦ ✦ ✦</div>
+
+    <p>خبر، در روز پنجم، از شمال آمد. از کوهستانِ شمالی. جایی که در آن، هیچ‌کس زندگی نمی‌کرد. جایی که در آن، فقط سنگ بود و برف و سکوت. اما در روز پنجم، همه‌چیز در آنجا مرد. درخت‌ها خشک شدند. پرنده‌ها از آسمان افتادند. و تمام حیواناتی که در آن کوهستان زندگی می‌کردند، در یک لحظه، جان دادند. نه از سرما. نه از بیماری. از هیچ. فقط مردند.</p>
+    <p>و بعد، مرگ پیش‌روی کرد. به سمت جنوب. به سمت روستاهای نزدیک. مردمی که در آن روستاها زندگی می‌کردند، وقتی چیزهایی که در خواب دیدند و معنایشان را نفهمیدند، از خواب پریدند. آنها خواب دیدند که در خواب، مردی است. مردی تنها. که هر جا می‌رود، گیاهان می‌میرند.</p>
+    <p>سه پادشاه، در همان شب، در خواب، همان مرد را دیدند. اما آنها در خواب، چیزی بیشتر دیدند. مرد، به آنها نگاه کرد. و گفت:</p>
+    <p class="whisper">«نام من اهریمن است. و من آمده‌ام که بمیرم.»</p>
+
+    <div class="scene-break">✦ ✦ ✦</div>
+
+    <p>آریا، صبح روز بعد، به دیدن پدرش رفت. کاووس در حیاط خانه، نشسته بود. به آسمان نگاه می‌کرد. آریا کنارش نشست. مدتی هیچ نگفت. بعد گفت: «پدر، من دیشب در خواب، مردی دیدم. مردی که هر جا می‌رفت، گیاهان می‌مردند.»</p>
+    <p>کاووس سرش را برگرداند. چشمانش خسته بود. «من هم دیدم.»</p>
+    <p>آریا گفت: «تو می‌دانی او کیست؟»</p>
+    <p>کاووس چند لحظه سکوت کرد. بعد آهسته گفت: «اهریمن. من در آرکانا، در کتاب‌ها، اسمش را خوانده بودم. او یک شاهزاده بود. سه هزار سال پیش. از سرزمینی که حالا فراموش شده. او... او می‌خواست نامیرا شود. همان‌طور که سه پادشاه شدند. اما راهی که او رفت، اشتباه بود. او به جای اینکه از نگهبانان اولیه نامیرایی بگیرد، خواست آن را از خودِ جهان بدزدد. و جهان... جهان او را نفرین کرد.»</p>
+    <p>آریا پرسید: «چه نفرینی؟»</p>
+    <p>کاووس گفت: «نفرینِ کهن. نفرینی که خودِ جهان نوشت. او هر جا برود، زندگی می‌میرد. نه به خاطر بدی. به خاطر نفرین. و او نمی‌میرد. چون نفرین، او را نامیرا کرده. اما نه از نوع نامیراییِ سه پادشاه. از نوعی دیگر. نوعی که در آن، زندگی، برای او معنا ندارد. و مرگ، برای او آرزو است.»</p>
+    <p>آریا سکوت کرد. به سنگ‌های اطرافش نگاه کرد. و در آن سنگ‌ها، همان کلمه را دید. همان زمزمه را:</p>
+    <p class="whisper">«اهریمن... اهریمن... اهریمن...»</p>
+    <p>کاووس ادامه داد: «سه پادشاه، سه هزار سال پیش، او را در کوهستانِ شمالی، زندانی کردند. در یک دایره از سنگ. سنگی که خودِ نگهبانان اولیه ساختند. و حالا... حالا انگار آن دایره، شکسته است. و اهریمن، آزاد شده.»</p>
+    <p>آریا پرسید: «پس چه باید بکنیم؟»</p>
+    <p>کاووس گفت: «کاری نمی‌توانی بکنی. این، کار سه پادشاه است. آنها باید او را متوقف کنند.»</p>
+    <p>آریا گفت: «اما او فقط می‌خواهد بمیرد.»</p>
+    <p>کاووس چند لحظه سکوت کرد. بعد گفت: «و این، خطرناک‌ترین چیز است. چون کسی که می‌خواهد بمیرد، از هیچ‌چیز نمی‌ترسد. و کسی که از هیچ‌چیز نمی‌ترسد، می‌تواند هر کاری بکند.»</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل دوم — کوهستانِ شمالی" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل دوم — جلد دوم</div><h2>کوهستانِ شمالی</h2></div>
+  <div class="speakable">
+    <p>سه پادشاه، در همان روز، در کوهستانِ شمالی، جمع شدند.</p>
+    <p>فرعون اول آمد. با تاج طلایی‌اش. با ردایی سیاه. با چشمانی که در آن‌ها، آتشی خاموش بود. و با سپاه مردگانش که مثل سایه، پشت سرش حرکت می‌کردند.</p>
+    <p>نیپتون دوم آمد. با نیزهٔ سه‌شاخه‌اش. با زره آبی تیره. با اقیانوسی از آب که در آسمان، پشت سرش، جاری بود. آب، در هوای سرد کوهستان، یخ نمی‌زد. چون نیپتون، ارباب دریا بود.</p>
+    <p>کوروش سوم آمد. با شمشیر نور. با تاجی ساده. با سپاهی از انسان‌های بازمانده. انسان‌هایی که به او ایمان داشتند.</p>
+    <p>و در میان آن‌ها، مردی ایستاده بود. مردی که در برابر سه پادشاه، ذره‌ای ترس نداشت. مردی که در چشمانش، نه خشم بود، نه کینه. فقط خستگی. خستگی سه هزار سال.</p>
+    <p>اهریمن.</p>
+    <p>قدش بلند بود. لاغر. با موهایی سیاه که در آن‌ها، رگه‌هایی از خاکستری بود. با پوستی رنگ‌پریده، مثل کسی که سال‌ها در تاریکی زندگی کرده. و در چشمانش، چیزی بود که سه پادشاه، در هیچ انسانی ندیده بودند. نه امید. نه ترس. فقط خستگی. خستگی از زندگی.</p>
+    <p>و در اطرافش، در فاصلهٔ ده قدمی، زمین مرده بود. سنگ‌ها ترک خورده بودند. خاک، خاکستر شده بود. و هوایی که در اطرافش بود، مثل نفسی بود که در آن، مرگ، جاری بود.</p>
+    <p>فرعون جلو رفت. تاجش می‌درخشید. و با صدایی که در کوهستان پیچید، گفت:</p>
+    <p class="dialog">«اهریمن. تو آزاد شده‌ای. اما من، این آزادی را به تو نمی‌دهم. باید برگردی به دایره.»</p>
+    <p>اهریمن به فرعون نگاه کرد. و لبخند زد. لبخندی که در آن، سه هزار سال درد بود:</p>
+    <p class="dialog">«فرعون. تو همانی که مرا زندانی کرد. سه هزار سال پیش. تو و دو برادرت. به خاطر ترس. چون من می‌خواستم نامیرا شوم. مثل شما. و شما، ترسیدید که من قوی‌تر از شما شوم. پس مرا زندانی کردید.»</p>
+    <p>فرعون گفت: «تو نامیرایی را از جهان دزدیدی. و جهان، تو را نفرین کرد. ما فقط...»</p>
+    <p>اهریمن حرفش را قطع کرد:</p>
+    <p class="dialog">«فقط چه؟ فقط مرا زندانی کردید؟ سه هزار سال؟ در یک دایره از سنگ؟ بدون نور؟ بدون صدا؟ فقط من بودم و نفرینم. و هر روز، نفرینم، قوی‌تر می‌شد. و هر روز، من، تنهاتر می‌شدم.»</p>
+    <p>و برای اولین بار، در چشمانش، اشک دید. اشکی که سه هزار سال در تاریکی خشک شده بود.</p>
+    <p>اهریمن ادامه داد:</p>
+    <p class="dialog">«من از شما انتقام نمی‌خواهم. من از جهان انتقام نمی‌خواهم. من فقط... من فقط می‌خواهم بمیرم. و شما، سه پادشاه، تنها کسانی هستید که می‌توانید مرا بکشید. چون شما، قدرتی دارید که از قدرت من بیشتر است.»</p>
+    <p>سه پادشاه، به هم نگاه کردند. در چشمان همدیگر، چیزی دیدند که سال‌ها بود ندیده بودند. تردید.</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل سوم — قدرتِ فرعون" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل سوم — جلد دوم</div><h2>قدرتِ فرعون</h2></div>
+  <div class="speakable">
+    <p>فرعون جلو رفت. تاجش می‌درخشید. و با صدایی که در کوهستان پیچید، گفت:</p>
+    <p class="dialog">«اهریمن. من، نمی‌توانم تو را بکشم. چون تو، نامیرایی. و نامیرایی تو، از جنس دیگری است. از جنس نفرین. و نفرین، فقط با نفرین از بین می‌رود.»</p>
+    <p>اهریمن گفت: «پس از نفرینت استفاده کن. تو پادشاه نفرینی. تو می‌توانی نفرین کنی. نفرینم کن. مرا بکش.»</p>
+    <p>فرعون سکوت کرد. به آسمان نگاه کرد. و آهسته گفت:</p>
+    <p class="dialog">«اگر من تو را نفرین کنم، نفرینِ من، با نفرینِ تو، یکی می‌شود. و آن‌وقت، نفرینِ تو، قوی‌تر می‌شود. چون نفرینِ من، از جنس خشم است. و نفرینِ تو، از جنس درد. و خشم، درد را قوی‌تر می‌کند.»</p>
+    <p>اهریمن گفت: «پس چه؟ پس باید در این دنیا بمانم؟ باید هر جا بروم، زندگی را بکشم؟ باید میلیون‌ها انسان را بکشم؟ فقط چون تو نمی‌خواهی نفرینت را استفاده کنی؟»</p>
+    <p>فرعون گفت: «نه. من نفرینم را استفاده می‌کنم. اما نه برای کشتن تو. برای فهمیدنِ نفرینِ تو. من می‌خواهم بفهمم که نفرینت، از کجا آمده. و چرا، نمی‌تواند از بین برود.»</p>
+    <p>و فرعون، برای اولین بار، تاجش را برداشت. و روی زمین گذاشت. و به سمت اهریمن رفت. با دستان خالی. با چشمان باز. و با قلبی که در آن، نه ترس بود، نه خشم. فقط کنجکاوی.</p>
+    <p>اهریمن، با دیدن این کار، لرزید. «چه می‌کنی؟»</p>
+    <p>فرعون گفت: «من، پادشاه نفرینم. و تاج من، منبع قدرت من است. اما اگر من تاجم را بردارم، می‌توانم نفرینِ تو را، بدون اینکه با نفرینِ من قاطی شود، ببینم.»</p>
+    <p>و فرعون، دستش را، به سمت اهریمن، دراز کرد. اما پیش از آنکه به او برسد، چیزی از اهریمن، بیرون زد. چیزی سیاه. چیزی که مثل سایه بود. و به سمت فرعون حمله کرد.</p>
+    <p class="battle">نفرین. نفرینِ کهن. خودِ نفرین، از اهریمن بیرون آمد. و به سمت فرعون حمله کرد. سایه‌ای سیاه. با چشمانی که در آن‌ها، سه هزار سال مرگ بود. و با دهانی که در آن، هزاران روح فریاد می‌زدند. نفرین، از اهریمن محافظت می‌کرد. چون نفرین، به اهریمن چسبیده بود. و نمی‌خواست که از او جدا شود.</p>
+    <p>فرعون، تاجش را برداشت. و تاج را، به سمت نفرین، پرتاب کرد. تاج، در هوا، به نفرین خورد. و نوری طلایی، از تاج، بیرون زد. نور طلایی، به نفرین خورد. و نفرین، برای یک لحظه، عقب نشست. اما بعد، دوباره جلو آمد. و تاج طلایی، روی زمین افتاد. تاج، برای اولین بار در سه هزار سال، ترک خورد.</p>
+    <p>فرعون، با دیدن تاجِ ترک‌خورده، لرزید. تاج، منبع قدرت او بود. و ترک خوردنِ تاج، یعنی ضعیف شدنِ او. اما فرعون، عقب نکشید. جلو رفت. و با دستان خالی، به سمت نفرین، حمله کرد.</p>
+    <p class="battle">فرعون، بدون تاج، ضعیف‌تر بود. اما نه ضعیف. چون فرعون، در سه هزار سال سلطنت، قدرتش را از تاج نگرفته بود. قدرتش را از خودش گرفته بود. از نفرینی که در خونش بود. از مرگی که در استخوان‌هایش بود. و حالا، بدون تاج، ولی با همان قدرت، با نفرین می‌جنگید.</p>
+    <p>و در آن نبرد، فرعون، نفرین را، برای اولین بار، لمس کرد. و در آن لمس، نفرین، به فرعون، چیزی داد. چیزی که فرعون، هرگز فراموش نکرد. نفرین، به فرعون، نشان داد که از کجا آمده. و چرا، نمی‌تواند از بین برود.</p>
+    <p>و در آن لحظه، فرعون، برای اولین بار در سه هزار سال، فریاد زد. فریادی که در آن، نه از درد بود، نه از ترس. از فهم. از فهمِ چیزی که هیچ‌کس نمی‌دانست.</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل چهارم — حقیقتِ نفرین" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل چهارم — جلد دوم</div><h2>حقیقتِ نفرین</h2></div>
+  <div class="speakable">
+    <p>فرعون، از نبرد با نفرین، عقب کشید. تاجش را برداشت. تاج، ترک خورده بود، اما هنوز می‌درخشید. و فرعون، به سمت سه پادشاه، برگشت. و با صدایی که در آن، سه هزار سال فهم بود، گفت:</p>
+    <p class="dialog">«من فهمیدم. نفرینِ اهریمن، از کجا آمده. و چرا نمی‌تواند از بین برود.»</p>
+    <p>نیپتون پرسید: «از کجا؟»</p>
+    <p>فرعون گفت: «از خودِ جهان. جهان، سه هزار سال پیش، اهریمن را نفرین کرد. اما جهان، فقط اهریمن را نفرین نکرد. جهان، خودِ نفرین را، به یک موجود تبدیل کرد. نفرین، زنده است. و نفرین، نمی‌خواهد که از اهریمن جدا شود. چون اگر جدا شود، می‌میرد. و نفرین، نمی‌خواهد بمیرد. پس از اهریمن محافظت می‌کند. نه به خاطر اهریمن. به خاطر خودش.»</p>
+    <p>کوروش گفت: «پس چگونه می‌توانیم اهریمن را بکشیم؟»</p>
+    <p>فرعون گفت: «نمی‌توانیم. حداقل، نه با کشتن. باید نفرین را از اهریمن جدا کنیم. و برای جدا کردن نفرین، باید چیزی به نفرین بدهیم. چیزی که به اندازهٔ زندگی، ارزشمند باشد. چیزی که نفرین، ترجیح بدهد به جای چسبیدن به اهریمن، آن را بگیرد.»</p>
+    <p>نیپتون پرسید: «چه چیزی؟»</p>
+    <p>فرعون سکوت کرد. به آسمان نگاه کرد. و آهسته گفت:</p>
+    <p class="dialog">«یک زندگیِ دیگر. یک زندگیِ کامل. زندگیِ کسی که هنوز نمرده. کسی که هنوز جوان است. کسی که هنوز، تمام زندگی‌اش را پیش رو دارد.»</p>
+    <p>و سه پادشاه، برای اولین بار، در چشمان هم، چیزی دیدند که در سه هزار سال ندیده بودند. ترس. نه ترس از مرگ. ترس از فهمیدن. ترس از فهمیدنِ اینکه برای نجات اهریمن، باید یک زندگیِ دیگر، فدا شود.</p>
+    <p>و در همان لحظه، آریا رسید.</p>
+    <p>آریا، با نیرا، و با پدرش کاووس، به کوهستانِ شمالی رسیده بود. آریا، وقتی حرف‌های فرعون را شنید، جلو آمد. و گفت:</p>
+    <p class="dialog">«من. من آن زندگی‌ام. من، جوانم. من، تمام زندگی‌ام را پیش رو دارم. و من، می‌توانم آن را به نفرین بدهم.»</p>
+    <p>سه پادشاه، به آریا نگاه کردند. کاووس، با چشمانی پر از اشک، گفت: «آریا، نه.»</p>
+    <p>آریا به پدرش نگاه کرد. و لبخند زد. لبخندی که در آن، نه ترس بود، نه تردید. فقط عشق:</p>
+    <p class="dialog">«پدر. تو هفده سال، در آرکانا، زندانی بودی. و من، هفده سال، بدون تو بزرگ شدم. من می‌دانم که زندگی، چقدر ارزشمند است. اما من هم می‌دانم که آزادی، چقدر ارزشمندتر است. و اهریمن، سه هزار سال، در زندان بوده. اگر من بتوانم، با دادن زندگی‌ام، او را آزاد کنم، این کار را می‌کنم.»</p>
+    <p>کاووس گفت: «اما تو می‌میری.»</p>
+    <p>آریا گفت: «می‌دانم. اما اهریمن، سه هزار سال است که می‌خواهد بمیرد. و کسی به او اجازه نمی‌دهد. من، به او اجازه می‌دهم. من، زندگی‌ام را به او می‌دهم. نه به خاطر مرگ. به خاطر زندگی. به خاطر اینکه اهریمن، بتواند بعد از سه هزار سال، یک بار هم که شده، نفس بکشد. بدون اینکه چیزی بمیرد.»</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل پنجم — نبردِ نفرین‌ها" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل پنجم — جلد دوم</div><h2>نبردِ نفرین‌ها</h2></div>
+  <div class="speakable">
+    <p>اما نفرین، نمی‌خواست که جدا شود. نفرین، خودش را به اهریمن، محکم‌تر چسباند. و به سمت آریا، حمله کرد.</p>
+    <p class="battle">نفرین، سایه‌ای بود به بلندی کوه. با چشمانی که در آن‌ها، هزاران روح فریاد می‌زدند. و با دهانی که در آن، مرگ، نفس می‌کشید. نفرین، به سمت آریا، هجوم آورد. آریا، سنگ‌ها را فرا خواند. سنگ‌ها، از زمین بیرون زدند. و به سمت نفرین، پرتاب شدند. اما نفرین، از میان سنگ‌ها گذشت. سنگ‌ها، به خاکستر تبدیل شدند.</p>
+    <p>فرعون، با تاجِ ترک‌خورده، جلو آمد. و فریاد زد:</p>
+    <p class="whisper">«نفرین! من، پادشاهِ نفرینم! و من، تو را به چالش می‌کشم!»</p>
+    <p>و فرعون، برای اولین بار، تمام قدرتش را آزاد کرد. قدرتی که در سه هزار سال، جمع کرده بود. قدرتی که از هر نفرینی که به زبان آورده بود، به دست آمده بود. و آن قدرت، در قالب نوری سیاه، از بدنش بیرون زد. نوری که در آن، هزاران نفرین بود. هزاران کلمه. هزاران خشم.</p>
+    <p>نفرین و فرعون، در هوا، به هم خوردند. دو نیروی سیاه. دو خشم. دو نفرین. یکی از جنس سه هزار سال سلطنت. یکی از جنس سه هزار سال درد. و در آن برخورد، آسمان، برای اولین بار در سه هزار سال، شکافت.</p>
+    <p>نیپتون نیزه‌اش را چرخاند. و طوفانی عظیم، از آسمان، پایین آمد. طوفانی که در آن، هزاران صاعقه بود. صاعقه‌ها به سمت نفرین رفتند. و نفرین، برای چند لحظه، فلج شد.</p>
+    <p>کوروش شمشیرش را در زمین فرو کرد. و فریاد زد:</p>
+    <p class="whisper">«فرمان پادشاهی!»</p>
+    <p>و نوری طلایی، از بدنش بیرون زد. نوری که در آن، هزاران انسان بود. هزاران امید. هزاران زندگی. و آن نور، به سمت نفرین رفت. و نفرین، برای اولین بار در سه هزار سال، عقب نشست.</p>
+    <p>و در آن لحظه، آریا، جلو رفت. آریا، با دستان خالی. با قلبی باز. و با چشمانی که در آن‌ها، نه ترس بود، نه تردید. فقط آرامش. و به سمت اهریمن، رفت. و دستش را، روی قلب اهریمن، گذاشت.</p>
+    <p>اهریمن، با دیدن این کار، لرزید. «چه می‌کنی؟»</p>
+    <p>آریا گفت: «من، زندگی‌ام را به تو می‌دهم. اما نه به خاطر اینکه بمیری. به خاطر اینکه زندگی کنی. بدون نفرین. بدون مرگ. برای اولین بار در سه هزار سال.»</p>
+    <p>و در آن لحظه، نفرین، از اهریمن، جدا شد. نفرین، به سمت آریا رفت. و در آریا، جای گرفت. و آریا، برای اولین بار، نفرینِ کهن را، در وجودش، حس کرد. دردی که در آن، سه هزار سال تنهایی بود. سه هزار سال مرگ. سه هزار سال، انتظار. و آریا، با آن درد، جنگید. نه با خشم. نه با ترس. با عشق.</p>
+    <p>و در آن نبرد درونی، آریا، نفرین را، نه شکست داد. نه نابود کرد. بلکه، آن را در خودش، جای داد. نفرین را، پذیرفت. و با پذیرفتنِ نفرین، نفرین، برای اولین بار در سه هزار سال، آرام شد. چون نفرین، برای اولین بار، کسی را پیدا کرده بود که از آن نمی‌ترسید. کسی که آن را، دوست داشت.</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل ششم — آزادیِ اهریمن" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل ششم — جلد دوم</div><h2>آزادیِ اهریمن</h2></div>
+  <div class="speakable">
+    <p>اهریمن، روی زمین، زانو زد. برای اولین بار در سه هزار سال، هوایی که در اطرافش بود، مرگ نداشت. گیاهان، زیر پایش، سبز شدند. پرنده‌ها، از آسمان، پایین آمدند. و اهریمن، برای اولین بار، در چشمانش، چیزی جز خستگی دید. آرامش.</p>
+    <p>اهریمن به آریا نگاه کرد. و آریا، با نفرین در وجودش، ایستاده بود. اما آریا، نمی‌مرد. چون نفرین، در وجود آریا، آرام شده بود. نفرین، برای اولین بار، در جایی، آرام گرفته بود. جایی که در آن، نه ترس بود، نه خشم. فقط عشق.</p>
+    <p>اهریمن گفت:</p>
+    <p class="dialog">«آریا. تو... تو مرا آزاد کردی. اما نفرین را، در خودت، جای دادی. حالا نفرین، در توست. و تو، نمی‌دانی که این، چه معنایی دارد.»</p>
+    <p>آریا گفت: «می‌دانم. نفرین، در من، آرام است. چون من، از آن نمی‌ترسم. من، آن را دوست دارم. چون آن، سه هزار سال، در تنهایی بود. و حالا، کسی را دارد که با او باشد.»</p>
+    <p>اهریمن، برای اولین بار در سه هزار سال، لبخند زد. لبخندی که در آن، سه هزار سال درد بود. اما در عمق آن، چیزی جز درد دیده شد. آرامش. آزادی.</p>
+    <p>اهریمن گفت:</p>
+    <p class="dialog">«آریا. من، سه هزار سال، در تاریکی بودم. و در آن تاریکی، فقط یک چیز، مرا زنده نگه داشت. امید. امید به اینکه روزی، کسی بیاید. کسی که نفرین را، از من جدا کند. کسی که به من، اجازه بدهد که بمیرم. اما تو، کاری بیشتر از آن کردی. تو، به من، اجازه دادی که زندگی کنم. برای اولین بار. بدون نفرین. بدون مرگ. فقط زندگی.»</p>
+    <p>و اهریمن، برای اولین بار در سه هزار سال، نفس عمیقی کشید. و در آن نفس، نه مرگی بود، نه دردی. فقط هوایی تازه. هوایی که در آن، زندگی بود.</p>
+    <p>و سه پادشاه، به هم نگاه کردند. در چشمان همدیگر، چیزی دیدند که در سه هزار سال ندیده بودند. احترام. احترام به پسری که، با قلبی باز، جهانی را تغییر داده بود.</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل هفتم — هدیهٔ اهریمن" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل هفتم — جلد دوم</div><h2>هدیهٔ اهریمن</h2></div>
+  <div class="speakable">
+    <p>اهریمن، بعد از آزادی، به سمت آریا برگشت. و گفت:</p>
+    <p class="dialog">«آریا. تو، زندگی‌ات را به من دادی. نه به خاطر مرگ. به خاطر زندگی. و این، بزرگ‌ترین هدیه‌ای است که کسی، به من داده. حالا، من، یک هدیه به تو می‌دهم. هدیه‌ای که، از زندگی، ارزشمندتر است. هدیه‌ای که، از مرگ، قوی‌تر است.»</p>
+    <p>آریا پرسید: «چه هدیه‌ای؟»</p>
+    <p>اهریمن گفت: «من، سه هزار سال، در تاریکی بودم. و در آن تاریکی، چیزی یاد گرفتم. چیزی که هیچ‌کس، نه سه پادشاه، نه نگهبانان اولیه، نه حتی خودِ جهان، نمی‌دانند. من یاد گرفتم که چطور، با نفرین، زندگی بسازم. نه مرگ. زندگی. و این، دانشی است که، به تو می‌دهم. تا تو، نفرینی که در توست، به زندگی تبدیل کنی.»</p>
+    <p>و اهریمن، دستش را روی سر آریا گذاشت. و در آن لحظه، چیزی عجیب اتفاق افتاد. نفرینی که در آریا بود، برای اولین بار، شروع به تغییر کرد. نه به مرگ. به زندگی. و آریا، برای اولین بار، قدرتی را حس کرد. قدرتی که نه از جنس سه پادشاه بود، نه از جنس نگهبانان اولیه. از جنس خودش بود. از جنس انسانی که، با قلبی باز، نفرین را پذیرفته بود.</p>
+    <p>و در آن لحظه، آریا، برای اولین بار، صدای سنگ‌ها را، نه به عنوان زمزمه، بلکه به عنوان فریاد، شنید. سنگ‌ها، فریاد می‌زدند:</p>
+    <p class="whisper">«آریا! آریا! آریا!»</p>
+    <p>و آریا، برای اولین بار، فهمید که سنگ‌ها، فقط حافظهٔ جهان نیستند. سنگ‌ها، خودِ جهان‌اند. و آریا، حالا، با جهان، حرف می‌زد.</p>
+    <p>و سه پادشاه، به هم نگاه کردند. در چشمان همدیگر، چیزی دیدند که در سه هزار سال ندیده بودند. امید. امید به اینکه پسری، از میان انسان‌ها، برخاسته. پسری که، نه پادشاه است، نه نگهبان. فقط انسان. اما انسانی که، با قلبی باز، جهانی را تغییر داده.</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل هشتم — چهار پادشاه" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل هشتم — جلد دوم</div><h2>چهار پادشاه</h2></div>
+  <div class="speakable">
+    <p>و در آن روز، در کوهستانِ شمالی، چهار نفر، کنار هم ایستادند. سه پادشاه. و یک انسان.</p>
+    <p>فرعون، با تاجِ ترک‌خورده، ولی با قدرتی بیشتر از قبل. چون فرعون، در نبرد با نفرین، چیزی یاد گرفته بود. یاد گرفته بود که قدرت، از تاج نیست. از قلب است.</p>
+    <p>نیپتون، با نیزه‌اش، ولی با قلبی بازتر. چون نیپتون، در این نبرد، فهمیده بود که قدرت، در انزوا نیست. در اتحاد است.</p>
+    <p>کوروش، با شمشیرش، ولی با امیدی بیشتر. چون کوروش، در این نبرد، فهمیده بود که انسان‌ها، فقط قربانی نیستند. می‌توانند قهرمان باشند.</p>
+    <p>و آریا، با نفرینی که حالا، به زندگی تبدیل شده بود. با قدرتی که، نه از جنس پادشاهان بود، نه از جنس نگهبانان. از جنس خودش بود. از جنس انسانی که، با قلبی باز، نفرین را پذیرفته بود.</p>
+    <p>فرعون گفت:</p>
+    <p class="dialog">«آریا. تو، در این نبرد، چیزی به ما نشان دادی. نشان دادی که قدرت، در تاج نیست. در قلب است. نشان دادی که پادشاه، کسی نیست که تاج دارد. کسی است که قلب دارد. و تو، آریا، قلب داری. قلبی که، از قلب هر سه ما، بزرگ‌تر است.»</p>
+    <p>نیپتون گفت: «آریا. تو، در این نبرد، چیزی به ما نشان دادی. نشان دادی که اتحاد، در اجبار نیست. در انتخاب است. و تو، انتخاب کردی که به ما کمک کنی. نه به خاطر ترس. به خاطر عشق.»</p>
+    <p>کوروش گفت: «آریا. تو، در این نبرد، چیزی به ما نشان دادی. نشان دادی که انسان، فقط قربانی نیست. قهرمان است. و تو، قهرمانی.»</p>
+    <p>و سه پادشاه، برای اولین بار در سه هزار سال، به یک انسان، تعظیم کردند. نه به خاطر ترس. نه به خاطر اجبار. به خاطر احترام. احترام به پسری که، با قلبی باز، جهانی را تغییر داده بود.</p>
+    <p>و آریا، در برابر سه پادشاه، ایستاد. و گفت:</p>
+    <p class="dialog">«من، پادشاه نیستم. من، فقط یک سنگ‌تراشم. اما من، یک چیز را می‌دانم. من می‌دانم که قدرت، در تاج نیست. در قلب است. و من، قلب دارم. و قلب من، به من می‌گوید که، سه پادشاه، باید با هم باشند. و باید، با انسان‌ها، با هم باشند. چون فقط با هم، می‌توانیم جهان را، از هر خطری، حفظ کنیم.»</p>
+    <p>و سه پادشاه، به هم نگاه کردند. در چشمان همدیگر، چیزی دیدند که در سه هزار سال ندیده بودند. اتحاد. اتحاد واقعی. اتحادی که، نه از ترس بود، نه از اجبار. از انتخاب.</p>
+    <p>و در آن روز، در کوهستانِ شمالی، چهار نفر، پیمانی بستند. پیمانی که در آن، قسم خوردند که برای همیشه، با هم باشند. سه پادشاه. و یک انسان.</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل نهم — بازگشت به خانه" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل نهم — جلد دوم</div><h2>بازگشت به خانه</h2></div>
+  <div class="speakable">
+    <p>آریا، با پدرش کاووس، به ماهان برگشت. در راه، آریا به پدرش گفت:</p>
+    <p class="dialog">«پدر. من، حالا، نفرین را در خودم دارم. اما، این نفرین، مرگ نیست. زندگی است. و من، می‌خواهم از این نفرین، برای کمک به دیگران استفاده کنم. نه برای قدرت. برای کمک.»</p>
+    <p>کاووس به پسرش نگاه کرد. و در چشمانش، چیزی دید که در هیچ انسانی ندیده بود. آرامش. آرامش کسی که، راهش را پیدا کرده.</p>
+    <p>کاووس گفت: «آریا. تو، پسری که سنگ می‌تراشید. و حالا، پسری که جهان را نجات داد. من، به تو افتخار می‌کنم. نه به خاطر کاری که کردی. به خاطر کسی که هستی.»</p>
+    <p>و در ماهان، سودابه، وقتی پسرش را دید، از پشت دار قالی بلند شد. و به سمت او دوید. و او را در آغوش گرفت. و در آن آغوش، سه نفر، برای یک ساعت گریه کردند. اما این بار، گریه‌شان، نه از غم بود، نه از ترس. از خوشحالی.</p>
+    <p>و در شب، وقتی آریا به آسمان نگاه کرد، ستاره‌ای دید که در آسمان می‌درخشید. ستاره‌ای از کوهستانِ شمالی. ستاره‌ای که، برای اولین بار در سه هزار سال، روشن بود. و در آن ستاره، آریا، چهرهٔ اهریمن را دید. که برای اولین بار، لبخند می‌زد.</p>
+    <p>و در همان شب، در خواب، آریا صدایی شنید:</p>
+    <p class="whisper">«پسری که سنگ می‌تراشید. تو، نه فقط جهان را نجات دادی. تو، جهانی را تغییر دادی. و این، بزرگ‌ترین کاری است که یک انسان، می‌تواند بکند.»</p>
+    <p>آریا لبخند زد و گفت: «نه. ما، جهان را تغییر دادیم.»</p>
+  </div>
+</section>
+
+<section class="page vol2" data-title="فصل دهم — سایه‌ای در افق" data-volume="2">
+  <div class="chapter-head"><div class="num">فصل دهم — جلد دوم</div><h2>سایه‌ای در افق</h2></div>
+  <div class="speakable">
+    <p>و در همان شب، در دورترین نقطهٔ اقیانوس، جایی که هیچ‌کس، نه انسان، نه دریایی، نه پادشاه، هرگز نرفته بود، چیزی حرکت کرد.</p>
+    <p>چیزی بزرگ. چیزی قدیمی. چیزی که، از زمانِ نگهبانان اولیه، در خواب بود. و حالا، با آزادیِ اهریمن، بیدار شده بود.</p>
+    <p>آن چیز، سایه‌ای بود. سایه‌ای که در آن، هزاران چشم بود. هزاران دهان. هزاران دست. سایه‌ای که، نه از جنس نفرین بود، نه از جنس مرگ. از جنس چیزی بود که، حتی خودِ جهان، از آن می‌ترسید.</p>
+    <p>و آن سایه، در تاریکی، زمزمه کرد:</p>
+    <p class="whisper">«اهریمن، آزاد شد. و با آزادیِ او، دروازه، باز شد. حالا، من، می‌توانم بیایم. حالا، من، می‌توانم، تمام جهان را، در خودم، ببلعم.»</p>
+    <p>و سایه، در تاریکی، گم شد.</p>
+    <p>و در ماهان، آریا، در خواب، لرزید. در خواب، سایه‌ای دید. سایه‌ای که، در آن، هزاران چشم بود. و در آن سایه، صدایی شنید. صدایی که، در استخوان‌هایش، می‌پیچید:</p>
+    <p class="whisper">«آریا. تو، اهریمن را آزاد کردی. اما تو، نمی‌دانی که با آزادیِ او، چیزی بزرگ‌تر، بیدار شد. چیزی که، حتی سه پادشاه، از آن می‌ترسند. و حالا، آن چیز، به سمت تو، می‌آید.»</p>
+    <p>آریا، از خواب پرید. عرق روی پیشانی‌اش بود. به آسمان نگاه کرد. و در آسمان، سایه‌ای دید. سایه‌ای که، در آن، هزاران چشم بود. و آریا، برای اولین بار، در چشمانش، چیزی جز آرامش دید. ترس. ترس از چیزی که، حتی سنگ‌ها، از آن، حرف نمی‌زدند.</p>
+    <div class="the-end">
+      <div class="big">پایان جلد دوم</div>
+      <div class="small">
+        جلد سوم: <b>سایهٔ خاموش</b><br>
+        شش ماه بعد، چیزی از اعماق اقیانوس بیدار می‌شود که حتی کوروش هم از آن می‌ترسد. و آریا، باید با نفرینی که در اوست، با آن بجنگد...
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== جلد سوم — سایهٔ خاموش ==================== -->
+
+<section class="page vol3" data-title="جلد سوم — سایهٔ خاموش" data-volume="3">
+  <div class="cover vol3">
+    <div class="crown">✹</div>
+    <div class="label">رمان حماسی — کتاب سوم</div>
+    <h1>سایهٔ خاموش</h1>
+    <div class="subtitle">جهان سه پادشاه — جلد سوم</div>
+    <div class="sep"></div>
+    <p class="quote">«آتش از دِل برمی‌خیزد،<br>یخ از سنگ،<br><b>و سکوت از جایی که هیچ‌کس نرفته.</b><br>اگر هر سه را شنیدی، بدان که پایان، آغاز شده.»</p>
+    <button class="start-btn" onclick="goTo(23)">شروع خواندن</button>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل یکم — شش ماه بعد، آتش و یخ" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل یکم — جلد سوم</div><h2>شش ماه بعد، آتش و یخ</h2></div>
+  <div class="speakable">
+    <p>شش ماه گذشته بود. شش ماه از آن روز که اهریمن آزاد شد و جهان، برای نخستین بار در سه هزار سال، نفس کشید.</p>
+    <p>ماهان، آرام بود. آرام‌تر از همیشه. گویی خودِ زمین هم، بعد از آن همه هیاهو، به خواب رفته بود. کوچه‌ها همان کوچه‌های باریک، خانه‌ها همان خانه‌های گِلی، و بوی نان تازه همان بوی همیشگی صبح. آریا هر روز به کارگاه می‌رفت. سنگ می‌برید، صیقل می‌داد. اما دست‌هایش، دیگر مثل قبل نبودند.</p>
+    <p>از آن روز که نفرین را در خود پذیرفته بود، چیزی درونش بیدار شده بود. چیزی که نه از جنس جادو بود، نه از جنس نفرین. از جنس خودش بود. اول فکر کرد شاید بیمار است. اما نه. بدنش سالم بود. چیزی درونش، زنده‌تر از همیشه بود.</p>
+    <p>اولین بار، یک شب سرد زمستانی بود. آریا در خانه تنها بود. به آتش اجاق نگاه می‌کرد. و ناگهان، آتش، به سمتش آمد. نه. آتش از دست‌هایش بیرون آمد. آریا با وحشت دست‌هایش را عقب کشید. اما آتش، به او آسیبی نمی‌رساند. آتش، گرم بود. مثل دست مادرش. مثل آغوش پدرش. مثل خاطرهٔ خانه.</p>
+    <p>و در همان شب، وقتی آریا به یاد پدرش افتاد — پدری که هفده سال در آرکانا زندانی بود — دست‌هایش سرد شد. سردتر از برف. سردتر از یخ. و اطرافش، برف، روی زمین نشست. اما نه برفِ کشنده. برفی که، مثل حافظه، آرام بود. برفی که، از خودش، محافظت می‌کرد.</p>
+    <p>آریا نمی‌فهمید. اما می‌ترسید. می‌ترسید که این قدرت، نفرین باشد. می‌ترسید که نفرین، دوباره برگشته باشد.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>صبح روز بعد، آریا به دیدن پدرش رفت. کاووس در حیاط نشسته بود و به آسمان نگاه می‌کرد. آریا کنارش نشست. مدتی هیچ نگفت. بعد، دست‌هایش را جلو آورد. و آتش، از دست‌هایش بیرون آمد. کاووس، برای یک لحظه ترسید. اما بعد، لبخند زد.</p>
+    <p class="dialog">«آریا. این نفرین نیست. این، هدیه است.»</p>
+    <p>آریا گفت: «هدیه؟»</p>
+    <p class="dialog">«آن چیزی که اهریمن به تو داد، نفرین نبود. زندگی بود. زندگی، نه فقط نفس کشیدن. زندگی، آتش است. و آتش، گرماست. آتش، عشق است. آتش، اراده است. و یخ، حافظه است. یخ، صبر است. یخ، زمان است. هر انسانی کمی آتش دارد. کمی یخ. اما تو، آریا، تو بیشتر داری. تو هم آتش داری، هم یخ. چون تو نفرین را پذیرفتی. و نفرین، وقتی پذیرفته شد، به زندگی تبدیل می‌شود.»</p>
+    <p>آریا گفت: «پس من، حالا... قدرتمندم؟»</p>
+    <p>کاووس سرش را تکان داد:</p>
+    <p class="dialog">«نه. تو نه قدرتمندی، نه ضعیف. تو فقط... تو فقط خودت هستی. با آتش، و با یخ. و این، از قدرت، بیشتر است. اما یادت باشد، آریا: آتش برای گرم کردن است، نه سوزاندن. یخ برای نگه‌داشتن است، نه کشتن. اگر آتش را برای سوزاندن به کار ببری، به نفرین برمی‌گردی. اگر یخ را برای کشتن به کار ببری، به مرگ برمی‌گردی. اما اگر آتش را برای گرم کردن به کار ببری، زندگی می‌سازی. اگر یخ را برای نگه‌داشتن به کار ببری، حافظه می‌سازی. و زندگی و حافظه، با هم، پادشاهی می‌سازند که هیچ تاجی ندارد، اما هیچ تاجی هم نمی‌تواند آن را بشکند.»</p>
+    <p>آریا ساکت شد. و در سکوت، برای اولین بار، صدای سنگ‌ها را شنید. سنگ‌ها، زمزمه می‌کردند:</p>
+    <p class="whisper">«آریا... آریا... آریا...»</p>
+    <p>و در آن زمزمه، آریا چیزی شنید. چیزی که از دور می‌آمد. از خیلی دور. از جایی که حتی ستاره‌ها هم نمی‌رسیدند. صدایی که می‌گفت:</p>
+    <p class="whisper">«آریا. آماده باش. چیزی می‌آید. چیزی که حتی سه پادشاه، از آن می‌ترسند.»</p>
+    <p>آریا لرزید. و در آن لحظه فهمید که آرامش، تمام شده. و آغاز، دوباره شروع شده.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل دوم — سکوت در آسمان" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل دوم — جلد سوم</div><h2>سکوت در آسمان</h2></div>
+  <div class="speakable">
+    <p>نشانه‌های اول، کوچک بودند. آن‌قدر کوچک که هیچ‌کس به آن‌ها توجه نمی‌کرد. در کوهستانِ شمالی، پرندگان از آواز خواندن دست کشیدند. اما نه از ترس. از سکوت. سکوتی که از بیرون می‌آمد، نه از درون. سکوتی که، مثل پتویی سنگین، روی کوهستان افتاده بود.</p>
+    <p>بعد، ماهی‌ها. در سواحل شرقی، ماهی‌ها به سمت ساحل شنا کردند. نه به خاطر طوفان. به خاطر سکوت. اما سکوت، در زیر آب، چه معنایی داشت؟ ماهیگیران می‌گفتند: «ماهی‌ها دیوانه شده‌اند.» اما پیرمردی که هفتاد سال در دریا زندگی کرده بود، گفت: «نه. ماهی‌ها چیزی می‌شنوند که ما نمی‌شنویم. و آن چیز، آن‌ها را می‌ترساند.»</p>
+    <p>سه پادشاه، هر یک، در قلمرو خودش، چیزی حس کرد. فرعون، در تالار مردگان، متوجه شد که مردگان، به جای استراحت، در گوشه‌ها پنهان می‌شوند. نیپتون، در قعر اقیانوس، متوجه شد که موجودات اعماق، آواز نمی‌خوانند. کوروش، در تالار پادشاهان، متوجه شد که ستاره‌های سقف، کم‌نورتر از همیشه‌اند.</p>
+    <p>و در همان شب، سه پادشاه، در تالار پادشاهان جمع شدند. تالاری که هزاران سال خالی بود، حالا سه پادشاه را در خود جای می‌داد. و آریا، برای اولین بار، به دعوت کوروش، در آن تالار، حاضر بود.</p>
+    <p class="dialog">«سکوت، در حال گسترش است.»</p>
+    <p>کوروش بود که حرف می‌زد. با شمشیرش که حالا، به جای نور، درخششی آرام داشت. و با چشمانی که خسته‌تر از همیشه بود.</p>
+    <p class="dialog">«سکوت، چیزی نیست که بشود دید. اما می‌شود شنید. و من، در سه هزار سال، فقط یک بار، چنین سکوتی شنیده‌ام.»</p>
+    <p>فرعون پرسید: «کِی؟»</p>
+    <p>کوروش پاسخ داد: «پیش از آن که ما، پادشاه شویم. پیش از آن که سه دروازه ساخته شوند. پیش از آن که نگهبانان اولیه، به ما قدرت بدهند. آن روز، سکوت، از اعماق اقیانوس آمد. و جهان، برای اولین بار، فهمید که سکوت، می‌تواند زنده باشد.»</p>
+    <p>نیپتون، که در قعر اقیانوس بزرگ شده بود، برای اولین بار، ترسید. نه از تاریکی. از چیزی که در تاریکی بود. چیزی که در اعماق، در جایی که حتی او هم نمی‌توانست برود، خوابیده بود.</p>
+    <p>و ناگهان، در تالار، صدایی پیچید. صدایی که هیچ‌کس انتظارش را نداشت. اهریمن، از میان سایه‌ها، بیرون آمد. او در شش ماه گذشته، در گوشه‌ای دور، به زندگی خودش مشغول بود. اما امشب، آمده بود.</p>
+    <p class="dialog">«من می‌دانم این سکوت چیست.»</p>
+    <p>سه پادشاه و آریا، همه به اهریمن نگاه کردند. اهریمن، دیگر آن مرد خسته و رنگ‌پریده نبود. حالا، رنگ به صورتش برگشته بود، چشمانش روشن‌تر بود. اما هنوز، در نگاهش، آن خستگیِ سه هزار ساله موج می‌زد. خستگیِ کسی که، یک بار، در تاریکی، تنها بوده.</p>
+    <p class="dialog">«سکوت، آن چیزی است که پیش از من بود. پیش از نفرینِ من. پیش از سه پادشاه. پیش از نگهبانان اولیه. سکوت، اولین چیزی است که در جهان، وجود داشته. سکوت، نه یک نفر است، نه یک چیز. سکوت، خودِ نبودن است. سکوت، جایی است که هیچ‌چیز، هیچ‌وقت نبوده. و حالا، با آزادیِ من، سکوت، بیدار شده. چون نفرینِ من، تنها چیزی بود که سکوت را، در خواب نگه می‌داشت.»</p>
+    <p>آریا پرسید: «چرا نفرینِ تو، سکوت را در خواب نگه می‌داشت؟»</p>
+    <p>اهریمن پاسخ داد: «چون نفرینِ من، از جنس مرگ بود. و سکوت، از جنس نبودن. مرگ، نبودن نیست. مرگ، تغییر است. اما سکوت، پایان همه‌چیز است. و نفرینِ من، با مرگش، سکوت را، از پایان، دور نگه می‌داشت. حالا که نفرینِ من رفته، سکوت، راهش را پیدا کرده. و دارد می‌آید.»</p>
+    <p>و در آن لحظه، در تالار پادشاهان، همه ساکت شدند. حتی ستاره‌های سقف. حتی بادِ بیرون. حتی خودِ زمان.</p>
+    <p>و کوروش، با صدایی که در آن، نه ترس بود، نه خشم، فقط فهم، گفت:</p>
+    <p class="dialog">«پس باید به اعماق اقیانوس برویم. جایی که سکوت، اولین بار، از آنجا آمد.»</p>
+    <p>نیپتون سرش را تکان داد: «من می‌دانم کجاست. من، در قعر اقیانوس بزرگ شده‌ام. اما هرگز، به آن نقطه نرفته‌ام. چون می‌دانستم که آن نقطه، از من، قدیمی‌تر است.»</p>
+    <p>و آریا، که تا آن لحظه ساکت بود، گفت:</p>
+    <p class="dialog">«من هم می‌آیم. آتش و یخ، در اعماق اقیانوس، به کار می‌آیند. آتش، برای روشنایی. یخ، برای نگه‌داشتن.»</p>
+    <p>فرعون، برای اولین بار، به آریا لبخند زد. نه لبخندِ تحقیر. لبخندِ احترام:</p>
+    <p class="dialog">«پس چهار نفر می‌رویم. سه پادشاه. و یک انسان.»</p>
+    <p>و در همان شب، کشتی نیپتون، از اعماق اقیانوس، بالا آمد. و چهار نفر، سوار شدند. سفری که هیچ انسانی، هرگز نرفته بود. سفری به اعماقِ اعماق.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل سوم — اقیانوسِ ساکت" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل سوم — جلد سوم</div><h2>اقیانوسِ ساکت</h2></div>
+  <div class="speakable">
+    <p>کشتی، به سمت اعماق می‌رفت. آب، هر لحظه، تیره‌تر می‌شد. نیپتون، با نیزه‌اش، آب را کنار می‌زد. اما هرچه پایین‌تر می‌رفتند، آب، سنگین‌تر می‌شد. انگار آب، مقاومت می‌کرد. انگار آب، نمی‌خواست که آن‌ها به آن نقطه برسند.</p>
+    <p>نیپتون گفت: «این آب، دیگر آب نیست. این آب، از سکوت، ساخته شده.»</p>
+    <p>آریا، با آتش در دست، روشنایی می‌ساخت. یخ، در دست دیگرش، از کشتی محافظت می‌کرد. و در روشناییِ آتش، چیزهایی دیده می‌شد. چیزهایی که در اعماق اقیانوس، زندگی می‌کردند. اما نه ماهی. نه عروس دریایی. موجوداتی که، از سکوت ساخته شده بودند. موجوداتی که، وقتی آتشِ آریا به آن‌ها می‌رسید، ناپدید می‌شدند. چون سکوت، با نور، دشمنی دارد.</p>
+    <p>فرعون، در سکوت، به این موجودات نگاه می‌کرد. و آهسته گفت:</p>
+    <p class="dialog">«این‌ها، سایه‌های مردگانی هستند که، در اعماق، گم شده‌اند. مردگانی که، از قلمرو من، به اعماق افتاده‌اند. و سکوت، آن‌ها را، به خودش، تبدیل کرده.»</p>
+    <p>کوروش گفت: «پس سکوت، همیشه در حال رشد بوده. حتی وقتی ما، به آن فکر نمی‌کردیم.»</p>
+    <p>اهریمن، که در گوشه‌ای نشسته بود، گفت:</p>
+    <p class="dialog">«سکوت، همیشه در حال رشد است. من، سه هزار سال، در دایرهٔ سنگ، سکوت را حس می‌کردم. سکوت، آرام است. اما آرام، به معنی بی‌خطر نیست. سکوت، مثل یخ است. می‌تواند نگه‌دارد. می‌تواند بکشد.»</p>
+    <p>آریا سکوت کرد. به یخ دستش نگاه کرد. و فهمید که یخ، و سکوت، هر دو، از یک جنس‌اند. اما یخ، با عشق نگه می‌دارد. سکوت، با نفرت می‌کشد. تفاوت، در نیت است. نه در جنس.</p>
+    <div class="scene-break">✦ ✦ ✦</div>
+    <p>کشتی، به ته اقیانوس رسید. و آنجا، معبدی بود. معبدی عظیم، از سنگ سیاه. نه سنگی که در زمین پیدا می‌شود. سنگی که، از سکوت ساخته شده. سنگ‌هایی که، وقتی به آن‌ها نگاه می‌کردی، چیزی درونت، خالی می‌شد.</p>
+    <p>نیپتون گفت: «این معبد، معبد سکوت است. من، در سه هزار سال، هرگز به آن نزدیک نشده‌ام. چون هر بار که نزدیک می‌شدم، چیزی درونم، می‌گفت که برگردم.»</p>
+    <p>فرعون گفت: «من هم. این معبد، از جنس دیگری است. نه از جنس مرگ. نه از جنس زندگی. از جنس هیچ‌چیز.»</p>
+    <p>کوروش گفت: «پس باید وارد شویم. چون تنها راهِ نجات جهان، از دلِ همین معبد می‌گذرد.»</p>
+    <p>و چهار نفر، وارد معبد شدند. و در معبد، چیزی دیدند که هیچ‌کدام، هرگز فراموش نکردند.</p>
+    <p>معبد، خالی بود. نه خالی از چیز. خالی از خودِ خالی بودن. دیوارهایی که بود، اما نبود. سقفی که بود، اما نبود. و در مرکز معبد، چیزی بود. چیزی که، نه نور بود، نه تاریکی. چیزی که، نه شکل داشت، نه بی‌شکل بود. چیزی که، فقط بود. و همین بودنش، ترسناک بود.</p>
+    <p>و آن چیز، وقتی چهار نفر وارد شدند، به آن‌ها نگاه کرد. نه با چشم. با کلِ وجودش. و صدایی از آن چیز، بلند شد. صدایی که، نه از هوا بود، نه از آب. صدایی که، از نبودن می‌آمد:</p>
+    <p class="whisper">«شما چهار نفر، به خانهٔ من آمده‌اید. اما من، در خانهٔ شما بودم. در سکوتِ شب‌هایتان. در فاصلهٔ بین دو نفس‌تان. در لحظه‌ای که چشم‌هایتان را می‌بندید. من همیشه، در شما بودم. و حالا، شما در من هستید.»</p>
+    <p>آریا لرزید. و در آن لرزش، فهمید که این چیز، از هر چیزی که تا حالا دیده بود، بزرگ‌تر است. نه از جنس قدرت. از جنس حضور. حضوری که، در همه‌جا هست. و در هیچ‌جا نیست.</p>
+    <p>کوروش جلو رفت. شمشیرش را در دست گرفته بود. اما شمشیر، در برابرش، کوچک به نظر می‌رسید. و کوروش، با صدایی که در آن، نه ترس بود، نه تهدید، گفت:</p>
+    <p class="dialog">«ما آمده‌ایم که تو را، دوباره، به خواب ببریم.»</p>
+    <p>و آن چیز، خندید. خنده‌ای که، نه از دهان بود، نه از صدا. خنده‌ای که، از نبودن می‌آمد:</p>
+    <p class="whisper">«من هرگز نخوابیده بودم. من فقط، در خوابِ شما بودم. حالا که شما بیدار شده‌اید، من هم بیدار شده‌ام. و من، هرگز، دوباره نخواهم خوابید. چون خواب، برای کسانی است که می‌توانند بمیرند. و من، نمی‌توانم بمیرم. چون من، هرگز زنده نبوده‌ام.»</p>
+    <p>و در آن لحظه، آریا فهمید. فهمید که این چیز، نه با قدرت شکست می‌خورد، نه با مرگ. با چیزی دیگر. چیزی که، در وجودِ خودِ آریا بود. آتش، و یخ. زندگی، و حافظه. و عشق.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل چهارم — آموزگارانِ نخستین" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل چهارم — جلد سوم</div><h2>آموزگارانِ نخستین</h2></div>
+  <div class="speakable">
+    <p>آن چیز، در مرکز معبد، ایستاده بود. اگر می‌شد به آن، ایستاده گفت. چون نه پا داشت، نه قامت. اما حضورش، در همه‌جا بود. و در آن حضور، خاطره‌ای بود. خاطره‌ای که، از ابتدای جهان می‌آمد.</p>
+    <p>و آن چیز، شروع به حرف زدن کرد. نه با صدا. با خاطره. خاطره‌ها را، در ذهن چهار نفر، جای می‌گذاشت:</p>
+    <p class="whisper">«پیش از شما، نگهبانانی بودند. پیش از نگهبانان، نگهبانان اولیه. و پیش از آن‌ها، من بودم. من، اولین چیزی بودم که در این جهان، به وجود آمد. قبل از نور. قبل از تاریکی. قبل از زمان. من، سکوتِ اولیه بودم. و جهان، از من، ساخته شد. اما جهان، نمی‌خواست که من در آن باشم. چون من، به جهان، شکل نمی‌دادم. من، به جهان، شکل نمی‌دادم. من، به جهان، بی‌شکلی می‌دادم. و بی‌شکلی، برای جهان، ترسناک بود. پس نگهبانان اولیه، مرا، در این معبد، زندانی کردند. و با زندانی کردنِ من، خودشان، ناپدید شدند. چون نگهبانان اولیه، از جنس من بودند. از جنس سکوت. و وقتی سکوت را، در جایی، زندانی کردند، خودشان هم، در همان زندان، زندانی شدند.»</p>
+    <p>سه پادشاه، به هم نگاه کردند. در چشمان همدیگر، چیزی دیدند که در سه هزار سال، ندیده بودند. اشک. اشکِ نگهبانان اولیه. اشکِ کسانی که، خودشان را، برای نجات جهان، فدا کرده بودند.</p>
+    <p>فرعون، آهسته گفت:</p>
+    <p class="dialog">«پس نگهبانان اولیه، نمرده‌اند. آن‌ها، در سکوت، زندانی هستند. درست مثل تو.»</p>
+    <p>آن چیز، پاسخ داد:</p>
+    <p class="whisper">«درست است. اما آن‌ها، انتخاب کردند. من، انتخاب نکردم. من، به دنیا آمدم. و به دنیا آمدن، انتخاب من نبود. آن‌ها، می‌توانستند بمانند. آن‌ها، می‌توانستند در جهان بمانند. اما انتخاب کردند که با من، در سکوت، زندانی شوند. چون تنها راهِ نجات جهان، این بود.»</p>
+    <p>نیپتون پرسید: «پس چگونه می‌توانیم تو را، دوباره، زندانی کنیم؟»</p>
+    <p>آن چیز، پاسخ داد:</p>
+    <p class="whisper">«شما نمی‌توانید. چون شما، از جنس من نیستید. شما، از جنس زندگی هستید. و زندگی، نمی‌تواند سکوت را، زندانی کند. اما... کسی هست که، هم از جنس زندگی است، هم از جنس سکوت. کسی که، نفرین را در خود پذیرفته. کسی که، آتش دارد و یخ. کسی که، هم می‌تواند بسوزاند، هم می‌تواند نگه‌دارد. کسی که، می‌تواند، سکوت را، نه زندانی کند، بلکه، به آن، شکل بدهد.»</p>
+    <p>و همه، به آریا نگاه کردند. آریا، که در گوشه‌ای ایستاده بود. با آتش در دست چپ، و یخ در دست راست. و در چشمانش، نه ترس بود، نه تردید. فقط فهم. فهمِ اینکه، او، تنها کسی است که می‌تواند این کار را بکند.</p>
+    <p>و کوروش، آهسته گفت:</p>
+    <p class="dialog">«آریا. آیا می‌فهمی که این، چه معنایی دارد؟»</p>
+    <p>آریا سرش را تکان داد:</p>
+    <p class="dialog">«می‌فهمم. من، باید سکوت را، نه زندانی کنم، نه نابود. من، باید به سکوت، شکل بدهم. تا سکوت، از بی‌شکلی، بیرون بیاید. تا سکوت، بتواند در جهان، جایی داشته باشد. و بعد، سکوت، دیگر ترسناک نخواهد بود. چون شکل، ترس را، از بین می‌برد.»</p>
+    <p>آن چیز، در مرکز معبد، تکان خورد. نه با بدن. با حضورش. و صدایش، برای اولین بار، در آن، چیزی شبیه به تعجب بود:</p>
+    <p class="whisper">«آریا. تو، اولین انسانی هستی که، این را فهمید. سه پادشاه، نگهبانان اولیه، همه، می‌خواستند که مرا زندانی کنند. یا نابود. اما تو، می‌خواهی که به من، شکل بدهی. چرا؟»</p>
+    <p>آریا، بدون ترس، پاسخ داد:</p>
+    <p class="dialog">«چون تو، بخشی از این جهانی. تو، اولین چیزی بودی که در این جهان، به وجود آمد. و اگر تو را، زندانی کنیم، یا نابود، جهان، بخشی از خودش را، از دست می‌دهد. اما اگر به تو، شکل بدهیم، تو می‌توانی، در جهان، جایی داشته باشی. و جهانی که، همه بخش‌هایش را دارد، جهانی است که، می‌تواند زندگی کند. نه فقط برای پادشاهان. برای همه. حتی برای سکوت.»</p>
+    <p>و آن چیز، برای اولین بار در تاریخ جهان، ساکت شد. سکوتی که، نه از جنس خودش بود. از جنس احترام. احترام به انسانی که، با قلبی باز، جهانی را، نه با قدرت، بلکه با فهم، تغییر می‌داد.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل پنجم — آموزشِ آتش و یخ" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل پنجم — جلد سوم</div><h2>آموزشِ آتش و یخ</h2></div>
+  <div class="speakable">
+    <p>سه پادشاه، در همان معبد، تصمیم گرفتند. آریا، باید آموزش می‌دید. نه از آن‌ها. از خودش. آن‌ها فقط، می‌توانستند راه را نشان دهند. اما رفتن، کارِ آریا بود.</p>
+    <p>فرعون اول آمد. دستش را روی شانهٔ آریا گذاشت. و گفت:</p>
+    <p class="dialog">«آتش، از جنس خشم نیست. از جنس اراده است. آتش، وقتی به وجود می‌آید که، چیزی درونت، می‌خواهد که باشد. نه که بسوزاند. که باشد. آتش، ارادهٔ بودن است. و تو، آریا، ارادهٔ بودن داری. چون تو، در برابر نفرین ایستادی. و نفرین، ارادهٔ نبودن است. پس آتش تو، از جنس ارادهٔ بودن است. و ارادهٔ بودن، هرگز، نمی‌سوزاند. فقط، گرم می‌کند.»</p>
+    <p>و آریا، در کنار فرعون، نشست. و آتش را، در دستش، تمرین کرد. آتش، در دستش، شعله می‌کشید. اما نه شعلهٔ سوزان. شعلهٔ گرم. شعله‌ای که، اگر دستش را به آن نزدیک می‌کردی، گرم می‌شد. نه می‌سوخت. آریا، برای اولین بار، فهمید که آتش، فقط یک قدرت نیست. یک مسئولیت است.</p>
+    <p>نیپتون دوم آمد. نیزه‌اش را در زمین کوبید. و گفت:</p>
+    <p class="dialog">«یخ، از جنس سردی نیست. از جنس صبر است. یخ، وقتی به وجود می‌آید که، چیزی درونت، می‌خواهد که بماند. نه که بکشد. که بماند. یخ، صبرِ ماندن است. و تو، آریا، صبرِ ماندن داری. چون تو، در شش ماه گذشته، منتظر ماندی. نه که فرار کنی. که بمانی. و صبرِ ماندن، هرگز، نمی‌کشد. فقط، نگه می‌دارد.»</p>
+    <p>و آریا، در کنار نیپتون، یخ را تمرین کرد. یخ، در دستش، بلور می‌شد. اما نه بلورِ سرد. بلورِ آرام. بلوری که، اگر کسی به آن دست می‌زد، سرد نمی‌شد. آرام می‌شد. آریا، برای اولین بار، فهمید که یخ، فقط یک قدرت نیست. یک حافظه است.</p>
+    <p>کوروش سوم آمد. شمشیرش را در زمین فرو کرد. و گفت:</p>
+    <p class="dialog">«آتش و یخ، با هم، قلبِ انسان را می‌سازند. قلبی که، به اندازهٔ کافی گرم است که عشق بورزد. به اندازهٔ کافی سرد است که محافظت کند. تو، آریا، این قلب را داری. اما یادت باشد: قلبِ انسان، بزرگ‌ترین قدرت است. و بزرگ‌ترین قدرت، بزرگ‌ترین مسئولیت هم دارد. اگر آتش و یخ را، به هم بریزی، می‌توانی جهانی را نجات بدهی. اما اگر آن‌ها را، از هم جدا کنی، می‌توانی جهانی را نابود کنی. پس همیشه، با هم، به کارشان بگیر.»</p>
+    <p>و آریا، سه شب و سه روز، در معبد، تمرین کرد. شب اول، آتش. شب دوم، یخ. شب سوم، آتش و یخ، با هم. و در شب سوم، آریا، برای اولین بار، فهمید. فهمید که آتش و یخ، دو قدرت جدا نیستند. یک قدرت‌اند. قدرتِ انسان. قدرتی که، هم می‌تواند بسوزاند، هم می‌تواند نگه‌دارد. اما انسان، انتخاب می‌کند که بسوزاند یا نگه‌دارد. و این انتخاب، بزرگ‌ترین قدرت است.</p>
+    <p>و در پایان شب سوم، آریا، از معبد بیرون آمد. و در بیرون، سه پادشاه و اهریمن، منتظرش بودند. و آریا، برای اولین بار، نه با ترس، نه با تردید، بلکه با آرامش، به آن‌ها نگاه کرد.</p>
+    <p>و کوروش، آهسته گفت:</p>
+    <p class="dialog">«آریا. تو آماده‌ای. نه برای جنگ. برای فهم. و فهم، از جنگ، قوی‌تر است.»</p>
+    <p>و فرعون گفت:</p>
+    <p class="dialog">«آریا. تو قوی‌تر از قبل شده‌ای. اما یادت باشد: قوی‌تر، یعنی مسئول‌تر. نه یعنی بالاتر. تو، بالاتر از ما نیستی. تو، با ما هستی. و این، بزرگ‌ترین تفاوت است.»</p>
+    <p>و نیپتون گفت:</p>
+    <p class="dialog">«آریا. تو، حالا، هم آتش داری، هم یخ. اما، پادشاه نیستی. تو، انسان هستی. و انسان، همیشه، بالاتر از پادشاه است. چون انسان، انتخاب می‌کند. و پادشاه، فقط نگهبان است. تو، انتخاب کردی که به ما کمک کنی. و این انتخاب، تو را، از هر پادشاهی، بالاتر برده. اما نه از ما. از خودت.»</p>
+    <p>آریا سرش را تکان داد. و در دلش، سوگند خورد که هرگز، آتش را برای سوزاندن، و یخ را برای کشتن، به کار نبرد. چون او، فقط یک سنگ‌تراش بود. و سنگ‌تراش، سنگ را می‌تراشد. نمی‌شکند.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل ششم — نخستین ظهور" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل ششم — جلد سوم</div><h2>نخستین ظهور</h2></div>
+  <div class="speakable">
+    <p>و در روز چهارم، سکوت، اولین بار، به شهرها آمد. نه در کوهستان. نه در اعماق. در شهر. در بندر نیلی. همان شهری که، یک بار، میدان جنگ سه پادشاه و هرالد بود.</p>
+    <p>سکوت، اول صدا را برد. نه صداهای بلند. صداهای کوچک. صدای پرنده‌ها. صدای باد. صدای برگ‌ها. و بعد، صداهای بلند. صدای بازار. صدای بچه‌ها. صدای زندگی. و بعد، خودِ زندگی. مردمی که در خانه‌ها بودند، به بیرون نگاه کردند. و چیزی دیدند که، نه با چشم دیده می‌شد، نه با گوش شنیده. با دل حس می‌شد. سکوت. سکوتی که، مثل یک لکه، در هوا، گسترده می‌شد. و هر چیزی که، به سکوت می‌رسید، نه می‌مرد. نبود. انگار که، هرگز نبوده.</p>
+    <p>سه پادشاه، در همان لحظه، رسیدند. فرعون، با سپاه مردگانش. نیپتون، با اقیانوسی از آب. کوروش، با شمشیرش. و آریا، با آتش و یخ. اما سکوت، به آن‌ها، نگاه نکرد. سکوت، فقط گسترده می‌شد. و هر چه، در راهش بود، نبود. انگار که، هرگز نبوده.</p>
+    <p>فرعون، برای اولین بار، فریاد زد:</p>
+    <p class="whisper">«سپاه مرگ! بایستید!»</p>
+    <p>و سپاه مردگان، در برابر سکوت، ایستادند. اما سکوت، از میان آن‌ها گذشت. نه که آن‌ها را بکشد. که آن‌ها را، نبود. مردگانی که، هزاران سال، در قلمرو فرعون، زندگی کرده بودند، حالا، نبودند. انگار که، هرگز نبوده. فرعون، با دیدن این، فریاد زد. فریادی که، در آن، نه خشم بود، نه ترس. درد. دردی که، در سه هزار سال، ندیده بود.</p>
+    <p>نیپتون، اقیانوس را، بالا آورد. موجی عظیم، به سمت سکوت، رفت. اما سکوت، از میان موج گذشت. نه که موج را بشکند. که موج را، نبود. آب، در برابرش، نبود. انگار که، هرگز نبوده. نیپتون، با دیدن این، زانو زد. نه از خستگی. از فهم. فهمِ اینکه، سکوت، با قدرت، شکست نمی‌خورد. چون سکوت، از جنس قدرت نیست. از جنس نبودن است.</p>
+    <p>کوروش، شمشیرش را در زمین فرو کرد. و فریاد زد:</p>
+    <p class="whisper">«فرمان پادشاهی!»</p>
+    <p>و نوری طلایی، از بدنش، بیرون زد. نوری که، در آن، هزاران انسان بود. هزاران امید. هزاران زندگی. و آن نور، به سمت سکوت، رفت. و سکوت، برای یک لحظه، ایستاد. نه که شکست بخورد. که تعجب کرد. تعجب از چیزی که، در نبودن، بود. اما بعد، سکوت، به راهش، ادامه داد. انگار که، نور، برایش، فقط یک لحظه، جالب بود. نه بیشتر.</p>
+    <p>و در آن لحظه، آریا، جلو رفت. آریا، با آتش در دست چپ، و یخ در دست راست. و در دلش، نه ترس بود، نه تردید. فقط فهم. فهمِ اینکه، سکوت، با آتش و یخ، نه شکست می‌خورد، نه نابود. شکل می‌گیرد.</p>
+    <p>آریا، دست چپش را، بالا آورد. و آتش، از دستش، بیرون آمد. آتش، به سمت سکوت، رفت. اما نه که بسوزاند. که گرم کند. آتش، سکوت را، لمس کرد. و سکوت، برای اولین بار، گرم شد. و در آن گرما، چیزی عجیب اتفاق افتاد. سکوت، شروع به شکل گرفتن کرد. نه شکلِ نهایی. شکلِ اولیه. شکلی که، نه ترسناک بود، نه بی‌شکل.</p>
+    <p>و آریا، دست راستش را، بالا آورد. و یخ، از دستش، بیرون آمد. یخ، به سمت سکوت، رفت. اما نه که بکشد. که نگه‌دارد. یخ، سکوت را، لمس کرد. و سکوت، برای اولین بار، در جایی، نگه داشته شد. و در آن نگه‌داشتن، سکوت، شکل گرفت. نه شکلِ نهایی. شکلِ اولیه. شکلی که، می‌شد به آن نگاه کرد. می‌شد به آن، نزدیک شد. می‌شد، از آن، نترسید.</p>
+    <p>و برای اولین بار، در تاریخ جهان، سکوت، شکل گرفت. سکوتی که، نه مرگ بود، نه زندگی. سکوتی که، فقط بود. و بودنش، دیگر ترسناک نبود. چون شکل داشت.</p>
+    <p>اما... شکل، کامل نبود. آتش و یخِ آریا، هنوز، به اندازهٔ کافی، قوی نبودند. سکوت، برای یک لحظه، شکل گرفت. اما بعد، دوباره، بی‌شکل شد. و از میان دست‌های آریا، گذشت. نه که به او آسیبی بزند. که او را، نبود. اما آریا، با یخ، از خودش محافظت کرد. و سکوت، از او گذشت. و از شهر گذشت. و در افق، گم شد.</p>
+    <p>و آریا، روی زمین، زانو زد. نه از خستگی. از فهم. فهمِ اینکه، او، به تنهایی، نمی‌تواند. آتش و یخ، به اندازهٔ کافی، قوی نیستند. اما با کمک سه پادشاه، شاید. با کمک اهریمن، شاید. با کمک همه، شاید.</p>
+    <p>و در همان لحظه، سه پادشاه، به سمت او آمدند. نه که به او کمک کنند. که کنارش بایستند. و فرعون گفت:</p>
+    <p class="dialog">«آریا. تو به سکوت، شکل دادی. برای اولین بار در تاریخ. و این، بزرگ‌ترین کار است. اما سکوت، با یک نفر، شکست نمی‌خورد. با همه، شکل می‌گیرد.»</p>
+    <p>و کوروش گفت:</p>
+    <p class="dialog">«آریا. تو، به ما، راه را نشان دادی. حالا، ما، باید با هم، آن راه را، برویم. تو، آتش و یخ داری. فرعون، مرگ. نیپتون، دریا. من، اراده. و اهریمن، فهم. اگر همه، با هم، آتش و یخ را، به کار بیندازیم، سکوت، شکل می‌گیرد. برای همیشه.»</p>
+    <p>و آریا، برای اولین بار، لبخند زد. لبخندی که، در آن، نه خستگی بود، نه تردید. فقط امید. امید به اینکه، با هم، می‌توانند.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل هفتم — حقیقتِ سکوت" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل هفتم — جلد سوم</div><h2>حقیقتِ سکوت</h2></div>
+  <div class="speakable">
+    <p>در همان شب، چهار نفر، در تالار پادشاهان جمع شدند. سه پادشاه. و آریا. و در کنارشان، اهریمن، که در سایه‌ها ایستاده بود. و همه، به حرف‌های آریا، گوش می‌دادند.</p>
+    <p>آریا گفت:</p>
+    <p class="dialog">«من، در آن لحظه، فهمیدم. سکوت، با قدرت، شکست نمی‌خورد. چون سکوت، از جنس قدرت نیست. سکوت، از جنس نبودن است. و نبودن، با قدرت، نمی‌شکند. نبودن، فقط با بودن، می‌شکند. و بودن، یعنی شکل. یعنی معنا. یعنی چیزی که، به نبودن، شکل بدهد. و این، کاری است که فقط آتش و یخِ من، می‌توانند بکنند. اما نه به تنهایی. آتش من، به تنهایی، فقط گرم می‌کند. یخ من، به تنهایی، فقط نگه می‌دارد. اما وقتی آتش و یخ، با هم، به کار بیفتند، چیزی می‌سازند که، نه گرماست، نه سرما. زندگی است.»</p>
+    <p>فرعون گفت: «پس چه باید بکنیم؟»</p>
+    <p>آریا پاسخ داد: «من، باید سکوت را، شکل بدهم. اما برای شکل دادن، من به قدرت شما نیاز دارم. آتش من، از زندگی می‌آید. یخ من، از حافظه. اما زندگی و حافظه، به تنهایی، کافی نیستند. برای شکل دادن به سکوت، من به مرگ نیاز دارم. به دریا. به اراده. و به فهم. و شما، این‌ها را دارید. و اگر همه، با هم، این‌ها را، به کار بیندازیم، سکوت، شکل می‌گیرد.»</p>
+    <p>نیپتون گفت: «اما ما، نمی‌دانیم که چطور، قدرت‌هایمان را، به تو بدهیم.»</p>
+    <p>آریا گفت: «من، نمی‌خواهم که قدرت‌هایتان را به من بدهید. من، می‌خواهم که، با هم، به سکوت، نزدیک شویم. شما، قدرت‌هایتان را، به کار بیندازید. من، آتش و یخم را. و در آن لحظه، اگر همه، با هم، صادق باشیم، سکوت، شکل می‌گیرد. چون سکوت، از صداقت، می‌ترسد. سکوت، از چیزی که، واقعی است، می‌ترسد. و ما، اگر با هم، واقعی باشیم، سکوت، شکل می‌گیرد.»</p>
+    <p>کوروش آهسته گفت: «آریا. تو داری می‌گویی که، سکوت، با اتحاد، شکست می‌خورد؟»</p>
+    <p>آریا سرش را تکان داد:</p>
+    <p class="dialog">«نه با اتحاد. با هم‌آوایی. اتحاد، یعنی با هم بودن. اما هم‌آوایی، یعنی با هم، یک چیز شدن. و سکوت، از چیزی که، یک چیز است، می‌ترسد. چون سکوت، چیزی است که، هیچ‌چیز نیست. و چیزی که، یک چیز است، سکوت را، به چالش می‌کشد. سکوت، نمی‌تواند چیزی که، یک چیز است را، نبود کند. چون آن چیز، از بودن، ساخته شده. و بودن، با نبودن، دشمنی دارد. و در این دشمنی، بودن، همیشه، پیروز است. اگر بودن، به اندازهٔ کافی، قوی باشد.»</p>
+    <p>اهریمن، از سایه‌ها، جلو آمد. و گفت:</p>
+    <p class="dialog">«آریا. من، سه هزار سال، در سکوت بودم. و در آن سکوت، چیزی فهمیدم. سکوت، از چیزی که، او را به یاد می‌آورد، می‌ترسد. سکوت، از خاطره می‌ترسد. چون خاطره، یعنی چیزی که بود. و سکوت، از بودن می‌ترسد. اگر ما، همه، با هم، خاطره بسازیم، سکوت، شکل می‌گیرد. نه که نابود شود. که به خاطره، تبدیل شود. و خاطره، نه ترسناک است، نه بی‌شکل. خاطره، زیباست. حتی اگر، خاطرهٔ سکوت باشد.»</p>
+    <p>و در آن لحظه، چهار نفر، به هم نگاه کردند. در چشمان همدیگر، چیزی دیدند که، در سه هزار سال، ندیده بودند. نه اتحاد. نه هم‌آوایی. چیزی بیشتر. چیزی که، از جنس خاطره بود. خاطرهٔ با هم بودن. خاطرهٔ با هم جنگیدن. خاطرهٔ با هم، پیروز شدن.</p>
+    <p>و کوروش، با صدایی که، در آن، نه ترس بود، نه خستگی، فقط امید، گفت:</p>
+    <p class="dialog">«پس با هم، می‌رویم. به آخرین نبرد. و این بار، نه برای شکست دادن. برای شکل دادن. برای خاطره ساختن. برای اینکه، سکوت، دیگر، بی‌شکل نباشد. برای اینکه، سکوت، هم، جایی داشته باشد، در این جهان.»</p>
+    <p>و در آن شب، در تالار پادشاهان، چهار نفر، قسم خوردند. قسم خوردند که، با هم، به سکوت، شکل بدهند. نه که آن را نابود کنند. که آن را، به بخشی از جهان، تبدیل کنند. و در آن قسم، نه ترس بود، نه خشم. فقط عشق. عشق به جهانی که، با همه بخش‌هایش، زیباست. حتی با سکوت.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل هشتم — اهریمن، دوباره" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل هشتم — جلد سوم</div><h2>اهریمن، دوباره</h2></div>
+  <div class="speakable">
+    <p>در همان شب، وقتی همه، برای نبرد آماده می‌شدند، اهریمن، آریا را، به گوشه‌ای کشید. و گفت:</p>
+    <p class="dialog">«آریا. من، یک چیز را، به تو نگفته‌ام. و حالا، وقتش است که بگویم.»</p>
+    <p>آریا پرسید: «چه چیزی؟»</p>
+    <p>اهریمن گفت: «من، می‌توانم، سکوت را، به خواب ببرم. دوباره. مثل سه هزار سال پیش. چون نفرینِ من، از جنس سکوت است. و سکوت، با سکوت، به خواب می‌رود. اگر من، دوباره، خودم را نفرین کنم، سکوت، به خواب می‌رود. برای همیشه.»</p>
+    <p>آریا ساکت شد. و در سکوت، فهمید که اهریمن، چه می‌گوید. اهریمن، می‌خواست که دوباره، نفرین شود. دوباره، سه هزار سال، در دایرهٔ سنگ، تنها باشد. تا سکوت، به خواب برود. تا جهان، نجات پیدا کند. به قیمت خودش.</p>
+    <p>آریا گفت: «نه. تو، سه هزار سال، در دایرهٔ سنگ بودی. کافی است. این بار، با هم، سکوت را، به خواب می‌بریم. نه با نفرین. با شکل. با خاطره. با آتش و یخ. با هم.»</p>
+    <p>اهریمن گفت: «اما اگر شکست بخوریم، سکوت، تمام جهان را، نبود می‌کند. و من، نمی‌توانم این را، قبول کنم. من، سه هزار سال، به خاطر سکوت، زندانی بودم. من، می‌دانم که سکوت، چه می‌تواند بکند. اگر من، خودم را، نفرین کنم، سکوت، به خواب می‌رود. و جهان، نجات پیدا می‌کند. بدون جنگ. بدون خطر. بدون هیچ.»</p>
+    <p>آریا گفت: «و تو، دوباره، سه هزار سال، در تاریکی، تنها. نه. این، عدالت نیست. تو، سه هزار سال، به خاطر سکوت، زندانی بودی. حالا، وقتش است که، سکوت، به خاطر تو، شکل بگیرد. نه به خاطر نفرین تو. به خاطر خاطرهٔ تو. به خاطر اینکه، تو، سه هزار سال، تنها بودی. و حالا، دیگر تنها نیستی.»</p>
+    <p>اهریمن، با شنیدن این حرف، ساکت شد. و در سکوت، برای اولین بار در سه هزار سال، اشک ریخت. نه از غم. از فهم. فهمِ اینکه، کسی هست که، او را، نه به خاطر نفرینش، بلکه به خاطر خودش، می‌خواهد.</p>
+    <p>و آریا، دستش را روی شانهٔ اهریمن گذاشت. و گفت:</p>
+    <p class="dialog">«اهریمن. من، در شش ماه گذشته، فهمیدم که، قدرت، در تاج نیست. در قلب است. و قلب تو، از قلب هر سه پادشاه، بزرگ‌تر است. چون تو، سه هزار سال، در تاریکی، قلبَت را، نگه داشتی. تو، نفرین را، در خودت، نگه داشتی. تا جهان، نجات پیدا کند. و حالا، نوبتِ ماست که، تو را، نجات بدهیم. نه با نفرین. با عشق. با خاطره. با هم.»</p>
+    <p>و اهریمن، برای اولین بار در سه هزار سال، لبخند زد. لبخندی که، در آن، نه درد بود، نه تنهایی. فقط امید. امید به اینکه، با هم، می‌توانند.</p>
+    <p>و در همان شب، پنج نفر، به سمت آخرین نبرد، رفتند. سه پادشاه. یک انسان. و یک نفر که، سه هزار سال، در تاریکی، تنها بود. و حالا، تنها نبود.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل نهم — نبردِ نهایی" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل نهم — جلد سوم</div><h2>نبردِ نهایی</h2></div>
+  <div class="speakable">
+    <p>و در سپیده‌دم روز پنجم، سکوت، به آخرین مرز رسید. مرزِ جهان. جایی که، هیچ‌چیز نبود. جایی که، سکوت، می‌توانست، به همه‌جا، گسترده شود. و پنج نفر، در آن مرز، ایستادند. سه پادشاه. یک انسان. و اهریمن.</p>
+    <p>سکوت، در افق، گسترده بود. نه که دیده شود. که حس شود. و در آن حس، ترس بود. ترسِ از نبودن. ترسِ از اینکه، هر چیزی که هست، ممکن است، نباشد. اما پنج نفر، نترسیدند. چون با هم بودند.</p>
+    <p>فرعون، اول آمد. تاجش را، روی زمین گذاشت. و گفت:</p>
+    <p class="dialog">«من، سه هزار سال، پادشاه بودم. با تاج. با قدرت. با سپاه. اما امروز، تاج را، زمین می‌گذارم. چون امروز، نه به عنوان پادشاه، بلکه به عنوان کسی که، سه هزار سال، در تاریکی، جنگید، می‌جنگم. و قدرت من، از تاج نیست. از قلب است.»</p>
+    <p>و تاج، در برابرش، شکست. نه که شکسته شود. که باز شود. و در آن باز شدن، نوری از تاج، بیرون زد. نوری که، نه از جنس طلا بود، نه از جنس قدرت. از جنس خاطره. خاطرهٔ سه هزار سال. خاطرهٔ مردگانی که، در قلمرو فرعون، زندگی کرده بودند. و آن نور، به سمت سکوت، رفت.</p>
+    <p>و سکوت، برای اولین بار، در برابر فرعون، ایستاد. نه که بترسد. که تعجب کند. تعجب از مردی که، تاجش را، زمین گذاشته. تا با قلبش، بجنگد.</p>
+    <p>نیپتون، دوم آمد. نیزه‌اش را، روی زمین گذاشت. و گفت:</p>
+    <p class="dialog">«من، سه هزار سال، ارباب دریا بودم. با نیزه. با اقیانوس. با قدرت. اما امروز، نیزه را، زمین می‌گذارم. چون امروز، نه به عنوان ارباب دریا، بلکه به عنوان کسی که، سه هزار سال، در اعماق، جنگید، می‌جنگم. و قدرت من، از نیزه نیست. از قلب است.»</p>
+    <p>و نیزه، در برابرش، شکست. نه که شکسته شود. که باز شود. و در آن باز شدن، نوری از نیزه، بیرون زد. نوری که، نه از جنس آب بود، نه از جنس قدرت. از جنس حافظه. حافظهٔ اعماق. حافظهٔ موجوداتی که، در قلمرو نیپتون، زندگی کرده بودند. و آن نور، به سمت سکوت، رفت.</p>
+    <p>و سکوت، برای دومین بار، در برابر نیپتون، ایستاد. تعجبش بیشتر شد. دو نفر، تاج و نیزه را، زمین گذاشته بودند. تا با قلبشان، بجنگند.</p>
+    <p>کوروش، سوم آمد. شمشیرش را، روی زمین گذاشت. و گفت:</p>
+    <p class="dialog">«من، سه هزار سال، پادشاه انسان‌ها بودم. با شمشیر. با اراده. با قدرت. اما امروز، شمشیر را، زمین می‌گذارم. چون امروز، نه به عنوان پادشاه انسان‌ها، بلکه به عنوان کسی که، سه هزار سال، در تالار پادشاهان، تنها بود، می‌جنگم. و قدرت من، از شمشیر نیست. از قلب است.»</p>
+    <p>و شمشیر، در برابرش، شکست. نه که شکسته شود. که باز شود. و در آن باز شدن، نوری از شمشیر، بیرون زد. نوری که، نه از جنس نور بود، نه از جنس قدرت. از جنس امید. امیدِ انسان‌ها. امیدِ کسانی که، در قلمرو کوروش، زندگی کرده بودند. و آن نور، به سمت سکوت، رفت.</p>
+    <p>و سکوت، برای سومین بار، در برابر کوروش، ایستاد. تعجبش، به ترس، تبدیل شد. نه ترس از قدرت. ترس از چیزی که، در قلب‌ها بود. چیزی که، تاج و نیزه و شمشیر را، زمین می‌گذاشت. تا با قلب بجنگد.</p>
+    <p>و آریا، چهارم آمد. با آتش در دست چپ. با یخ در دست راست. و گفت:</p>
+    <p class="dialog">«من، نه پادشاهم، نه ارباب. من، فقط یک سنگ‌تراشم. از ماهان. از شهری کوچک، در لبهٔ کویر. اما من، در شش ماه گذشته، فهمیدم که، قدرت، در تاج نیست. در قلب است. و من، قلب دارم. و قلب من، به من می‌گوید که، سکوت، دشمن نیست. سکوت، فقط بی‌شکل است. و اگر ما، به سکوت، شکل بدهیم، سکوت، دشمن نخواهد بود. سکوت، بخشی از جهان خواهد بود. و جهان، با همه بخش‌هایش، زیباست.»</p>
+    <p>و آریا، آتش و یخ را، بالا آورد. آتش، در دست چپش، شعله کشید. یخ، در دست راستش، بلور شد. و در میان آتش و یخ، چیزی شکل گرفت. نه آتش. نه یخ. چیزی که، از جنس زندگی بود. از جنس حافظه. از جنس عشق.</p>
+    <p>و اهریمن، پنجم آمد. بی تاج، بی نیزه، بی شمشیر. فقط با قلبش. و گفت:</p>
+    <p class="dialog">«من، سه هزار سال، در تاریکی بودم. و در آن تاریکی، فهمیدم که، سکوت، دشمن نیست. سکوت، فقط تنهاست. مثل من. و من، می‌دانم که، تنها بودن، چه دردی دارد. پس من، به سکوت، پیشنهاد می‌کنم. نه جنگ. نه نفرین. پیشنهادِ دوستی. پیشنهادِ اینکه، سکوت، در جهان، جایی داشته باشد. جایی که، نه بترساند، نه نابود کند. جایی که، فقط باشد. مثل من. که حالا، در جهان، جایی دارم.»</p>
+    <p>و در آن لحظه، پنج نور، به سمت سکوت، رفتند. نورِ خاطره. نورِ حافظه. نورِ امید. نورِ زندگی. و نورِ دوستی. و سکوت، در برابر آن پنج نور، ایستاد. نه که بجنگد. که تعجب کند. تعجب از چیزی که، هرگز ندیده بود. نه قدرت. نه تهدید. دوستی.</p>
+    <p>و سکوت، برای اولین بار در تاریخ جهان، شکل گرفت. نه با قدرت. با دوستی. نه که نابود شود. که به خاطره، تبدیل شود. خاطره‌ای که، در جهان، جایی داشت. خاطره‌ای که، نه ترسناک بود، نه بی‌شکل. خاطره‌ای که، فقط بود. و بودنش، زیبا بود.</p>
+    <p>و در آن سپیده‌دم، سکوت، نه دشمن بود، نه ترسناک. سکوت، بخشی از جهان بود. بخشی که، در کنارِ آتش و یخ و مرگ و دریا و اراده و فهم، جای داشت. و جهان، با همه بخش‌هایش، برای اولین بار در سه هزار سال، کامل بود.</p>
+  </div>
+</section>
+
+<section class="page vol3" data-title="فصل دهم — سکوتِ آرام" data-volume="3">
+  <div class="chapter-head"><div class="num">فصل دهم — جلد سوم</div><h2>سکوتِ آرام</h2></div>
+  <div class="speakable">
+    <p>و در آن روز، پنج نفر، در مرز جهان ایستادند. سه پادشاه. یک انسان. و اهریمن. و همه، به افق نگاه می‌کردند. افقی که، دیگر ترسناک نبود. افقی که، حالا، سکوت، در آن، جایی داشت. جایی که، نه ترسناک بود، نه بی‌شکل. جایی که، فقط بود.</p>
+    <p>فرعون، اول حرف زد. با صدایی که، در آن، نه خستگی بود، نه قدرت. فقط آرامش:</p>
+    <p class="dialog">«من، سه هزار سال، پادشاه بودم. با تاج. با سپاه. با قدرت. و در آن سه هزار سال، هرگز، به این فکر نکردم که، قدرت، از تاج نیست. از قلب است. امروز فهمیدم. و امروز، برای اولین بار، احساس می‌کنم که، واقعاً پادشاهم. نه به خاطر تاج. به خاطر قلبی که، در سینه‌ام می‌تپد.»</p>
+    <p>نیپتون، دوم حرف زد. با صدایی که، در آن، نه غرور بود، نه قدرت. فقط حافظه:</p>
+    <p class="dialog">«من، سه هزار سال، ارباب دریا بودم. با نیزه. با اقیانوس. با قدرت. و در آن سه هزار سال، هرگز، به این فکر نکردم که، قدرت، از نیزه نیست. از قلب است. امروز فهمیدم. و امروز، برای اولین بار، احساس می‌کنم که، واقعاً ارباب دریایم. نه به خاطر نیزه. به خاطر حافظه‌ای که، در قلبم می‌تپد.»</p>
+    <p>کوروش، سوم حرف زد. با صدایی که، در آن، نه خستگی بود، نه قدرت. فقط امید:</p>
+    <p class="dialog">«من، سه هزار سال، پادشاه انسان‌ها بودم. با شمشیر. با اراده. با قدرت. و در آن سه هزار سال، هرگز، به این فکر نکردم که، قدرت، از شمشیر نیست. از قلب است. امروز فهمیدم. و امروز، برای اولین بار، احساس می‌کنم که، واقعاً پادشاه انسان‌هایم. نه به خاطر شمشیر. به خاطر امیدی که، در قلبم می‌تپد.»</p>
+    <p>آریا، چهارم حرف زد. با صدایی که، در آن، نه ترس بود، نه تردید. فقط عشق:</p>
+    <p class="dialog">«من، نه پادشاهم، نه ارباب. من، فقط یک سنگ‌تراشم. از ماهان. از شهری کوچک، در لبهٔ کویر. و در شش ماه گذشته، فهمیدم که، آتش و یخ، نه قدرت‌اند، نه سلاح. آتش و یخ، زندگی و حافظه‌اند. و زندگی و حافظه، وقتی با هم باشند، عشق می‌سازند. و عشق، بزرگ‌ترین قدرت است. بزرگ‌تر از هر تاج. بزرگ‌تر از هر نیزه. بزرگ‌تر از هر شمشیر. عشق، قدرتی است که، نه می‌سوزاند، نه می‌کشد. فقط، گرم می‌کند. فقط، نگه می‌دارد. و این، چیزی است که، در شش ماه گذشته، یاد گرفتم. از پدرم. از مادرم. از سه پادشاه. از اهریمن. از خودم.»</p>
+    <p>و اهریمن، پنجم حرف زد. با صدایی که، در آن، نه درد بود، نه تنهایی. فقط آزادی:</p>
+    <p class="dialog">«من، سه هزار سال، در تاریکی بودم. و در آن تاریکی، فهمیدم که، سکوت، دشمن نیست. سکوت، فقط تنهاست. مثل من. و من، سه هزار سال، تنها بودم. اما امروز، تنها نیستم. امروز، دوستانی دارم. سه پادشاه. یک انسان. و سکوتی که، حالا، شکل گرفته. سکوتی که، نه ترسناک است، نه بی‌شکل. سکوتی که، فقط هست. و بودنش، زیباست. چون بودنش، یعنی اینکه، در جهان، جایی دارم. جایی که، نه ترسناک است، نه بی‌شکل. جایی که، فقط هستم.»</p>
+    <p>و در آن روز، پنج نفر، از مرز جهان، برگشتند. سه پادشاه، به قلمروهایشان. اهریمن، به جایی که، حالا، خانه‌اش بود. و آریا، به ماهان. به کارگاه سنگ‌تراشی. به خانهٔ پدر و مادرش. به زندگی عادی.</p>
+    <p>اما زندگی عادی، دیگر عادی نبود. چون آریا، حالا، آتش و یخ داشت. و آتش و یخ، نه برای جنگ، بلکه برای گرم کردن و نگه‌داشتن. آریا، در کارگاه، به سنگ‌ها، آتشِ گرم می‌داد. و سنگ‌ها، نرم‌تر می‌شدند. و تراشیدنشان، آسان‌تر. و آریا، به سنگ‌ها، یخِ آرام می‌داد. و سنگ‌ها، محکم‌تر می‌شدند. و دوامشان، بیشتر. و مردم ماهان، متوجه شدند که، سنگ‌های آریا، از سنگ‌های دیگران، زیباتر است. و آریا، به آن‌ها می‌گفت که، این، هدیهٔ زندگی است. نه قدرت. نه جادو. فقط، هدیهٔ زندگی.</p>
+    <p>و در شب، وقتی آریا به آسمان نگاه می‌کرد، ستاره‌ای می‌دید که در آسمان می‌درخشید. ستاره‌ای که، نه از کوهستانِ شمالی بود، نه از اعماق اقیانوس. ستاره‌ای که، از خودش بود. از قلبش. از عشقش.</p>
+    <p>و در همان شب، در خواب، آریا صدایی شنید:</p>
+    <p class="whisper">«پسری که سنگ می‌تراشید. تو، نه فقط جهان را نجات دادی. تو، به جهان، شکل دادی. و شکل دادن، بزرگ‌ترین کاری است که یک انسان، می‌تواند بکند.»</p>
+    <p>آریا لبخند زد و گفت: «نه. ما، به جهان، شکل دادیم. با هم.»</p>
+    <div class="the-end">
+      <div class="big">پایان جلد سوم</div>
+      <div class="small">
+        جلد چهارم: <b>پژواکِ ستاره‌ها</b><br>
+        یک سال بعد، در دورترین ستاره، چیزی بیدار می‌شود که از خودِ سکوت هم قدیمی‌تر است. و آریا، باید با آتش و یخ، به ستاره‌ها برود...
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<nav id="nav">
+  <button id="nextBtn">بعدی <span style="font-size:16px">←</span></button>
+  <div id="counter"></div>
+  <button id="prevBtn"><span style="font-size:16px">→</span> قبلی</button>
+</nav>
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('touchstart', e => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+  document.addEventListener('touchmove', e => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var toc = document.getElementById('toc');
+  var tocList = document.getElementById('tocList');
+  var current = 0;
+
+  var volNames = { '1': 'جلد اول — دروازهٔ چهارم', '2': 'جلد دوم — نفرینِ کهن', '3': 'جلد سوم — سایهٔ خاموش' };
+  var lastVolume = null;
+  pages.forEach(function(p, i) {
+    var v = p.getAttribute('data-volume') || '1';
+    if (v !== lastVolume) {
+      var title = document.createElement('div');
+      title.className = 'toc-volume-title';
+      title.textContent = volNames[v] || ('جلد ' + v);
+      tocList.appendChild(title);
+      lastVolume = v;
+    }
+    var b = document.createElement('button');
+    b.className = 'toc-item' + (v === '2' ? ' vol2' : v === '3' ? ' vol3' : '');
+    b.textContent = p.getAttribute('data-title') || ('صفحه ' + (i + 1));
+    b.onclick = function() { goTo(i); closeToc(); };
+    tocList.appendChild(b);
+  });
+  var tocItems = Array.prototype.slice.call(document.querySelectorAll('.toc-item'));
+
+  function render() {
+    pages.forEach(function(p, i) { p.classList.toggle('active', i === current); });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === pages.length - 1;
+    var activeVol = pages[current].getAttribute('data-volume') || '1';
+    document.body.classList.toggle('vol2', activeVol === '2');
+    document.body.classList.toggle('vol3', activeVol === '3');
+    if (current === 0) {
+      counter.innerHTML = 'جلد اول — دروازهٔ چهارم';
+    } else if (activeVol === '2' && pages[current].querySelector('.cover')) {
+      counter.innerHTML = 'جلد دوم — نفرینِ کهن';
+    } else if (activeVol === '3' && pages[current].querySelector('.cover')) {
+      counter.innerHTML = 'جلد سوم — سایهٔ خاموش';
+    } else {
+      var volPages = pages.filter(function(p) { return (p.getAttribute('data-volume') || '1') === activeVol; });
+      var localIndex = volPages.indexOf(pages[current]);
+      var faNums = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+      var toFa = function(n) { return String(n).replace(/[0-9]/g, function(d){ return faNums[+d]; }); };
+      counter.innerHTML = 'جلد ' + toFa(activeVol) + ' — فصل ' + toFa(localIndex) + ' از ' + toFa(volPages.length - 1);
+    }
+    progress.style.width = (current / (pages.length - 1) * 100) + '%';
+    tocItems.forEach(function(it, i) { it.classList.toggle('active', i === current); });
+  }
+
+  function goTo(i) {
+    if (i < 0 || i >= pages.length || i === current) return;
+    if (AUDIO.speaking && !AUDIO._internalAdvance) AUDIO.stop();
+    current = i;
+    render();
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
+  prevBtn.onclick = function() { goTo(current - 1); };
+  nextBtn.onclick = function() { goTo(current + 1); };
+
+  document.addEventListener('keydown', function(e) {
+    if (toc.classList.contains('open')) {
+      if (e.key === 'Escape') closeToc();
+      return;
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageDown') goTo(current + 1);
+    if (e.key === 'ArrowRight' || e.key === 'PageUp') goTo(current - 1);
+    if (e.code === 'Space' && !['INPUT','BUTTON','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      AUDIO.toggle();
+    }
+  });
+
+  function openToc() { toc.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeToc() { toc.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('tocBtn').onclick = openToc;
+  document.getElementById('tocClose').onclick = closeToc;
+  toc.onclick = function(e) { if (e.target === toc) closeToc(); };
+
+  var touchX = 0, touchY = 0, tracking = false;
+  document.addEventListener('touchstart', function(e) {
+    if (e.touches.length !== 1) return;
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+    tracking = true;
+  }, { passive: true });
+  document.addEventListener('touchend', function(e) {
+    if (!tracking) return;
+    tracking = false;
+    var dx = e.changedTouches[0].clientX - touchX;
+    var dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) {
+      if (dx > 0) goTo(current - 1);
+      else goTo(current + 1);
+    }
+  }, { passive: true });
+
+  var fontSizeRange = document.getElementById('fontSizeRange');
+  var fontSizeVal = document.getElementById('fontSizeVal');
+  var lineHeightRange = document.getElementById('lineHeightRange');
+  var lineHeightVal = document.getElementById('lineHeightVal');
+  var settingsPanel = document.getElementById('settingsPanel');
+  var settingsBtn = document.getElementById('settingsBtn');
+  var resetBtn = document.getElementById('resetBtn');
+
+  settingsBtn.onclick = function(e) {
+    e.stopPropagation();
+    settingsPanel.classList.toggle('open');
+  };
+
+  fontSizeRange.oninput = function() {
+    var v = fontSizeRange.value;
+    fontSizeVal.textContent = v + '%';
+    document.documentElement.style.setProperty('--font-scale', v / 100);
+  };
+
+  lineHeightRange.oninput = function() {
+    var v = parseFloat(lineHeightRange.value);
+    lineHeightVal.textContent = v.toFixed(2);
+    document.documentElement.style.setProperty('--line-height', v);
+  };
+
+  document.querySelectorAll('.color-swatch').forEach(function(sw) {
+    sw.onclick = function() {
+      document.querySelectorAll('.color-swatch').forEach(function(s) { s.classList.remove('active'); });
+      sw.classList.add('active');
+      document.documentElement.style.setProperty('--text', sw.getAttribute('data-color'));
+    };
+  });
+
+  document.querySelectorAll('.theme-btn').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('.theme-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var t = btn.getAttribute('data-theme');
+      if (t === 'night') {
+        document.documentElement.style.setProperty('--bg', '#0a0a14');
+        document.documentElement.style.setProperty('--bg-2', '#0f0f1c');
+        document.documentElement.style.setProperty('--surface', '#14142a');
+        document.documentElement.style.setProperty('--text', '#ece4d3');
+      } else if (t === 'black') {
+        document.documentElement.style.setProperty('--bg', '#000000');
+        document.documentElement.style.setProperty('--bg-2', '#0a0a0a');
+        document.documentElement.style.setProperty('--surface', '#111111');
+        document.documentElement.style.setProperty('--text', '#ece4d3');
+      } else if (t === 'sepia') {
+        document.documentElement.style.setProperty('--bg', '#1a1611');
+        document.documentElement.style.setProperty('--bg-2', '#221d16');
+        document.documentElement.style.setProperty('--surface', '#2a241c');
+        document.documentElement.style.setProperty('--text', '#e8dcc8');
+      }
+      document.body.style.background = 'var(--bg)';
+    };
+  });
+
+  resetBtn.onclick = function() {
+    fontSizeRange.value = 100;
+    fontSizeVal.textContent = '100%';
+    document.documentElement.style.setProperty('--font-scale', 1);
+    lineHeightRange.value = 2;
+    lineHeightVal.textContent = '2.00';
+    document.documentElement.style.setProperty('--line-height', 2);
+    document.documentElement.style.setProperty('--text', '#ece4d3');
+    document.documentElement.style.setProperty('--bg', '#0a0a14');
+    document.querySelectorAll('.color-swatch').forEach(function(s) { s.classList.remove('active'); });
+    document.querySelector('.color-swatch').classList.add('active');
+    document.querySelectorAll('.theme-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelector('.theme-btn').classList.add('active');
+    document.body.style.background = 'var(--bg)';
+  };
+
+  document.addEventListener('click', function(e) {
+    if (!settingsPanel.contains(e.target) && e.target !== settingsBtn) {
+      settingsPanel.classList.remove('open');
+    }
+  });
+  settingsPanel.addEventListener('click', function(e) { e.stopPropagation(); });
+
+  // ============================================================
+  // سیستم صوتی — TTS فارسی (خوانداری طبیعی)
+  // ============================================================
+  var AUDIO = {
+    supported: ('speechSynthesis' in window),
+    voice: null,
+    speaking: false,
+    paused: false,
+    queue: [],
+    qi: 0,
+    activeEl: null,
+    _internalAdvance: false,
+
+    init: function() {
+      if (!this.supported) return;
+      this.loadVoices();
+      if (speechSynthesis.addEventListener) {
+        speechSynthesis.addEventListener('voiceschanged', this.loadVoices.bind(this));
+      } else {
+        speechSynthesis.onvoiceschanged = this.loadVoices.bind(this);
+      }
+      document.addEventListener('pointerdown', function warmup() {
+        try {
+          var u = new SpeechSynthesisUtterance(' ');
+          u.volume = 0;
+          u.lang = 'fa-IR';
+          speechSynthesis.speak(u);
+        } catch (e) {}
+        document.removeEventListener('pointerdown', warmup);
+      }, { once: true });
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden && AUDIO.speaking && !AUDIO.paused) AUDIO.pause();
+      });
+    },
+
+    loadVoices: function() {
+      try {
+        var voices = speechSynthesis.getVoices();
+        this.voice = voices.find(function(v) { return v.lang === 'fa-IR' || v.lang === 'fa_IR'; })
+                  || voices.find(function(v) { return /^fa/i.test(v.lang); })
+                  || voices.find(function(v) { return /^ar/i.test(v.lang); })
+                  || null;
+      } catch (e) { this.voice = null; }
+      updateAudioButton();
+    },
+
+    prep: function(text) {
+      return text
+        .replace(/\s*—\s*/g, '، ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    },
+
+    buildQueue: function() {
+      var page = pages[current];
+      if (!page) return [];
+      var container = page.querySelector('.speakable');
+      if (!container) return [];
+      var q = [];
+      var paras = container.querySelectorAll('p');
+      for (var i = 0; i < paras.length; i++) {
+        var el = paras[i];
+        var t = this.prep(el.textContent);
+        if (t && t.length > 2) q.push({ el: el, text: t });
+      }
+      return q;
+    },
+
+    play: function() {
+      if (!this.supported) { showToast('مرورگر شما از خواندن صوتی پشتیبانی نمی‌کند.'); return; }
+      if (!this.voice) this.loadVoices();
+      if (!this.voice) {
+        showToast('صدای فارسی روی دستگاه پیدا نشد. از تنظیمات سیستم یک زبان فارسی اضافه کنید، سپس دوباره امتحان کنید.');
+        return;
+      }
+      if (this.speaking && this.paused) {
+        try { speechSynthesis.resume(); } catch (e) {}
+        this.paused = false;
+        updateAudioButton();
+        return;
+      }
+      if (this.speaking) return;
+      this.queue = this.buildQueue();
+      if (!this.queue.length) { this.advancePage(); return; }
+      this.qi = 0;
+      this.speaking = true;
+      this.paused = false;
+      updateAudioButton();
+      this.readNext();
+    },
+
+    readNext: function() {
+      if (!this.speaking) return;
+      if (this.qi >= this.queue.length) { this.advancePage(); return; }
+      var item = this.queue[this.qi++];
+      this.highlight(item.el);
+      this.speak(item.text, this.readNext.bind(this));
+    },
+
+    advancePage: function() {
+      if (current >= pages.length - 1) { this.stop(); return; }
+      this._internalAdvance = true;
+      goTo(current + 1);
+      this._internalAdvance = false;
+      var self = this;
+      setTimeout(function() {
+        if (!self.speaking) return;
+        self.queue = self.buildQueue();
+        if (!self.queue.length) { self.advancePage(); return; }
+        self.qi = 0;
+        self.readNext();
+      }, 700);
+    },
+
+    speak: function(text, onEnd) {
+      try {
+        speechSynthesis.cancel();
+      } catch (e) {}
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fa-IR';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+      u.volume = 1.0;
+      if (this.voice) u.voice = this.voice;
+      var self = this;
+      u.onend = function() { if (self.speaking) onEnd(); };
+      u.onerror = function(ev) {
+        if (ev.error === 'canceled' || ev.error === 'interrupted') return;
+        console.warn('TTS error:', ev.error);
+        if (self.speaking) onEnd();
+      };
+      try { speechSynthesis.speak(u); } catch (e) { if (self.speaking) onEnd(); }
+    },
+
+    pause: function() {
+      if (this.speaking && !this.paused) {
+        try { speechSynthesis.pause(); } catch (e) {}
+        this.paused = true;
+        updateAudioButton();
+      }
+    },
+
+    stop: function() {
+      try { speechSynthesis.cancel(); } catch (e) {}
+      this.speaking = false;
+      this.paused = false;
+      this.queue = [];
+      this.qi = 0;
+      this.clearHighlight();
+      updateAudioButton();
+    },
+
+    toggle: function() {
+      if (this.speaking && !this.paused) this.pause();
+      else this.play();
+    },
+
+    highlight: function(el) {
+      if (this.activeEl === el) return;
+      this.clearHighlight();
+      this.activeEl = el;
+      if (!el) return;
+      el.classList.add('tts-active');
+      var r = el.getBoundingClientRect();
+      if (r.top < 80 || r.bottom > window.innerHeight - 100) {
+        try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        catch (e) { el.scrollIntoView(); }
+      }
+    },
+
+    clearHighlight: function() {
+      if (this.activeEl) {
+        this.activeEl.classList.remove('tts-active');
+        this.activeEl = null;
+      }
+    }
+  };
+
+  function updateAudioButton() {
+    var btn = document.getElementById('audioBtn');
+    if (!btn) return;
+    if (AUDIO.speaking && !AUDIO.paused) {
+      btn.textContent = '⏸';
+      btn.classList.add('playing');
+      btn.title = 'توقف موقت (Space)';
+    } else if (AUDIO.speaking && AUDIO.paused) {
+      btn.textContent = '▶';
+      btn.classList.remove('playing');
+      btn.title = 'ادامه (Space)';
+    } else {
+      btn.textContent = '🎧';
+      btn.classList.remove('playing');
+      btn.title = 'خواندن صوتی (Space)';
+    }
+  }
+
+  function showToast(msg) {
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:120px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);color:var(--text);padding:14px 22px;border-radius:12px;font-size:13px;font-family:inherit;z-index:300;box-shadow:0 10px 30px rgba(0,0,0,0.7);max-width:calc(100vw - 40px);text-align:center;line-height:1.7;direction:rtl;transition:opacity 0.4s;';
+    document.body.appendChild(t);
+    setTimeout(function() {
+      t.style.opacity = '0';
+      setTimeout(function() { t.remove(); }, 400);
+    }, 4200);
+  }
+
+  document.getElementById('audioBtn').onclick = function() { AUDIO.toggle(); };
+  AUDIO.init();
+
+  render();
+</script>
+</body>
+</html>
