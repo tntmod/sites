@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d2b">
+
+<title>دانلودر صفحه کلاچ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --bg: #100d2b;
+    --purple: #7652d9;
+    --orange: #ff8a32;
+    --gold: #ffbd57;
+    --white: #ffffff;
+    --muted: #b8b3ce;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    overflow-x: hidden;
+
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    color: var(--white);
+
+    background:
+        radial-gradient(ellipse at 50% 0%, #403478 0%, transparent 48%),
+        radial-gradient(ellipse at 0% 90%, #27205a 0%, transparent 45%),
+        linear-gradient(145deg, #100d2b, #191438 50%, #0c1025);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 35px 16px;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* سه‌بعدی‌سازی پس‌زمینه */
+
+.scene {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    perspective: 900px;
+    z-index: 0;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+    transform-style: preserve-3d;
+}
+
+.orb-one {
+    width: 230px;
+    height: 230px;
+    top: 5%;
+    right: -85px;
+
+    background: radial-gradient(
+        circle at 35% 30%,
+        #a98aff,
+        #5933b4 45%,
+        rgba(89,51,180,.05) 75%
+    );
+
+    box-shadow:
+        inset -20px -20px 50px rgba(0,0,0,.35),
+        0 0 80px rgba(131,85,255,.25);
+
+    opacity: .55;
+}
+
+.orb-two {
+    width: 170px;
+    height: 170px;
+    bottom: 7%;
+    left: -65px;
+
+    background: radial-gradient(
+        circle at 35% 30%,
+        #ffbc72,
+        #ed6428 48%,
+        rgba(237,100,40,.05) 75%
+    );
+
+    box-shadow: 0 0 90px rgba(255,113,43,.2);
+
+    opacity: .4;
+}
+
+.orb-three {
+    width: 90px;
+    height: 90px;
+    top: 48%;
+    right: 8%;
+
+    background: radial-gradient(
+        circle at 30% 30%,
+        #8e79ff,
+        #3a277e 70%
+    );
+
+    opacity: .22;
+}
+
+/* شبکه سه‌بعدی */
+
+.grid-floor {
+    position: absolute;
+    width: 150%;
+    height: 55%;
+    bottom: -22%;
+    left: -25%;
+
+    background-image:
+        linear-gradient(rgba(160,135,255,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(160,135,255,.10) 1px, transparent 1px);
+
+    background-size: 55px 55px;
+
+    transform: rotateX(62deg);
+
+    mask-image: linear-gradient(
+        to top,
+        rgba(0,0,0,.8),
+        transparent 90%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to top,
+        rgba(0,0,0,.8),
+        transparent 90%
+    );
+}
+
+/* ذرات نور */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(2px 2px at 15% 20%, #fff, transparent),
+        radial-gradient(2px 2px at 75% 15%, #ffbd78, transparent),
+        radial-gradient(2px 2px at 85% 55%, #b9a5ff, transparent),
+        radial-gradient(2px 2px at 25% 75%, #fff, transparent),
+        radial-gradient(2px 2px at 65% 85%, #ffb15e, transparent);
+
+    opacity: .55;
+}
+
+/* محتوای اصلی */
+
+.container {
+    width: 100%;
+    max-width: 445px;
+    position: relative;
+    z-index: 2;
+
+    animation: entrance .8s ease both;
+}
+
+@keyframes entrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* هدر */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: linear-gradient(145deg, #ffae50, #ed6528);
+
+    box-shadow: 0 7px 25px rgba(255,115,45,.25);
+}
+
+.brand-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+.brand-name {
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.brand-sub {
+    color: #aaa2c9;
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.online {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #77e6ad;
+    font-size: 11px;
+}
+
+.online-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #55e69b;
+    box-shadow: 0 0 12px #55e69b;
+}
+
+/* کارت شیشه‌ای */
+
+.main-card {
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(57,48,105,.83),
+            rgba(24,22,58,.91)
+        );
+
+    border: 1px solid rgba(255,255,255,.13);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.13);
+}
+
+/* نور بالای کارت */
+
+.main-card::before {
+    content: "";
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -190px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #ff963c;
+
+    filter: blur(100px);
+    opacity: .3;
+}
+
+/* هدر کارت */
+
+.hero {
+    position: relative;
+    text-align: center;
+
+    padding: 34px 25px 25px;
+}
+
+.hero-icon {
+    width: 92px;
+    height: 92px;
+
+    margin: 0 auto 20px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 27px;
+
+    background:
+        linear-gradient(145deg, #ffad56, #f16b2e);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 15px 35px rgba(255,115,45,.25),
+        inset 0 2px 0 rgba(255,255,255,.3);
+
+    transform: perspective(500px) rotateX(5deg);
+}
+
+.hero-icon svg {
+    width: 43px;
+    height: 43px;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #ffc17d;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    background: rgba(255,155,65,.10);
+
+    border: 1px solid rgba(255,155,65,.2);
+
+    margin-bottom: 13px;
+}
+
+.hero h1 {
+    font-size: 27px;
+    font-weight: 900;
+
+    text-shadow: 0 3px 20px rgba(0,0,0,.3);
+
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #bdb7d4;
+
+    font-size: 12px;
+    line-height: 2.2;
+}
+
+/* اطلاعات نسخه */
+
+.version-box {
+    margin: 0 22px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255,255,255,.055);
+
+    border: 1px solid rgba(255,255,255,.09);
+}
+
+.version-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.version-icon {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 12px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(255,167,83,.13);
+
+    color: #ffb86f;
+}
+
+.version-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.version-text small {
+    display: block;
+
+    font-size: 10px;
+    color: #a9a1c4;
+}
+
+.version-text strong {
+    display: block;
+
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.version-badge {
+    color: #72e5a9;
+
+    background: rgba(64,209,138,.11);
+
+    border: 1px solid rgba(64,209,138,.15);
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* دکمه دانلود */
+
+.download-area {
+    padding: 19px 22px 0;
+}
+
+.download-btn {
+    min-height: 61px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    color: #241329;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 900;
+
+    background: linear-gradient(
+        110deg,
+        #ffb95d,
+        #ff8538 55%,
+        #ff6a32
+    );
+
+    border: 1px solid rgba(255,255,255,.24);
+
+    box-shadow:
+        0 9px 0 #b84e28,
+        0 15px 30px rgba(255,115,43,.2),
+        inset 0 2px 0 rgba(255,255,255,.35);
+
+    transition: transform .18s, box-shadow .18s, filter .18s;
+}
+
+.download-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 0 #b84e28,
+        0 20px 35px rgba(255,115,43,.3);
+}
+
+.download-btn:active {
+    transform: translateY(5px);
+
+    box-shadow:
+        0 3px 0 #b84e28,
+        0 8px 18px rgba(255,115,43,.2);
+}
+
+.download-btn svg {
+    width: 23px;
+    height: 23px;
+}
+
+.download-note {
+    color: #a9a1c3;
+
+    font-size: 10px;
+
+    line-height: 2;
+
+    text-align: center;
+
+    margin-top: 14px;
+}
+
+/* جداکننده */
+
+.divider {
+    height: 1px;
+
+    margin: 26px 22px 22px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.16),
+        transparent
+    );
+}
+
+/* دسترسی‌ها */
+
+.links-section {
+    padding: 0 22px 23px;
+}
+
+.section-heading {
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.section-heading p {
+    color: #a9a1c3;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+/* دکمه‌های ارتباط */
+
+.action-btn {
+    width: 100%;
+
+    min-height: 70px;
+
+    margin-top: 11px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 12px 14px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,.09);
+
+    background: rgba(255,255,255,.045);
+
+    color: white;
+
+    font-family: inherit;
+    text-align: right;
+
+    cursor: pointer;
+
+    transition: background .2s, transform .2s, border-color .2s;
+}
+
+.action-btn:hover {
+    background: rgba(255,255,255,.09);
+    border-color: rgba(255,255,255,.18);
+    transform: translateY(-2px);
+}
+
+.action-btn:active {
+    transform: scale(.985);
+}
+
+.action-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+}
+
+.action-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.rubika {
+    color: #5ee3d0;
+    background: rgba(41,205,182,.13);
+}
+
+.creator {
+    color: #c1a3ff;
+    background: rgba(151,110,255,.14);
+}
+
+.action-text {
+    flex: 1;
+}
+
+.action-text strong {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.action-text small {
+    display: block;
+
+    color: #aaa3c4;
+
+    font-size: 10px;
+
+    margin-top: 4px;
+}
+
+.action-arrow {
+    color: #b6a9dc;
+    font-size: 23px;
+}
+
+/* فوتر */
+
+.footer {
+    text-align: center;
+
+    padding: 17px 10px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+
+    background: rgba(0,0,0,.10);
+
+    color: #9189b0;
+
+    font-size: 10px;
+}
+
+.footer span {
+    color: #ffae63;
+    font-weight: 800;
+}
+
+/* موبایل */
+
+@media(max-width:380px) {
+
+    body {
+        padding: 22px 12px;
+    }
+
+    .hero {
+        padding: 28px 17px 22px;
+    }
+
+    .hero h1 {
+        font-size: 23px;
+    }
+
+    .version-box {
+        margin: 0 15px;
+    }
+
+    .download-area {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .links-section {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .divider {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- پس‌زمینه سه‌بعدی -->
+
+<div class="scene">
+
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+
+    <div class="grid-floor"></div>
+    <div class="stars"></div>
+
+</div>
+
+
+<main class="container">
+
+    <!-- هدر -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="M4 7h16v13H4z"/>
+                    <path d="M8 7V4h8v3"/>
+                    <path d="M8 12h8"/>
+                    <path d="M8 16h5"/>
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <div class="brand-name">
+                    Clutch Plate
+                </div>
+
+                <div class="brand-sub">
+                    مرکز دریافت فایل
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="online">
+
+            <span class="online-dot"></span>
+
+            آماده دانلود
+
+        </div>
+
+    </header>
+
+
+    <!-- کارت اصلی -->
+
+    <section class="main-card">
+
+        <div class="hero">
+
+            <div class="hero-icon">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="1.7"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="M5 7h14v13H5z"/>
+                    <path d="M8 7V4h8v3"/>
+                    <path d="M8 12h8"/>
+                    <path d="M8 16h5"/>
+
+                </svg>
+
+            </div>
+
+            <div class="hero-label">
+
+                ✦ نسخه جدید منتشر شد
+
+            </div>
+
+            <h1>
+                دانلودر صفحه کلاچ
+            </h1>
+
+            <p>
+                به مرکز دریافت جدیدترین نسخه خوش آمدید.
+                فایل مورد نظر را با یک کلیک دریافت کنید.
+            </p>
+
+        </div>
+
+
+        <!-- نسخه -->
+
+        <div class="version-box">
+
+            <div class="version-info">
+
+                <div class="version-icon">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="m5 12 4 4L19 6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="version-text">
+
+                    <small>وضعیت انتشار</small>
+
+                    <strong>جدیدترین نسخه</strong>
+
+                </div>
+
+            </div>
+
+            <div class="version-badge">
+                به‌روز
+            </div>
+
+        </div>
+
+
+        <!-- دانلود -->
+
+        <div class="download-area">
+
+            <a class="download-btn"
+
+               href="https://www.mediafire.com/file/bj5hl3cpbyixq08/ClutchPlate.zip/file"
+
+               target="_blank"
+
+               rel="noopener noreferrer">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="M12 3v12"/>
+                    <path d="m7 10 5 5 5-5"/>
+                    <path d="M5 18v3h14v-3"/>
+
+                </svg>
+
+                دانلود جدیدترین نسخه
+
+            </a>
+
+            <p class="download-note">
+                پس از ورود به MediaFire، دکمه آبی Download را انتخاب کنید.
+            </p>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <!-- لینک‌ها -->
+
+        <section class="links-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    دسترسی‌های بیشتر
+                </h2>
+
+                <p>
+                    سایر مودها و راه‌های ارتباطی
+                </p>
+
+            </div>
+
+
+            <!-- دیگر مودها -->
+
+            <button class="action-btn"
+
+                onclick="openRubika(
+                'rubika://l.rubika.ir/im_rubikaa',
+                'https://rubika.ir/ZODIAC_MAFIANIGHTS'
+                )">
+
+                <div class="action-icon rubika">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="M4 5h16v12H9l-5 3z"/>
+                        <path d="M8 9h8"/>
+                        <path d="M8 13h5"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="action-text">
+
+                    <strong>
+                        دیگر مودها
+                    </strong>
+
+                    <small>
+                        مشاهده مودها و برنامه‌های دیگر
+                    </small>
+
+                </div>
+
+                <span class="action-arrow">‹</span>
+
+            </button>
+
+
+            <!-- سازنده -->
+
+            <button class="action-btn"
+
+                onclick="openRubika(
+                'rubika://l.rubika.ir/im_rubikaa',
+                'https://rubika.ir/im_rubikaa'
+                )">
+
+                <div class="action-icon creator">
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="m12 3 2.7 5.4 5.9.9-4.3 4.2 1 5.9-5.3-2.8-5.3 2.8 1-5.9-4.3-4.2 5.9-.9z"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="action-text">
+
+                    <strong>
+                        سازنده مودها
+                    </strong>
+
+                    <small>
+                        ارتباط با سازنده و مشاهده صفحه
+                    </small>
+
+                </div>
+
+                <span class="action-arrow">‹</span>
+
+            </button>
+
+        </section>
+
+
+        <!-- فوتر -->
+
+        <footer class="footer">
+
+            طراحی اختصاصی <span>Clutch Plate</span>
+
+        </footer>
+
+    </section>
+
+</main>
+
+
+<script>
+
+function openRubika(appLink, fallbackUrl) {
+
+    let switched = false;
+
+    const visibilityHandler = () => {
+
+        if (document.hidden) {
+
+            switched = true;
+
+            clearTimeout(timer);
+
+        }
+
+    };
+
+    document.addEventListener(
+        'visibilitychange',
+        visibilityHandler
+    );
+
+    // ابتدا اپلیکیشن روبیکا
+
+    window.location.href = appLink;
+
+    // در صورت باز نشدن اپلیکیشن، لینک وب
+
+    const timer = setTimeout(() => {
+
+        document.removeEventListener(
+            'visibilitychange',
+            visibilityHandler
+        );
+
+        if (!switched && !document.hidden) {
+
+            window.location.href = fallbackUrl;
+
+        }
+
+    }, 1800);
+
+}
+
+</script>
+
+</body>
+</html>
