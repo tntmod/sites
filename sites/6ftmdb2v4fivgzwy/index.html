@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>فرار از شهر فرش</title>
-<!-- فونت‌های جدید و حرفه‌ای -->
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -16,7 +15,7 @@
   --ok:#8be05c;
   --panel:rgba(22,19,10,.85);
   --accent: #d9c35a;
-  --f-body: 'Outfit', Tahoma, sans-serif; /* فونت جدید */
+  --f-body: 'Outfit', Tahoma, sans-serif;
   --f-mono: 'VT323', monospace;
   color-scheme: dark;
 }
@@ -66,16 +65,17 @@ body.touch.ingame .tbtn { display: block; }
 @keyframes shake { 0% { margin: 0; } 25% { margin: -12px 8px; } 50% { margin: 10px -10px; } 75% { margin: -6px -8px; } 100% { margin: 0; } }
 @keyframes flash { to { opacity: 0; } }
 
-/* --- UI Screens (Styles updated, logic intact) --- */
+/* --- UI Screens --- */
 .screen { position: absolute; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; background: rgba(14,11,3,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .screen.hidden { display: none; }
 
-/* Splash */
-#splash { background: #000; z-index: 999; }
-#splash .btn-enter { padding: 18px 50px; font-size: 22px; font-weight: 900; color: #000; background: var(--accent); border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 30px var(--accent); transition: all 0.3s; letter-spacing: 1px; }
-#splash .btn-enter:hover { transform: scale(1.05); box-shadow: 0 0 50px var(--accent); }
+/* Splash (Auto Fullscreen on click/touch) */
+#splash { background: #000; z-index: 999; flex-direction: column; gap: 20px; cursor: pointer; }
+#splash h1 { font-size: 28px; color: var(--wall); font-weight: 900; text-shadow: 0 0 20px rgba(217,195,90,0.5); margin-bottom: 10px; }
+#splash .btn-enter { padding: 18px 50px; font-size: 20px; font-weight: 900; color: #000; background: var(--accent); border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 30px var(--accent); transition: all 0.3s; letter-spacing: 1px; pointer-events: none; }
+#splash p { font-size: 14px; color: #aaa; margin-top: 10px; }
 
-/* Main Menu (Left aligned, glass buttons) */
+/* Main Menu (Left aligned) */
 #menu { background: linear-gradient(rgba(14,11,3,.2), rgba(14,11,3,.85)), url('menu.png') center/cover no-repeat; justify-content: flex-start; padding-left: 8vw; background-color: #000; }
 @media (max-width: 768px) { #menu { padding-left: 5vw; justify-content: center; align-items: center; } }
 .menu-container { display: flex; flex-direction: column; gap: 15px; width: min(260px, 75vw); z-index: 31; }
@@ -99,7 +99,7 @@ p.lead { font-size: 14px; line-height: 1.8; color: #d0d0d0; margin-bottom: 20px;
 .monster-pick button { flex: 1; max-width: 150px; padding: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(243,232,166,0.2); color: var(--paper); border-radius: 8px; font-family: var(--f-body); font-weight: 700; cursor: pointer; transition: all 0.2s; }
 .monster-pick button[aria-pressed="true"] { background: var(--accent); color: #000; border-color: var(--accent); box-shadow: 0 0 15px rgba(217,195,90,0.4); }
 
-/* Settings */
+/* Settings & How to */
 ul.how { text-align: right; padding-inline-start: 20px; line-height: 2; font-size: 14px; color: #ddd; margin-bottom: 20px; }
 .row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(243,232,166,0.1); }
 .row label { font-size: 14px; font-weight: 700; color: #ddd; }
@@ -113,7 +113,7 @@ ul.how { text-align: right; padding-inline-start: 20px; line-height: 2; font-siz
 #rotate { position: absolute; inset: 0; z-index: 1000; background: var(--ink); display: none; align-items: center; justify-content: center; flex-direction: column; gap: 20px; text-align: center; padding: 20px; }
 #rotate svg { width: 60px; height: 60px; fill: var(--accent); animation: rotateAni 2s ease-in-out infinite; }
 @keyframes rotateAni { 0%, 20% { transform: rotate(0deg); } 50%, 80% { transform: rotate(90deg); } 100% { transform: rotate(90deg); } }
-@media (orientation: portrait) and (max-width: 768px) { body.ingame #rotate { display: flex; } }
+@media (orientation: portrait) and (max-width: 1024px) { body.ingame #rotate, body.menu-open #rotate { display: flex; } }
 </style>
 </head>
 <body>
@@ -121,7 +121,6 @@ ul.how { text-align: right; padding-inline-start: 20px; line-height: 2; font-siz
 <div id="app">
   <canvas id="gl"></canvas>
   
-  <!-- DOM Monster (حل مشکل سفید/سیاه) -->
   <img id="dom-monster" src="monster_pejman.jpg" alt="">
 
   <div id="touch"></div>
@@ -145,12 +144,13 @@ ul.how { text-align: right; padding-inline-start: 20px; line-height: 2; font-siz
   <button id="bFlash" class="tbtn">Light</button>
   <button id="bUse" class="tbtn">Hide</button>
 
-  <!-- Jumpscare -->
   <div id="scare"><img id="scareImg" src="monster_pejman.jpg" alt=""></div>
 
-  <!-- Splash Screen (Fullscreen Trigger) -->
+  <!-- Splash Screen: Click anywhere to fullscreen & rotate -->
   <div id="splash" class="screen">
-    <button id="btnEnter" class="btn-enter">ورود به بازی</button>
+    <h1>فرار از شهر فرش</h1>
+    <button class="btn-enter">ورود به بازی</button>
+    <p>برای تجربه بهتر، صفحه تمام‌صفحه و افقی می‌شود</p>
   </div>
 
   <!-- Main Menu -->
@@ -250,12 +250,12 @@ ul.how { text-align: right; padding-inline-start: 20px; line-height: 2; font-siz
     </div>
   </section>
 
+  <!-- Fallback Rotate Screen -->
   <div id="rotate">
     <svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2v14h10V5H7zm3 12h4v2h-4v-2z"/></svg>
-    <span style="font-size:18px; font-weight:700;">گوشی را افقی کنید</span>
+    <span style="font-size:18px; font-weight:700;">برای ادامه بازی، گوشی خود را افقی کنید</span>
   </div>
   
-  <!-- Audio -->
   <audio id="song" src="song.mp3" loop preload="auto"></audio>
   <audio id="menuSong" src="sound.m4a" loop preload="auto"></audio>
   <audio id="runAudio" src="Run.mp3" loop preload="auto"></audio>
@@ -270,23 +270,56 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const rnd=(a,b)=>a+Math.random()*(b-a);
 const ri=(a,b)=>Math.floor(rnd(a,b+1));
 
-/* ---------- Fullscreen & Orientation ---------- */
-$('#btnEnter').addEventListener('click', async () => {
+/* ---------- Auto Fullscreen & Landscape on Splash Touch ---------- */
+const splashScreen = $('#splash');
+let hasEntered = false;
+
+async function triggerFullscreenAndRotate() {
+    if (hasEntered) return;
+    hasEntered = true;
+    
     try {
+        // Attempt fullscreen
         if (document.documentElement.requestFullscreen) {
             await document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            await document.documentElement.webkitRequestFullscreen();
         }
+        
+        // Attempt orientation lock
         if (screen.orientation && screen.orientation.lock) {
             await screen.orientation.lock('landscape').catch(e => console.log('Orientation lock failed:', e));
         }
     } catch (err) {
         console.log('Fullscreen error:', err);
     }
-    $('#splash').classList.add('hidden');
+    
+    // Transition to menu
+    splashScreen.classList.add('hidden');
     $('#menu').classList.remove('hidden');
+    document.body.classList.add('menu-open'); // Triggers the rotate overlay if still in portrait
+    
+    // Start Menu Audio
     initAudio();
     if(menuSong) menuSong.play().catch(()=>{});
-});
+}
+
+// Bind to any touch/click on the splash screen to simulate a "user gesture"
+splashScreen.addEventListener('click', triggerFullscreenAndRotate);
+splashScreen.addEventListener('touchstart', triggerFullscreenAndRotate, {passive: true});
+
+// Check orientation on load and resize
+function checkOrientation() {
+    const isPortrait = window.innerHeight > window.innerWidth;
+    if (isPortrait) {
+        document.body.classList.add('menu-open'); // show rotate fallback
+    } else {
+        document.body.classList.remove('menu-open'); // hide rotate fallback
+    }
+}
+window.addEventListener('resize', checkOrientation);
+window.addEventListener('orientationchange', checkOrientation);
+checkOrientation(); // run initially
 
 /* ---------- Settings ---------- */
 const DEF={map:'lobby',monster:'pejman',difficulty:'normal',size:'medium',bottles:5,musicRange:28,sens:1.2,fov:75,invertY:false,bob:true,bright:1,fog:60,vhs:true,minimap:true,quality:'high',master:.8,music:1,ambient:.6,lang:'fa'};
@@ -372,7 +405,7 @@ function applyRenderSize(){
 }
 window.addEventListener('resize',applyRenderSize);
 
-/* ---------- textures (همان بافت های زرد اصلی) ---------- */
+/* ---------- textures (بافت اصلی زرد) ---------- */
 function mkTex(w,h,draw,rep){
   const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);
   const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;
@@ -523,7 +556,7 @@ function setMonster(type){
 }
 setMonster(typeof S!=='undefined'&&S.monster==='poorang'?'poorang':'pejman');
 
-/* ---------- maze (همان منطق اصلی) ---------- */
+/* ---------- maze (منطق اصلی دست نخورده) ---------- */
 let TS=5.5,H=4.2;const PR=.32;
 const DIRS=[[1,0],[-1,0],[0,1],[0,-1]];
 let G=0,maze=null,world=null,disc=null,flow=null,flowT=0;
@@ -587,7 +620,7 @@ let state='menu',prevScreen='menu',elapsed=0,grace=6,got=0,unlocked=false,nearMs
 let touchMode=false,dragMode=false,mouseDown=false;
 const keys={};
 const Hd={on:false,c:null,findT:0,cool:0,knows:false,beat:0};
-/* BASE speeds balanced so monster doesn't insta-kill you */
+/* بالانس سرعت هیولا (اصلاح تعقیب بیش از حد) */
 const BASE={easy:3.5,normal:4.5,hard:5.5,nightmare:6.5};
 
 function disposeWorld(){
@@ -1040,17 +1073,7 @@ function startGame(){
   $('#scare').classList.remove('on');
   hideAll();setInGame(true);state='playing';
   updateObjective();toast(tr('msgStart'),3500);
-  goLandscape();
   lockPointer();
-}
-function goLandscape(){
-  if(!touchMode)return;
-  try{
-    const el=document.documentElement;
-    const r=el.requestFullscreen?el.requestFullscreen():null;
-    const lockIt=()=>{try{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('landscape').catch(()=>{})}catch(e){}};
-    if(r&&r.then)r.then(lockIt).catch(()=>{});else lockIt();
-  }catch(e){}
 }
 function lockPointer(){
   if(touchMode)return;
