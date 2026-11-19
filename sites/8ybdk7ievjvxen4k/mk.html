@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#cbb58a">
+<title>TNT MOD | دانلود مود بازی‌ها</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23087f91'/%3E%3Ctext y='.9em' x='50%25' text-anchor='middle' font-size='72'%3E🎮%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:'Vazirmatn',Tahoma,system-ui,sans-serif;
+  background:#d9c9a4;
+  color:#39271d;
+  min-height:100vh;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+button,a{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#0d9eaa,#087f91);border-radius:10px}
+
+/* Background */
+.bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(231,216,181,.93),rgba(231,216,181,.97));
+}
+
+/* Layout */
+.wrap{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:0 16px 40px}
+
+/* Header */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 0 12px;gap:12px;
+  position:sticky;top:0;z-index:30;
+  backdrop-filter:blur(10px);
+  background:rgba(231,216,181,.94);
+}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(145deg,#0d9eaa,#075c70);
+  display:grid;place-items:center;font-size:1.4rem;color:#fff;
+  border:2px solid #f5d58d;
+  box-shadow:0 6px 16px rgba(7,92,112,.25);
+}
+.brand h1{font-size:1.3rem;font-weight:900;color:#39271d;line-height:1.2}
+.brand p{font-size:.68rem;color:#755b43;font-weight:600;margin-top:1px}
+
+.menu-btn{
+  width:44px;height:44px;border-radius:12px;
+  background:#fff1d2;border:1px solid #946b3d55;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  color:#70401f;font-size:1.2rem;
+  transition:background .2s;
+}
+.menu-btn:active{background:#f5e0b8}
+.hb{display:block;width:20px;height:2.5px;background:#70401f;border-radius:3px;transition:.25s}
+.menu-btn[aria-expanded="true"] .hb:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .hb:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] .hb:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* Mini Banner */
+.mini-banner{margin:10px 0 22px}
+.mini-card{
+  display:flex;align-items:center;gap:14px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff4d9,#ebcfa0);
+  border:1px solid #a8793d;
+  box-shadow:0 8px 22px rgba(88,59,27,.12);
+  transition:transform .2s;
+}
+.mini-card:active{transform:scale(.98)}
+.mini-icon{
+  width:52px;height:52px;border-radius:15px;flex-shrink:0;
+  background:linear-gradient(135deg,#f8c65f,#e99b32);
+  display:grid;place-items:center;font-size:1.5rem;
+  box-shadow:0 6px 14px rgba(233,155,50,.35);
+}
+.mini-body{flex:1;min-width:0}
+.mini-title{font-size:.94rem;font-weight:900;color:#48280e;display:flex;align-items:center;gap:8px}
+.mini-title .live{
+  font-size:.54rem;font-weight:900;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+  color:#fff;padding:2px 8px;border-radius:6px;
+}
+.mini-sub{font-size:.73rem;color:#755b43;margin-top:3px;font-weight:600}
+.mini-btn{
+  padding:11px 16px;border-radius:12px;font-size:.73rem;font-weight:800;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);color:#fff;
+  white-space:nowrap;
+}
+
+/* Sections */
+.section{margin-bottom:30px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section-head h2{font-size:1.05rem;font-weight:900;color:#39271d}
+.section-cnt{
+  margin-right:auto;font-size:.6rem;font-weight:800;color:#087d88;
+  background:#e8d4a8;border:1px solid #b88d5b66;
+  padding:3px 11px;border-radius:8px;
+}
+
+/* Grid & Cards */
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.card{
+  background:#fff4d9;
+  border:1px solid #9c713e66;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(88,59,27,.1);
+  transition:transform .22s,box-shadow .22s;
+}
+.card:active{transform:scale(.98)}
+.card:hover{box-shadow:0 10px 26px rgba(88,59,27,.16)}
+
+.card-top{display:flex;gap:13px;padding:14px;align-items:center;cursor:pointer}
+.card-thumb{
+  width:74px;height:74px;border-radius:14px;overflow:hidden;flex-shrink:0;
+  background:#e6c58d;border:1px solid #b88d5b55;
+}
+.card-thumb img{width:100%;height:100%;object-fit:cover}
+.card-thumb .em{width:100%;height:100%;display:grid;place-items:center;font-size:2.1rem;background:#e6c58d}
+
+.card-info{flex:1;min-width:0}
+.card-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.card-title{font-size:.9rem;font-weight:900;color:#39271d}
+.card-badge{font-size:.52rem;font-weight:900;padding:2px 8px;border-radius:6px}
+.bd-mod{background:#087f91;color:#fff}
+.bd-featured{background:linear-gradient(135deg,#f8c65f,#e99b32);color:#48280e}
+
+.card-feats{display:flex;flex-wrap:wrap;gap:4px}
+.pill{font-size:.52rem;font-weight:700;padding:2px 7px;border-radius:6px}
+.pill-gold{background:#f8e8c0;border:1px solid #e0b86a;color:#8a5a1e}
+.pill-teal{background:#d4f0f3;border:1px solid #7bc4cd;color:#0a6b75}
+.pill-green{background:#d8f0e4;border:1px solid #7dbe9a;color:#1a6b45}
+.pill-warm{background:#f5e0c8;border:1px solid #d4a87a;color:#7a4a22}
+
+.card-cta{padding:0 14px 14px}
+.card-btn{
+  width:100%;padding:12px;border-radius:12px;font-size:.76rem;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+  box-shadow:0 6px 16px rgba(8,127,145,.25);
+  transition:transform .15s;
+}
+.card-btn:active{transform:scale(.97)}
+
+.card--featured{
+  border:2px solid #e99b32;
+  box-shadow:0 10px 28px rgba(233,155,50,.2);
+}
+.card--featured .card-btn{
+  background:linear-gradient(135deg,#f8c65f,#e99b32);
+  color:#48280e;
+  box-shadow:0 6px 16px rgba(233,155,50,.3);
+}
+
+/* Videos */
+.videos-scroll{
+  display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;
+  scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.videos-scroll::-webkit-scrollbar{display:none}
+.vid-card{
+  flex:0 0 215px;scroll-snap-align:start;border-radius:16px;overflow:hidden;
+  background:#fff4d9;border:1px solid #9c713e66;
+  box-shadow:0 6px 16px rgba(88,59,27,.1);
+  transition:transform .2s;
+}
+.vid-card:active{transform:scale(.98)}
+.vid-thumb{
+  position:relative;aspect-ratio:16/9;
+  background:linear-gradient(135deg,#0b6e7a,#075c70);
+  display:grid;place-items:center;
+}
+.vid-play{position:absolute;inset:0;display:grid;place-items:center}
+.vid-play span{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(248,198,95,.95);display:grid;place-items:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
+.vid-play svg{width:15px;height:15px;fill:#48280e;margin-right:-1px}
+.vid-body{padding:10px 12px}
+.vid-title{
+  font-size:.74rem;font-weight:800;color:#39271d;line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+
+/* Shop */
+.shop-hero{text-align:center;padding:8px 0 20px}
+.shop-badge{
+  display:inline-flex;font-size:.63rem;font-weight:900;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+  padding:5px 13px;border-radius:99px;margin-bottom:12px;
+}
+.shop-hero h2{font-size:1.4rem;font-weight:900;color:#087d88;margin-bottom:6px}
+.shop-hero p{font-size:.78rem;color:#755b43;max-width:380px;margin:0 auto}
+
+.shop-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.shop-card{
+  width:100%;max-width:310px;
+  background:#fff4d9;border:1px solid #9c713e66;
+  border-radius:18px;overflow:hidden;
+  box-shadow:0 8px 22px rgba(88,59,27,.1);
+  transition:transform .2s;
+}
+.shop-card:active{transform:scale(.98)}
+.shop-head{padding:22px 18px 14px;text-align:center}
+.shop-emoji{font-size:2.5rem;margin-bottom:9px}
+.shop-title{font-size:1.05rem;font-weight:900;color:#39271d;margin-bottom:5px}
+.shop-price{font-size:.9rem;font-weight:800;color:#a66b19}
+.shop-sub{font-size:.66rem;color:#755b43;margin-top:3px}
+.shop-body{padding:0 16px 16px}
+.shop-feats{list-style:none;margin-bottom:15px}
+.shop-feats li{
+  font-size:.74rem;font-weight:600;padding:8px 0;color:#4a3525;
+  border-bottom:1px solid #e5d3b0;
+  display:flex;align-items:center;gap:8px;
+}
+.shop-feats li:last-child{border-bottom:none}
+.shop-btn{
+  width:100%;padding:13px;border-radius:12px;font-size:.78rem;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+}
+
+/* Menu Drawer */
+.menu-bg{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(27,19,13,.7);opacity:0;visibility:hidden;
+  transition:opacity .28s,visibility .28s;backdrop-filter:blur(6px);
+}
+.menu-bg.on{opacity:1;visibility:visible}
+.menu-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(310px,85vw);z-index:510;
+  background:#f2dfb9;
+  border-left:1px solid #b88d5b;
+  transform:translateX(105%);transition:transform .35s cubic-bezier(.32,.72,0,1);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.menu-bg.on .menu-drawer{transform:translateX(0)}
+.menu-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 16px;border-bottom:1px solid #d4b87a;
+}
+.menu-brand{display:flex;align-items:center;gap:11px}
+.menu-mark{
+  width:42px;height:42px;border-radius:13px;
+  background:linear-gradient(145deg,#0d9eaa,#075c70);
+  display:grid;place-items:center;font-size:1.2rem;color:#fff;
+}
+.menu-title{font-size:.97rem;font-weight:900;color:#39271d}
+.menu-close{
+  width:36px;height:36px;border-radius:10px;
+  background:#e8c997;display:grid;place-items:center;font-size:16px;color:#573b22;
+}
+.menu-section{padding:16px 13px}
+.menu-section-title{font-size:.72rem;font-weight:800;color:#087d88;margin-bottom:11px;padding:0 6px}
+.menu-item{
+  display:flex;align-items:center;gap:12px;padding:13px;
+  border-radius:14px;margin-bottom:7px;
+  background:#fff2d9;border:1px solid #b88d5b55;
+  transition:background .2s;
+}
+.menu-item.active{background:#e8d4a8;border-color:#0d9eaa}
+.menu-item:active{transform:scale(.98)}
+.menu-item-icon{
+  width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;flex-shrink:0;
+}
+.mi-games{background:linear-gradient(145deg,#0d9eaa,#087f91);color:#fff}
+.mi-shop{background:linear-gradient(145deg,#e99b32,#d48a20);color:#fff}
+.mi-mini{background:linear-gradient(145deg,#f8c65f,#e99b32);color:#48280e}
+.mi-rubika{background:linear-gradient(145deg,#d65d3d,#c04a2c);color:#fff}
+.menu-item-body{flex:1;min-width:0}
+.menu-item-title{font-size:.84rem;font-weight:800;color:#39271d}
+.menu-item-sub{font-size:.61rem;color:#755b43;margin-top:2px}
+.menu-foot{
+  margin-top:auto;padding:15px 16px;text-align:center;
+  font-size:.62rem;color:#755b43;border-top:1px solid #d4b87a;
+}
+.menu-foot a{color:#087d88;font-weight:700}
+
+/* Modals */
+.modal-bg{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(27,19,13,.72);opacity:0;visibility:hidden;
+  transition:opacity .28s,visibility .28s;padding:0;
+  backdrop-filter:blur(5px);
+}
+@media(min-width:560px){.modal-bg{align-items:center;padding:16px}}
+.modal-bg.on{opacity:1;visibility:visible}
+.modal{
+  width:100%;max-width:410px;max-height:90vh;overflow-y:auto;
+  background:#f7e7c7;
+  border-radius:22px 22px 0 0;border:2px solid #b1844c;
+  transform:translateY(100%);opacity:0;
+  transition:transform .35s cubic-bezier(.32,.72,0,1),opacity .28s;
+  position:relative;
+  box-shadow:0 20px 50px rgba(32,19,7,.35);
+}
+@media(min-width:560px){.modal{border-radius:20px;transform:scale(.94) translateY(0)}}
+.modal-bg.on .modal{transform:translateY(0);opacity:1}
+@media(min-width:560px){.modal-bg.on .modal{transform:scale(1)}}
+
+.modal-handle{width:42px;height:4px;border-radius:99px;background:#c9a86e;margin:12px auto 0}
+@media(min-width:560px){.modal-handle{display:none}}
+.modal-close{
+  position:absolute;top:14px;left:14px;width:36px;height:36px;border-radius:10px;
+  background:#e8c997;display:grid;place-items:center;font-size:15px;color:#573b22;z-index:5;
+}
+.modal-media{
+  position:relative;height:170px;
+  background:linear-gradient(135deg,#0b6e7a,#075c70);
+  display:grid;place-items:center;
+}
+.modal-media img{width:105px;height:105px;object-fit:cover;border-radius:20px;box-shadow:0 12px 28px rgba(0,0,0,.3);border:3px solid #f5d58d}
+.modal-media .em{font-size:3.5rem}
+.modal-head{padding:15px 20px 0;text-align:center}
+.modal-badges{display:inline-flex;gap:6px;margin-bottom:9px}
+.modal-badge{font-size:.55rem;font-weight:900;padding:3px 11px;border-radius:99px}
+.mb-new{background:linear-gradient(135deg,#e99b32,#d48a20);color:#fff}
+.mb-mod{background:linear-gradient(135deg,#0d9eaa,#087f91);color:#fff}
+.modal-title{font-size:1.25rem;font-weight:900;color:#087d88}
+.modal-sub{font-size:.7rem;color:#755b43;margin-top:4px}
+.modal-body{padding:16px 20px 24px}
+.modal-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:15px}
+.feat-box{
+  display:flex;align-items:center;gap:8px;padding:11px;
+  border-radius:12px;font-size:.67rem;font-weight:700;color:#4a3525;
+  background:#fff2d9;border:1px solid #d4b87a;
+}
+.feat-box .fi{font-size:1.05rem}
+.modal-ver{
+  background:#fff2d9;border:1px solid #d4b87a;
+  border-radius:12px;padding:13px;margin-bottom:13px;position:relative;
+}
+.modal-ver::before{
+  content:'';position:absolute;top:0;right:0;width:3px;height:100%;
+  background:linear-gradient(180deg,#0d9eaa,#087f91);border-radius:0 3px 3px 0;
+}
+.modal-ver .tag{
+  display:inline-block;background:linear-gradient(135deg,#0d9eaa,#087f91);
+  color:#fff;font-size:.55rem;font-weight:900;padding:2px 10px;border-radius:99px;margin-bottom:7px;
+}
+.modal-ver p{font-size:.67rem;color:#5c3d22;line-height:1.8}
+.modal-guide{
+  background:#f8e8c0;border:1px solid #e0b86a;
+  border-radius:12px;padding:13px;margin-bottom:15px;
+}
+.modal-guide h4{font-size:.72rem;font-weight:800;color:#8a5a1e;margin-bottom:6px}
+.modal-guide p{font-size:.66rem;color:#5c3d22;line-height:1.85}
+.modal-actions{display:flex;flex-direction:column;gap:9px}
+.btn-main{
+  width:100%;padding:14px;border-radius:13px;font-size:.86rem;font-weight:900;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+  box-shadow:0 8px 20px rgba(8,127,145,.3);
+}
+.btn-ghost{
+  width:100%;padding:12px;border-radius:13px;font-size:.74rem;font-weight:700;
+  background:#fff2d9;border:1px solid #d4b87a;color:#5c3d22;
+}
+
+/* Download Modal */
+.dl-card{
+  width:100%;max-width:345px;
+  background:#f7e7c7;border:2px solid #b1844c;border-radius:22px;
+  padding:34px 22px 26px;text-align:center;position:relative;
+  box-shadow:0 20px 50px rgba(32,19,7,.3);
+}
+.dl-close{
+  position:absolute;top:13px;left:13px;width:34px;height:34px;border-radius:10px;
+  background:#e8c997;display:grid;place-items:center;font-size:14px;color:#573b22;
+}
+.dl-state{display:none}
+.dl-state.on{display:block}
+.dl-icon{
+  width:82px;height:82px;margin:0 auto 16px;border-radius:50%;
+  display:grid;place-items:center;font-size:2.3rem;
+  background:#e8d4a8;border:2px solid #b88d5b;
+}
+.dl-icon.green{background:#d8f0e4;border-color:#7dbe9a}
+.dl-icon.pink{background:#f5e0c8;border-color:#d4a87a}
+.dl-title{font-size:1.1rem;font-weight:900;color:#087d88;margin-bottom:7px}
+.dl-desc{font-size:.77rem;color:#5c3d22;line-height:1.75;margin-bottom:17px}
+.dl-get-btn{
+  width:100%;padding:14px;border-radius:13px;font-size:.86rem;font-weight:900;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+}
+.dl-poll{display:flex;gap:10px}
+.poll-btn{flex:1;padding:13px;border-radius:12px;font-size:.82rem;font-weight:800;color:#fff}
+.poll-yes{background:linear-gradient(135deg,#0d9eaa,#087f91)}
+.poll-no{background:#e8c997;color:#573b22}
+.dl-manual-input{
+  width:100%;padding:12px;border-radius:11px;
+  background:#fffaf0;border:1px solid #b88d5b;
+  color:#39271d;font-size:.76rem;text-align:center;margin-bottom:11px;direction:ltr;
+}
+.dl-copy-btn,.dl-done-btn{
+  width:100%;padding:13px;border-radius:12px;font-size:.83rem;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);margin-bottom:8px;
+}
+.dl-back-btn{width:100%;padding:10px;font-size:.73rem;color:#755b43}
+
+/* Notice & Rubika */
+.notice-bg,.rubika-bg{
+  position:fixed;inset:0;z-index:1100;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(27,19,13,.75);opacity:0;visibility:hidden;
+  transition:opacity .28s,visibility .28s;backdrop-filter:blur(6px);
+}
+.notice-bg.on,.rubika-bg.on{opacity:1;visibility:visible}
+.notice-card,.rubika-card{
+  width:min(305px,88vw);
+  background:#f7e7c7;border:2px solid #b1844c;border-radius:20px;
+  padding:30px 22px;text-align:center;
+  box-shadow:0 20px 50px rgba(32,19,7,.3);
+}
+.notice-icon,.rubika-icon{font-size:2.5rem;margin-bottom:13px}
+.notice-title,.rubika-title{font-size:1.08rem;font-weight:900;color:#087d88;margin-bottom:7px}
+.notice-desc,.rubika-sub{font-size:.77rem;color:#5c3d22;margin-bottom:17px}
+.notice-bar,.rubika-bar{height:5px;background:#e5d3b0;border-radius:99px;overflow:hidden;margin-bottom:11px}
+.notice-bar span,.rubika-bar span{
+  display:block;height:100%;width:0;
+  background:linear-gradient(90deg,#0d9eaa,#087f91);border-radius:99px;
+  transition:width 2s linear;
+}
+.notice-countdown{font-size:.72rem;color:#087d88;font-weight:700}
+
+/* Offline */
+#offline{
+  position:fixed;inset:0;z-index:99999;background:#d9c9a4;
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:13px;
+  padding:24px;text-align:center;
+}
+#offline.show{display:flex}
+.offline-icon{
+  width:72px;height:72px;border-radius:18px;
+  background:#f5e0c8;border:2px solid #d4a87a;
+  display:grid;place-items:center;font-size:1.85rem;
+}
+.offline-title{font-size:1.08rem;font-weight:900;color:#39271d}
+.offline-desc{font-size:.77rem;color:#755b43;max-width:270px}
+.offline-btn{
+  margin-top:8px;padding:13px 30px;border-radius:13px;font-size:.82rem;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,#0d9eaa,#087f91);
+}
+
+/* Footer */
+.footer{
+  text-align:center;padding:24px 0 12px;
+  border-top:1px solid #956d3d55;font-size:.68rem;color:#755b43;
+}
+.footer a{color:#087d88;font-weight:700}
+
+/* View */
+.view{display:none}
+.view.active{display:block}
+
+/* Utils */
+body.lock{overflow:hidden}
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);
+  background:#382619;color:#fff2d9;
+  font-size:.78rem;font-weight:800;padding:12px 22px;border-radius:99px;
+  z-index:9999;opacity:0;transition:.25s;pointer-events:none;max-width:88vw;text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<div id="offline">
+  <div class="offline-icon">📡</div>
+  <div class="offline-title">اتصال اینترنت قطع است</div>
+  <div class="offline-desc">لطفاً اتصال خود را بررسی کنید و دوباره تلاش کنید.</div>
+  <button class="offline-btn" id="offlineRetry">تلاش مجدد</button>
+</div>
+
+<div class="wrap">
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">🎮</div>
+      <div>
+        <h1>TNT MOD</h1>
+        <p>دانلود مود بازی‌ها و برنامه‌ها</p>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="منو" aria-expanded="false">
+      <span class="hb"></span><span class="hb"></span><span class="hb"></span>
+    </button>
+  </header>
+
+  <main id="viewGames" class="view active">
+    <div class="mini-banner">
+      <a class="mini-card" href="https://tntmod.github.io/sites/sites/nhd955n2bmy9e0pf/index.html">
+        <div class="mini-icon">🎯</div>
+        <div class="mini-body">
+          <div class="mini-title">مینی گیم TNT <span class="live">جدید</span></div>
+          <div class="mini-sub">بازی‌های جذاب و سرگرم‌کننده</div>
+        </div>
+        <div class="mini-btn">بازی ←</div>
+      </a>
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>مود بازی‌ها و برنامه‌ها</h2>
+        <span class="section-cnt" id="cnt">۸ مورد</span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>ویدیوهای چنل</h2>
+        <span class="section-cnt" id="vidCount">۸ ویدیو</span>
+      </div>
+      <div class="videos-scroll" id="videosScroll"></div>
+    </section>
+  </main>
+
+  <main id="viewShop" class="view">
+    <div class="shop-hero">
+      <span class="shop-badge">🔥 جدید</span>
+      <h2>فروشگاه آموزش</h2>
+      <p>آموزش ساخت چیت با روش‌های جدید مخصوص گوشی اندروید</p>
+    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+  </main>
+
+  <footer class="footer">
+    <p><strong>TNT MOD</strong></p>
+    <p style="margin-top:5px">پشتیبانی: <a data-rubika="ZODIAC_MAFIANIGHTS">ZODIAC_MAFIANIGHTS</a></p>
+  </footer>
+</div>
+
+<!-- Menu -->
+<div class="menu-bg" id="menuBg">
+  <aside class="menu-drawer">
+    <div class="menu-head">
+      <div class="menu-brand">
+        <div class="menu-mark">🎮</div>
+        <div class="menu-title">TNT MOD</div>
+      </div>
+      <button class="menu-close" id="menuClose">✕</button>
+    </div>
+    <div class="menu-section">
+      <div class="menu-section-title">بخش‌ها</div>
+      <a class="menu-item active" data-view="games">
+        <div class="menu-item-icon mi-games">🎮</div>
+        <div class="menu-item-body">
+          <div class="menu-item-title">بازی‌های مود شده</div>
+          <div class="menu-item-sub">دانلود مود بازی‌ها</div>
+        </div>
+      </a>
+      <a class="menu-item" data-view="shop">
+        <div class="menu-item-icon mi-shop">🛒</div>
+        <div class="menu-item-body">
+          <div class="menu-item-title">فروشگاه</div>
+          <div class="menu-item-sub">خرید آموزش ساخت چیت</div>
+        </div>
+      </a>
+      <a class="menu-item" href="https://tntmod.github.io/sites/sites/nhd955n2bmy9e0pf/index.html">
+        <div class="menu-item-icon mi-mini">🎯</div>
+        <div class="menu-item-body">
+          <div class="menu-item-title">مینی گیم</div>
+          <div class="menu-item-sub">بازی‌های سرگرم‌کننده</div>
+        </div>
+      </a>
+      <a class="menu-item" data-rubika="ZODIAC_MAFIANIGHTS">
+        <div class="menu-item-icon mi-rubika">📢</div>
+        <div class="menu-item-body">
+          <div class="menu-item-title">چنل روبیکا</div>
+          <div class="menu-item-sub">ZODIAC_MAFIANIGHTS</div>
+        </div>
+      </a>
+    </div>
+    <div class="menu-foot">پشتیبانی: <a data-rubika="ZODIAC_MAFIANIGHTS">ZODIAC_MAFIANIGHTS</a></div>
+  </aside>
+</div>
+
+<!-- Game Modal -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-media" id="mMedia"></div>
+    <div class="modal-head">
+      <div class="modal-badges" id="mBadges"></div>
+      <h3 class="modal-title" id="mTitle">نام</h3>
+      <p class="modal-sub" id="mSub">مود اختصاصی</p>
+    </div>
+    <div class="modal-body">
+      <ul class="modal-feats" id="mFeats"></ul>
+      <div class="modal-ver" id="mVer"></div>
+      <div class="modal-guide">
+        <h4>راهنمای نصب</h4>
+        <p>۱. فایل مود از <strong>چنل روبیکا</strong> در دسترس است.<br>۲. نسخه اصلی را حذف کنید.<br>۳. مود را نصب کنید.</p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-main" id="mDl">دریافت مود</button>
+        <button class="btn-ghost" data-rubika="ZODIAC_MAFIANIGHTS">پشتیبانی روبیکا</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Download Modal -->
+<div class="modal-bg" id="dlp">
+  <div class="dl-card">
+    <button class="dl-close" id="dlClose">✕</button>
+    <div class="dl-state on" id="dlLoadingState">
+      <div class="dl-icon">⬇</div>
+      <div class="dl-title">در حال آماده‌سازی</div>
+      <div class="dl-desc">فایل در حال آماده‌سازی است…</div>
+    </div>
+    <div class="dl-state" id="dlReadyState">
+      <div class="dl-icon green">✅</div>
+      <div class="dl-title">لینک آماده است!</div>
+      <div class="dl-desc">روی دکمه زیر بزن تا لینک کپی شود.</div>
+      <button class="dl-get-btn" id="dlGetBtn">📥 دریافت فایل</button>
+    </div>
+    <div class="dl-state" id="dlPollState">
+      <div class="dl-icon pink">📋</div>
+      <div class="dl-title">لینک کپی شد</div>
+      <div class="dl-desc">آیا لینک کپی شد؟</div>
+      <div class="dl-poll">
+        <button class="poll-btn poll-yes" id="dlPollYes">👍 بله</button>
+        <button class="poll-btn poll-no" id="dlPollNo">👎 نه</button>
+      </div>
+    </div>
+    <div class="dl-state" id="dlManualState">
+      <div class="dl-icon">📝</div>
+      <div class="dl-title">کپی دستی</div>
+      <div class="dl-desc">روی کادر بزن و کپی کن.</div>
+      <input class="dl-manual-input" id="dlManualInput" readonly value="">
+      <button class="dl-copy-btn" id="dlManualCopy">📋 کپی لینک</button>
+      <button class="dl-back-btn" id="dlManualBack">→ برگشت</button>
+    </div>
+    <div class="dl-state" id="dlSuccessState">
+      <div class="dl-icon green">🎉</div>
+      <div class="dl-title">عالی!</div>
+      <div class="dl-desc">لینک کپی شد.<br><strong>برو تو گوگل، پیست کن و دانلود کن</strong></div>
+      <button class="dl-done-btn" id="dlDoneBtn">✔ متوجه شدم</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notice -->
+<div class="notice-bg" id="ntc">
+  <div class="notice-card">
+    <div class="notice-icon">📢</div>
+    <div class="notice-title">فایل در چنل روبیکا</div>
+    <div class="notice-desc">نسخه مود در چنل رسمی روبیکا قرار گرفته است.</div>
+    <div class="notice-bar"><span id="ntcBar"></span></div>
+    <div class="notice-countdown">انتقال در <b id="ntcTimer">۵</b> ثانیه</div>
+  </div>
+</div>
+
+<!-- Rubika -->
+<div class="rubika-bg" id="rubikaPopup">
+  <div class="rubika-card">
+    <div class="rubika-icon">📱</div>
+    <div class="rubika-title">در حال انتقال به روبیکا</div>
+    <div class="rubika-sub">لطفاً چند لحظه صبر کنید…</div>
+    <div class="rubika-bar"><span id="rubikaBar"></span></div>
+  </div>
+</div>
+
+<!-- Shop Modal -->
+<div class="modal-bg" id="shopModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" id="shopModalClose">✕</button>
+    <div class="modal-media" id="shopModalMedia" style="height:145px"></div>
+    <div class="modal-head">
+      <span class="modal-badge mb-mod" id="shopModalBadge">آموزش</span>
+      <h3 class="modal-title" id="shopModalTitle"></h3>
+      <p class="modal-sub" id="shopModalPrice" style="color:#a66b19;font-weight:800;font-size:.96rem"></p>
+    </div>
+    <div class="modal-body">
+      <ul class="shop-feats" id="shopModalFeats" style="margin-bottom:17px"></ul>
+      <button class="btn-main" id="shopBuyBtn">💰 خرید و دریافت</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+const CH = 'https://rubika.ir/ZODIAC_MAFIANIGHTS';
+const MAFIA_DL = 'https://www.mediafire.com/file/stqojk3enl1pihb/%25D9%2585%25D8%25A7%25D9%2581%25DB%258C%25D8%25A7%25D9%2585%25D9%2588%25D9%2586.zip/file';
+let currentDl = CH;
+let modalOpen = false, dlOpen = false, menuOpen = false, noticeOpen = false, rubikaOpen = false, shopModalOpen = false;
+let noticeTimer = null, noticeTick = null;
+const PD = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+const toFa = n => String(n).replace(/\d/g, d => PD[+d]);
+const $ = id => document.getElementById(id);
+
+const GAMES = [
+  {id:'fakechat',title:'چت ساز فیک روبیکا',emoji:'💬',featured:true,feats:['اشتراک ویژه','نسخه طلایی'],ver:'نسخه ۲.۵',dl:CH,img:'./4.jpg'},
+  {id:'taxido',title:'تاکسیدو',emoji:'🎭',feats:['سکه ∞','۶۴ بیت'],ver:'نسخه کامل',dl:CH,img:'./1.jpg'},
+  {id:'godfather',title:'پدرخوانده',emoji:'🎩',feats:['ناظر','صحبت','بدون بن'],ver:'نسخه ۰.۶۵۰',dl:CH,img:'./2.jpg'},
+  {id:'takhokm',title:'تک حکم',emoji:'🃏',feats:['سکه ∞','الماس ∞','تغییر کارت'],ver:'نسخه مود شده',dl:CH,img:'./3.jpg'},
+  {id:'mehman',title:'مهمان نیمه شب',emoji:'👻',feats:['سکه ∞','کم حجم','۶۴ بیت'],ver:'نسخه ۱۰۷',dl:CH,img:'./5.jpg'},
+  {id:'clutch',title:'صفحه کلاچ',emoji:'🏎️',feats:['سکه ∞','جم ∞','سرعت ∞'],ver:'نسخه ۰.۴۵',dl:'https://www.mediafire.com/file/bnrp8vqgt42es5f/ClutchPlate.zip/file',img:'./6.jpg'},
+  {id:'diarbaqi',title:'دیار باقی',emoji:'🏰',feats:['سکه ∞','۶۴ بیت'],ver:'نسخه ۱۰۷',dl:CH,img:'./7.jpg'},
+  {id:'mafamon',title:'مافیامون',emoji:'🕵️',feats:['جم ∞','سکه ∞','باگ روح'],ver:'نسخه کامل',dl:MAFIA_DL,img:'./8.jpg'}
+];
+
+const VIDEOS = [
+  {hash:'zdpux57',title:'تک حکم - چت آنلاین مود شده',emoji:'🃏'},
+  {hash:'ctjwna4',title:'مربی برتر مود شده',emoji:'🏆'},
+  {hash:'eqq6zvu',title:'سرعت بی‌نهایت صفحه کلاچ',emoji:'🏎️'},
+  {hash:'adu8281',title:'زیرنویس خودکار ویدیو',emoji:'📝'},
+  {hash:'ick83ti',title:'صفحه کلاچ مود شده',emoji:'💨'},
+  {hash:'xywe90l',title:'چیت سلطان حکم',emoji:'👑'},
+  {hash:'zyvluo9',title:'فوتبالیا ۲ مود شده',emoji:'⚽'},
+  {hash:'jarsd68',title:'بازی دیار باقی مود شده',emoji:'🏰'}
+];
+
+const SHOP = [
+  {id:'cheat1',title:'ساخت چیت به روش جدید',badge:'آموزش اول',price:'۵۰۰ هزار تومان',emoji:'🎮',feats:['📹 ویدیو کامل','📱 با گوشی اندروید','💻 بدون کامپیوتر','⚡ قدم‌به‌قدم','🕹️ حذف آنتی‌چیت','✅ حذف تبلیغات'],rubika:'Im_rubikaa'},
+  {id:'xpmenu',title:'تزریق منوی XP به یونیتی',badge:'آموزش دوم',price:'۳۰۰ هزار تومان',emoji:'💉',feats:['مخصوص بازی‌های یونیتی','مفید برای بازی‌های آنلاین','آموزش کامل با ویدیو','قابل اجرا روی اندروید'],rubika:'Im_rubikaa'}
+];
+
+function featInfo(f){
+  if(/اشتراک|طلا|سکه|پول|جم|الماس|آیتم|کارت/.test(f)) return {c:'gold',i:'🪙'};
+  if(/سرعت|انرژی/.test(f)) return {c:'teal',i:'⚡'};
+  if(/بدون بن|آنتی|امن/.test(f)) return {c:'green',i:'🛡️'};
+  if(/ناظر|صحبت|روح|باگ|چت/.test(f)) return {c:'warm',i:'👁'};
+  if(/کم حجم|۶۴|64/.test(f)) return {c:'teal',i:'📦'};
+  return {c:'gold',i:'✨'};
+}
+
+function pillHtml(f){
+  const i = featInfo(f);
+  return `<span class="pill pill-\( {i.c}"> \){i.i} ${f}</span>`;
+}
+
+function featBoxHtml(f){
+  const i = featInfo(f);
+  return `<li class="feat-box"><span class="fi">\( {i.i}</span><span> \){f}</span></li>`;
+}
+
+function toast(msg){
+  let t = document.querySelector('.toast');
+  if(!t){ t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(() => t.classList.remove('show'), 2300);
+}
+
+function syncLock(){
+  document.body.classList.toggle('lock', modalOpen || dlOpen || menuOpen || noticeOpen || rubikaOpen || shopModalOpen);
+}
+
+function openMenu(){
+  if(menuOpen) return;
+  menuOpen = true;
+  $('menuBg').classList.add('on');
+  $('menuBtn').setAttribute('aria-expanded','true');
+  syncLock();
+}
+function closeMenu(){
+  if(!menuOpen) return;
+  menuOpen = false;
+  $('menuBg').classList.remove('on');
+  $('menuBtn').setAttribute('aria-expanded','false');
+  syncLock();
+}
+
+function switchView(v){
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.menu-item[data-view]').forEach(el => el.classList.remove('active'));
+  if(v === 'shop'){
+    $('viewShop').classList.add('active');
+    document.querySelector('.menu-item[data-view="shop"]')?.classList.add('active');
+  } else {
+    $('viewGames').classList.add('active');
+    document.querySelector('.menu-item[data-view="games"]')?.classList.add('active');
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+  closeMenu();
+}
+
+function renderGames(){
+  let html = '';
+  GAMES.forEach(g => {
+    const pills = g.feats.slice(0,3).map(pillHtml).join('');
+    const badge = g.featured ? '<span class="card-badge bd-featured">👑 ویژه</span>' : '<span class="card-badge bd-mod">MOD</span>';
+    const cls = 'card' + (g.featured ? ' card--featured' : '');
+    const btn = g.featured ? '🏆 دریافت جدیدترین نسخه' : 'دریافت مود';
+    const thumb = `<img src="\( {g.img}" alt=" \){g.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="em" style="display:none">${g.emoji}</div>`;
+    html += `<div class="${cls}">
+      <div class="card-top" data-open="${g.id}">
+        <div class="card-thumb">${thumb}</div>
+        <div class="card-info">
+          <div class="card-row"><h3 class="card-title">\( {g.title}</h3> \){badge}</div>
+          <div class="card-feats">${pills}</div>
+        </div>
+      </div>
+      <div class="card-cta"><button class="card-btn" data-open="\( {g.id}"> \){btn}</button></div>
+    </div>`;
+  });
+  $('grid').innerHTML = html;
+  $('cnt').textContent = toFa(GAMES.length) + ' مورد';
+  document.querySelectorAll('[data-open]').forEach(el => {
+    el.addEventListener('click', () => openMod(el.getAttribute('data-open')));
+  });
+}
+
+function renderVideos(){
+  let html = '';
+  VIDEOS.forEach((v,i) => {
+    html += `<div class="vid-card" data-vid="${i}">
+      <div class="vid-thumb">
+        <div style="font-size:2.1rem">${v.emoji}</div>
+        <div class="vid-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vid-body"><div class="vid-title">${v.title}</div></div>
+    </div>`;
+  });
+  $('videosScroll').innerHTML = html;
+  $('vidCount').textContent = toFa(VIDEOS.length) + ' ویدیو';
+  document.querySelectorAll('[data-vid]').forEach(el => {
+    el.addEventListener('click', () => {
+      const v = VIDEOS[+el.getAttribute('data-vid')];
+      if(v?.hash) window.open('https://www.aparat.com/v/' + v.hash, '_blank');
+    });
+  });
+}
+
+function renderShop(){
+  let html = '';
+  SHOP.forEach(p => {
+    const feats = p.feats.slice(0,4).map(f => `<li><span>✓</span> ${f}</li>`).join('');
+    html += `<div class="shop-card">
+      <div class="shop-head">
+        <div class="shop-emoji">${p.emoji}</div>
+        <div class="shop-title">${p.title}</div>
+        <div class="shop-price">${p.price}</div>
+        <div class="shop-sub">${p.badge}</div>
+      </div>
+      <div class="shop-body">
+        <ul class="shop-feats">${feats}</ul>
+        <button class="shop-btn" data-shop="${p.id}">👁 مشاهده جزئیات</button>
+      </div>
+    </div>`;
+  });
+  $('shopGrid').innerHTML = html;
+  document.querySelectorAll('[data-shop]').forEach(btn => {
+    btn.addEventListener('click', () => openShop(btn.getAttribute('data-shop')));
+  });
+}
+
+function openMod(id){
+  const g = GAMES.find(x => x.id === id);
+  if(!g) return;
+  currentDl = g.dl || CH;
+  $('mMedia').innerHTML = g.img
+    ? `<img src="\( {g.img}" alt=" \){g.title}" onerror="this.outerHTML='<div class=em>${g.emoji}</div>'">`
+    : `<div class="em">${g.emoji}</div>`;
+  $('mBadges').innerHTML = g.featured
+    ? '<span class="modal-badge mb-new">👑 ویژه</span>'
+    : '<span class="modal-badge mb-mod">MOD</span>';
+  $('mTitle').textContent = g.title;
+  $('mSub').textContent = 'مود اختصاصی و تست‌شده';
+  $('mFeats').innerHTML = g.feats.map(featBoxHtml).join('');
+  \( ('mVer').innerHTML = `<span class="tag"> \){g.ver}</span><p>مود اختصاصی و تست‌شده.</p>`;
+  $('modal').classList.add('on');
+  modalOpen = true;
+  syncLock();
+}
+
+function closeMod(){
+  if(!modalOpen) return;
+  modalOpen = false;
+  $('modal').classList.remove('on');
+  syncLock();
+}
+
+function openShop(id){
+  const p = SHOP.find(x => x.id === id);
+  if(!p) return;
+  \( ('shopModalMedia').innerHTML = `<div class="em" style="font-size:3.1rem"> \){p.emoji}</div>`;
+  $('shopModalBadge').textContent = p.badge;
+  $('shopModalTitle').textContent = p.title;
+  $('shopModalPrice').textContent = p.price;
+  $('shopModalFeats').innerHTML = p.feats.map(f => `<li><span>✓</span> ${f}</li>`).join('');
+  $('shopBuyBtn').onclick = () => {
+    closeShop();
+    setTimeout(() => openRubika(p.rubika), 250);
+  };
+  $('shopModal').classList.add('on');
+  shopModalOpen = true;
+  syncLock();
+}
+
+function closeShop(){
+  if(!shopModalOpen) return;
+  shopModalOpen = false;
+  $('shopModal').classList.remove('on');
+  syncLock();
+}
+
+function handleDownload(dl){
+  closeMod();
+  currentDl = dl;
+  if(dl.includes('rubika.ir')){
+    setTimeout(() => openNotice(dl), 280);
+  } else {
+    setTimeout(() => openDl(dl), 280);
+  }
+}
+
+function openNotice(link){
+  let sec = 5;
+  $('ntcTimer').textContent = toFa(sec);
+  const bar = $('ntcBar');
+  bar.style.width = '0%';
+  requestAnimationFrame(() => bar.style.width = '100%');
+  $('ntc').classList.add('on');
+  noticeOpen = true;
+  syncLock();
+  if(noticeTimer) clearTimeout(noticeTimer);
+  if(noticeTick) clearInterval(noticeTick);
+  noticeTick = setInterval(() => {
+    sec--;
+    if(sec < 0) sec = 0;
+    $('ntcTimer').textContent = toFa(sec);
+    if(sec <= 0){ clearInterval(noticeTick); noticeTick = null; }
+  }, 1000);
+  noticeTimer = setTimeout(() => {
+    closeNotice();
+    setTimeout(() => openRubika(extractRubikaId(link)), 150);
+  }, 5000);
+}
+
+function closeNotice(){
+  if(!noticeOpen) return;
+  noticeOpen = false;
+  $('ntc').classList.remove('on');
+  if(noticeTimer){ clearTimeout(noticeTimer); noticeTimer = null; }
+  if(noticeTick){ clearInterval(noticeTick); noticeTick = null; }
+  syncLock();
+}
+
+function openDl(link){
+  currentDl = link || currentDl;
+  showDlState('dlLoadingState');
+  $('dlp').classList.add('on');
+  dlOpen = true;
+  syncLock();
+  setTimeout(() => showDlState('dlReadyState'), 1800);
+}
+
+function closeDl(){
+  if(!dlOpen) return;
+  dlOpen = false;
+  $('dlp').classList.remove('on');
+  syncLock();
+}
+
+function showDlState(id){
+  ['dlLoadingState','dlReadyState','dlPollState','dlManualState','dlSuccessState'].forEach(s => {
+    $(s).classList.toggle('on', s === id);
+  });
+}
+
+function copyText(text){
+  try{
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    return true;
+  }catch(e){ return false; }
+}
+
+function openRubika(id){
+  id = id || 'ZODIAC_MAFIANIGHTS';
+  if(rubikaOpen) return;
+  rubikaOpen = true;
+  const bar = $('rubikaBar');
+  bar.style.width = '0%';
+  requestAnimationFrame(() => bar.style.width = '100%');
+  $('rubikaPopup').classList.add('on');
+  syncLock();
+  setTimeout(() => {
+    $('rubikaPopup').classList.remove('on');
+    rubikaOpen = false;
+    syncLock();
+    doRubikaRedirect(id);
+  }, 2000);
+}
+
+function doRubikaRedirect(id){
+  const appUrl = 'rubika://l.rubika.ir/' + id;
+  const webUrl = 'https://rubika.ir/' + id;
+  const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent || '');
+  if(!isMobile){ location.href = webUrl; return; }
+  let left = false;
+  const onVis = () => { if(document.hidden) left = true; };
+  document.addEventListener('visibilitychange', onVis);
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;left:-9999px';
+  iframe.src = appUrl;
+  document.body.appendChild(iframe);
+  setTimeout(() => {
+    document.removeEventListener('visibilitychange', onVis);
+    try{ iframe.remove(); }catch(e){}
+    if(!left && !document.hidden) location.href = webUrl;
+  }, 1400);
+}
+
+function extractRubikaId(url){
+  const m = String(url||'').match(/rubika\.ir\/+([^\s\/\?#]+)/i);
+  return m ? m[1] : 'ZODIAC_MAFIANIGHTS';
+}
+
+/* Events */
+$('menuBtn').addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+$('menuClose').addEventListener('click', closeMenu);
+$('menuBg').addEventListener('click', e => { if(e.target === $('menuBg')) closeMenu(); });
+
+document.querySelectorAll('[data-view]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    switchView(el.getAttribute('data-view'));
+  });
+});
+
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-rubika]');
+  if(!el) return;
+  e.preventDefault();
+  if(menuOpen) closeMenu();
+  setTimeout(() => openRubika(el.getAttribute('data-rubika')), 120);
+});
+
+$('modalClose').addEventListener('click', closeMod);
+$('modal').addEventListener('click', e => { if(e.target === $('modal')) closeMod(); });
+$('mDl').addEventListener('click', () => handleDownload(currentDl));
+
+$('dlClose').addEventListener('click', closeDl);
+$('dlp').addEventListener('click', e => { if(e.target === $('dlp')) closeDl(); });
+$('dlGetBtn').addEventListener('click', () => {
+  const ok = copyText(currentDl);
+  toast(ok ? '✅ لینک کپی شد' : 'لینک آماده شد');
+  showDlState('dlPollState');
+});
+$('dlPollYes').addEventListener('click', () => showDlState('dlSuccessState'));
+$('dlPollNo').addEventListener('click', () => {
+  $('dlManualInput').value = currentDl;
+  showDlState('dlManualState');
+});
+$('dlManualCopy').addEventListener('click', () => {
+  const ok = copyText($('dlManualInput').value);
+  toast(ok ? '✅ کپی شد' : 'دستی کپی کن');
+});
+$('dlManualBack').addEventListener('click', () => showDlState('dlPollState'));
+$('dlDoneBtn').addEventListener('click', closeDl);
+
+$('shopModalClose').addEventListener('click', closeShop);
+$('shopModal').addEventListener('click', e => { if(e.target === $('shopModal')) closeShop(); });
+
+$('offlineRetry').addEventListener('click', () => location.reload());
+
+document.addEventListener('keydown', e => {
+  if(e.key !== 'Escape') return;
+  if(menuOpen) closeMenu();
+  else if(shopModalOpen) closeShop();
+  else if(noticeOpen) closeNotice();
+  else if(dlOpen) closeDl();
+  else if(modalOpen) closeMod();
+});
+
+window.addEventListener('online', () => {
+  document.body.classList.remove('is-offline');
+  $('offline').classList.remove('show');
+});
+window.addEventListener('offline', () => {
+  document.body.classList.add('is-offline');
+  $('offline').classList.add('show');
+});
+
+if(!navigator.onLine){
+  document.body.classList.add('is-offline');
+  $('offline').classList.add('show');
+} else {
+  renderGames();
+  renderVideos();
+  renderShop();
+}
+})();
+</script>
+</body>
+</html>
